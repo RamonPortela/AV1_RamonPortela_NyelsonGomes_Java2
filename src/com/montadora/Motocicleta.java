@@ -1,12 +1,7 @@
 package com.montadora;
 
-public class Motocicleta {
+public class Motocicleta extends Veiculo {
 	
-	private String chassi;
-	private String montadora;
-	private String modelo;
-	private String tipo;
-	private String cor;
 	private int cilindrada;
 	private int capacidadeDoTanque;
 	private float preco;

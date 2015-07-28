@@ -1,8 +1,6 @@
 package com.montadora;
 
-public class Carro {
-
-	private String chassi;
+public class Carro extends Veiculo {
 	
 	public enum Montadoras{
 		GM(1,"GM"), VOLKSWAGEN(2, "VOLKSWAGEN"), BMW(3, "BMW"), FIAT(4, "FIAT"), FORD(5, "FORD");
@@ -21,10 +19,7 @@ public class Carro {
 			return nomeMontadoras;
 		}
 	};
-	private String montadora;
-	private String modelo;
-	private String tipo;
-	private String cor;
+
 	private String cambio;
 	private float motorizacao;
 	private float preco;	
