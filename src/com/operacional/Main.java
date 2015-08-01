@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.montadora.*;
 import com.operacional.Loja;
+import com.utilitarios.teste.MetodosAuxiliares;
 
 public class Main {
 	
@@ -32,6 +33,9 @@ public class Main {
 				switch(opcaoMenu){
 				case 1:
 					loja.adicionarVeiculo(input);
+					System.out.println("Veículo adicionado ao estoque com sucesso.");
+					System.out.println("Pressione enter para voltar ao menu");
+					MetodosAuxiliares.pressionarEnter();
 					break;
 				/*case 2:
 					loja.excluirVeiculo();
@@ -50,6 +54,8 @@ public class Main {
 					break;*/
 				case 7:
 					loja.listarVeiculos();
+					System.out.println("Pressione enter para voltar ao menu");
+					MetodosAuxiliares.pressionarEnter();
 					break;
 				}
 				System.out.println("********MENU********\n");

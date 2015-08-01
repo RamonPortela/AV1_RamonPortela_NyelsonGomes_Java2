@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Carro extends Veiculo {
 	
+	private String tipo;
 	private String cambio;
 	private float motorizacao;
 	
@@ -46,6 +47,50 @@ public class Carro extends Veiculo {
 	
 	public String getCambio(){
 		return cambio;
+	}
+	
+	public enum Tipos{
+		HATCH(1, "Hatch"), SEDAN(2, "Sedan"), MINIVAN(3, "Minivan"), PICAPE(4, "Picape"), ESPORTIVO(5, "Esportivo");
+		
+		private int opcaoTipo;
+		private String nomeTipo;
+		
+		private Tipos(int opcaoTipo, String nomeTipo){
+			this.opcaoTipo = opcaoTipo;
+			this.nomeTipo = nomeTipo;
+		}
+		
+		public int getOpcaoTipo(){
+			return opcaoTipo;
+		}
+		
+		public String getNomeTipo(){
+			return nomeTipo;
+		}
+	};
+	
+	public void setTipo(int opcaoTipo){
+		switch(opcaoTipo){
+			case 1:
+				this.tipo = Tipos.HATCH.getNomeTipo();
+				break;
+			case 2:
+				this.tipo = Tipos.SEDAN.getNomeTipo();
+				break;
+			case 3:
+				this.tipo = Tipos.MINIVAN.getNomeTipo();
+				break;
+			case 4:
+				this.tipo = Tipos.PICAPE.getNomeTipo();
+				break;
+			case 5:
+				this.tipo = Tipos.ESPORTIVO.getNomeTipo();
+				break;
+		}
+	}
+	
+	public String getTipo(){
+		return tipo;
 	}
 	
 	public enum Montadoras{
@@ -143,14 +188,6 @@ public class Carro extends Veiculo {
 		return motorizacao;
 	}
 	
-	public String getTipo() {
-		return tipo;
-	}
-	
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	
 	public Carro criarVeiculo(Scanner input){
 		
 		Carro carro = new Carro();
@@ -160,14 +197,23 @@ public class Carro extends Veiculo {
 		System.out.println("Escolha uma montadora: ");
 		System.out.println("1 - GM   \t 2 - VOLKSWAGEN \t 3 - BMW \t 4 - FIAT \t 5 - FORD");
 		carro.setMontadora(input.nextInt());
+		System.out.println("Entre com o tipo do veículo: ");
+		System.out.println("1 - Hatch   \t 2 - Sedan \t 3 - Minivan \t 4 - Picape \t 5 - Esportivo");
+		carro.setTipo(input.nextInt());
+		input.nextLine();
+		System.out.println("Entre com o modelo do veículo:");
+		carro.setModelo(input.nextLine());
 		System.out.println("Selecione a cor do veículo: ");
 		System.out.println("1 - azul   \t 2 - vermelho \t 3 - branco \t 4 - preto \t 5 - verde");
 		carro.setCor(input.nextInt());
-		System.out.println("Entre com o modelo do veículo:");
-		carro.setModelo(input.next());
-		
-		
-		carro.setMotorizacao(50);
+		System.out.println("Selecione a motorização do carro: ");
+		System.out.println("1 - 1.0   \t 2 - 1.3 \t 3 - 1.4 \t 4 - 1.5 \t 5 - 1.6 \t 6 - 1.8 \t 7 - 2.0");
+		carro.setMotorizacao(input.nextInt());
+		System.out.println("Selecione o tipo de câmbio do carro: ");
+		System.out.println("1 - Manual   \t 2 - Automático \t 3 - Automatizado \t 4 - CVT");
+		carro.setCambio(input.nextInt());
+		System.out.println("Entre com o preço do veículo: ");
+		carro.setPreco(input.nextFloat());
 		return carro;
 	}
 	

@@ -1,6 +1,11 @@
 package com.utilitarios.teste;
 
-public class MetodosAuxiliares {
+import java.util.Scanner;
 
+public class MetodosAuxiliares {
+	public static void pressionarEnter(){
+		Scanner input = new Scanner(System.in);
+		input.nextLine();
+	}
 	
 }

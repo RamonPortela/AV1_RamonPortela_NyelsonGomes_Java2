@@ -7,7 +7,6 @@ public abstract class Veiculo {
 	protected String chassi;
 	protected String montadora;
 	protected String modelo;
-	protected String tipo;
 	protected String cor;
 	protected float preco;
 	
@@ -21,10 +20,6 @@ public abstract class Veiculo {
 	public abstract String getMontadora();
 	
 	public abstract void setMontadora(int opcaoMontadora);
-
-	public abstract String getTipo();
-
-	public abstract void setTipo(String tipo);
 	
 	public enum Cores{
 		AZUL(1,"azul"), VERMELHO(2, "vermelho"), BRANCO(3, "branco"), PRETO(4, "preto"), VERDE(5, "verde");

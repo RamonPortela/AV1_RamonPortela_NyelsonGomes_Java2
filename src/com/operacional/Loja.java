@@ -47,7 +47,6 @@ public class Loja {
 			case 1:
 					Carro carro = new Carro();
 					carro = carro.criarVeiculo(input);
-					System.out.println(carro.getChassi());
 					this.estoqueDeVeiculos.add(carro);
 				break;
 			case 2:
@@ -61,12 +60,29 @@ public class Loja {
 		for(Veiculo veiculo : this.estoqueDeVeiculos){
 			if(veiculo instanceof Carro){
 				Carro carro = (Carro) veiculo;
-				System.out.println("carro: "+veiculo.getChassi());
-				System.out.println("carro: "+carro.getMotorizacao());
+				System.out.println("-------CARRO-------");
+				System.out.println("chassi: "+carro.getChassi());
+				System.out.println("Montadora: "+carro.getMontadora());
+				System.out.println("Tipo: "+carro.getTipo());
+				System.out.println("Modelo: "+carro.getModelo());
+				System.out.println("Cor: "+carro.getCor());
+				System.out.println("motorizacao: "+carro.getMotorizacao());
+				System.out.println("Cambio: "+carro.getCambio());
+				System.out.println("Preço: "+carro.getPreco());
 			}else{
 				Motocicleta moto = (Motocicleta) veiculo;
-				
+				Carro carro = (Carro) veiculo;
+				System.out.println("-------MOTO-------");
+				System.out.println("chassi: "+moto.getChassi());
+				System.out.println("Montadora: "+moto.getMontadora());
+				System.out.println("Tipo: "+moto.getTipo());
+				System.out.println("Modelo: "+moto.getModelo());
+				System.out.println("Cor: "+moto.getCor());
+				System.out.println("motorizacao: "+moto.getCilindrada());
+				System.out.println("Cambio: "+moto.getCapacidadeDoTanque());
+				System.out.println("Preço: "+moto.getPreco());
 			}
+			System.out.println("");
 		}
 	}
 	
