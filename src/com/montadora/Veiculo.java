@@ -17,9 +17,6 @@ public abstract class Veiculo {
 	public void setChassi(String chassi) {
 		this.chassi = chassi;
 	}
-	public abstract String getModelo();
-
-	public abstract void setModelo(String modelo);
 	
 	public abstract String getMontadora();
 	
@@ -79,5 +76,13 @@ public abstract class Veiculo {
 		this.preco = preco;
 	}
 
+	public String getModelo() {
+		return modelo;
+	}
+	
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	
 	protected abstract Veiculo criarVeiculo(Scanner input);
 }

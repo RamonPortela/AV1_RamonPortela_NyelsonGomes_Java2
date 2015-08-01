@@ -59,7 +59,14 @@ public class Loja {
 	
 	public void listarVeiculos(){
 		for(Veiculo veiculo : this.estoqueDeVeiculos){
-			System.out.println("carro: "+veiculo.getChassi());
+			if(veiculo instanceof Carro){
+				Carro carro = (Carro) veiculo;
+				System.out.println("carro: "+veiculo.getChassi());
+				System.out.println("carro: "+carro.getMotorizacao());
+			}else{
+				Motocicleta moto = (Motocicleta) veiculo;
+				
+			}
 		}
 	}
 	
