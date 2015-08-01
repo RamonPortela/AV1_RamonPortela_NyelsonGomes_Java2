@@ -3,38 +3,78 @@ package com.operacional;
 import com.montadora.*;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Loja {
 	
 	private String endereco;
 	private String nome;
-	private ArrayList<Carro> estoqueDeCarros;
-	private ArrayList<Motocicleta> estoqueDeMotocicletas;
+	ArrayList<Veiculo> estoqueDeVeiculos = new ArrayList<Veiculo>();
 	
 	public String getEndereco() {
 		return endereco;
 	}
+	
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public void adicionarCarro(Carro carro) {
-		this.estoqueDeCarros.add(carro);
+	
+	public void adicionarVeiculo(Scanner input) {
+		
+		int opcaoDeVeiculo;
+		
+		do{
+			
+			System.out.println("Entre com 1 para adicionar um carro.");
+			System.out.println("Entre com 2 para adicionar uma motocicleta.");
+			
+			opcaoDeVeiculo = input.nextInt();
+			if((opcaoDeVeiculo < 1) || (opcaoDeVeiculo > 2)){
+				System.out.println("Opção inválida. Entre com a opção novamente.");
+			}
+			
+		}while((opcaoDeVeiculo < 1) || (opcaoDeVeiculo > 2));
+		
+		switch(opcaoDeVeiculo){
+			case 1:
+					Carro carro = new Carro();
+					carro = carro.criarVeiculo(input);
+					System.out.println(carro.getChassi());
+					this.estoqueDeVeiculos.add(carro);
+				break;
+			case 2:
+				break;
+		}
+		
+		
 	}
-	public void adicionarMotocicleta(Motocicleta motocicleta) {
+	
+	public void listarVeiculos(){
+		for(Veiculo veiculo : this.estoqueDeVeiculos){
+			System.out.println("carro: "+veiculo.getChassi());
+		}
+	}
+	
+/*	public void adicionarMotocicleta(Motocicleta motocicleta) {
 		this.estoqueDeMotocicletas.add(motocicleta);
 	}
+	
 	public void excluirCarro(int posicaoLista){
 		this.estoqueDeCarros.remove(posicaoLista);
 	}
+	
 	public void excluirMotocicleta(int posicaoLista) {
 		this.estoqueDeMotocicletas.remove(posicaoLista);
 	}
+	
 	public void listarEstoquedeCarros(){
 		int posicaoLista = 0;
 		Carro carro = new Carro();
@@ -52,7 +92,7 @@ public class Loja {
 			posicaoLista++;
 		}		
 	}
-/*	public void pesquisarCarro(){
+	public void pesquisarCarro(){
 		int posicaoLista = 0;
 		Carro carro = new Carro();
 		
@@ -68,7 +108,7 @@ public class Loja {
 			System.out.println("Preço: "+carro.getPreco());
 			posicaoLista++;
 		}		
-	}*/
+	}
 	public void buscarCarro(String chassi){
 		boolean achouCarro = false;
 		int posicaoLista = 0;
@@ -135,5 +175,5 @@ public class Loja {
 		if(!achouMoto){
 			System.out.println("Moto não encontrada.");
 		}
-	}
+	}*/
 }

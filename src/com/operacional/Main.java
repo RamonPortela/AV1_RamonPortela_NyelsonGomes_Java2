@@ -12,47 +12,57 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		Loja veiculo = new Loja();
+		Loja loja = new Loja();
 		Carro carro = new Carro();
 		Motocicleta motocicleta = new Motocicleta();
 		int opcaoMenu;
 		
 		System.out.println("********MENU********\n");
-		System.out.println("Entre com 1 para listar estoque dos Carros.");
-		System.out.println("Entre com 2 para adicionar Carro.");
-		System.out.println("Entre com 3 para excluir Carro.");
-		System.out.println("Entre com 4 para buscar Carro.");
-		System.out.println("Entre com 5 para listar estoque das Moto.");
-		System.out.println("Entre com 6 para adicionar Moto.");	
-		System.out.println("Entre com 7 para excluir Moto.");
+		System.out.println("Entre com 1 para para adicionar veículo.");
+		System.out.println("Entre com 2 para excluir veículo.");
+		System.out.println("Entre com 3 para listar todos os veículos.");
+		System.out.println("Entre com 4 para buscar veículo pelo número de chassi.");
+		System.out.println("Entre com 5 para listar estoque de carros.");
+		System.out.println("Entre com 6 para listar estoque das motos.");	
 		System.out.println("Entre com a opcao desejada ou 0 para sair: ");
 		opcaoMenu = input.nextInt();
 		
-		if(opcaoMenu != sair){
-			switch(opcaoMenu){
-			case 1:
-				veiculo.listarEstoquedeCarros();
-				break;
-			case 2:
-				veiculo.adicionarCarro(carro);
-				break;
-			case 3:
-				veiculo.excluirCarro(input.nextInt());
-				break;
-			case 4:
-				veiculo.buscarCarro(input.nextLine());
-				break;
-			case 5:
-				veiculo.listarMotocicleta();
-				break;
-			case 6:
-				veiculo.buscarMotocicleta(input.nextLine());
-				break;
-			case 7:
-				veiculo.excluirMotocicleta(input.nextInt());
+		while(opcaoMenu != sair){			
+			if(opcaoMenu != sair){
+				switch(opcaoMenu){
+				case 1:
+					loja.adicionarVeiculo(input);
+					break;
+				/*case 2:
+					loja.excluirVeiculo();
+					break;
+				case 3:
+					loja.listarVeiculos(input.nextInt());
+					break;
+				case 4:
+					loja.buscarVeiculo(input.nextLine());
+					break;
+				case 5:
+					loja.listarCarros();
+					break;
+				case 6:
+					loja.listarMotocicleta(input.nextLine());
+					break;*/
+				case 7:
+					loja.listarVeiculos();
+					break;
+				}
+				System.out.println("********MENU********\n");
+				System.out.println("Entre com 1 para para adicionar veículo.");
+				System.out.println("Entre com 2 para excluir veículo.");
+				System.out.println("Entre com 3 para listar todos os veículos.");
+				System.out.println("Entre com 4 para buscar veículo pelo número de chassi.");
+				System.out.println("Entre com 5 para listar estoque de carros.");
+				System.out.println("Entre com 6 para listar estoque das motos.");	
+				System.out.println("Entre com a opcao desejada ou 0 para sair: ");
+				opcaoMenu = input.nextInt();
 			}
 		}
-
 	}
 
 }
