@@ -2,20 +2,16 @@ package com.operacional;
 
 import java.util.Scanner;
 
-import com.montadora.*;
-import com.operacional.Loja;
 import com.utilitarios.teste.MetodosAuxiliares;
 
 public class Main {
 	
-	private static int sair = 0; 
+	private static int sair = 0;
 
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
 		Loja loja = new Loja();
-		Carro carro = new Carro();
-		Motocicleta motocicleta = new Motocicleta();
 		int opcaoMenu;
 		
 		System.out.println("********MENU********\n");
@@ -31,33 +27,34 @@ public class Main {
 		while(opcaoMenu != sair){			
 			if(opcaoMenu != sair){
 				switch(opcaoMenu){
-				case 1:
-					loja.adicionarVeiculo(input);
-					System.out.println("Veículo adicionado ao estoque com sucesso.");
-					System.out.println("Pressione enter para voltar ao menu");
-					MetodosAuxiliares.pressionarEnter();
-					break;
-				/*case 2:
-					loja.excluirVeiculo();
-					break;
-				case 3:
-					loja.listarVeiculos(input.nextInt());
-					break;
-				case 4:
-					loja.buscarVeiculo(input.nextLine());
-					break;
-				case 5:
-					loja.listarCarros();
-					break;
-				case 6:
-					loja.listarMotocicleta(input.nextLine());
-					break;*/
-				case 7:
-					loja.listarVeiculos();
-					System.out.println("Pressione enter para voltar ao menu");
-					MetodosAuxiliares.pressionarEnter();
-					break;
+					case 1:
+						loja.adicionarVeiculo(input);
+						System.out.println("Veículo adicionado ao estoque com sucesso.");
+						MetodosAuxiliares.pressionarEnter();
+						break;
+					/*case 2:
+						loja.excluirVeiculo();
+						break;*/
+					case 3:
+						loja.listarVeiculos();
+						MetodosAuxiliares.pressionarEnter();
+						break;
+					/*case 4:
+						loja.buscarVeiculo(input.nextLine());
+						break;*/
+					case 5:
+						loja.listarCarros();
+						MetodosAuxiliares.pressionarEnter();
+						break;
+					case 6:
+						loja.listarMotos();
+						MetodosAuxiliares.pressionarEnter();
+						break;
+					default:
+						System.out.println("Opção inválida.");
+						MetodosAuxiliares.pressionarEnter();
 				}
+				
 				System.out.println("********MENU********\n");
 				System.out.println("Entre com 1 para para adicionar veículo.");
 				System.out.println("Entre com 2 para excluir veículo.");
@@ -70,5 +67,4 @@ public class Main {
 			}
 		}
 	}
-
 }

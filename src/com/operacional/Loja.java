@@ -50,6 +50,9 @@ public class Loja {
 					this.estoqueDeVeiculos.add(carro);
 				break;
 			case 2:
+					Motocicleta moto = new Motocicleta();
+					moto = moto.criarVeiculo(input);
+					this.estoqueDeVeiculos.add(moto);
 				break;
 		}
 		
@@ -71,15 +74,14 @@ public class Loja {
 				System.out.println("Preço: "+carro.getPreco());
 			}else{
 				Motocicleta moto = (Motocicleta) veiculo;
-				Carro carro = (Carro) veiculo;
 				System.out.println("-------MOTO-------");
 				System.out.println("chassi: "+moto.getChassi());
 				System.out.println("Montadora: "+moto.getMontadora());
 				System.out.println("Tipo: "+moto.getTipo());
 				System.out.println("Modelo: "+moto.getModelo());
 				System.out.println("Cor: "+moto.getCor());
-				System.out.println("motorizacao: "+moto.getCilindrada());
-				System.out.println("Cambio: "+moto.getCapacidadeDoTanque());
+				System.out.println("Cilindradas: "+moto.getCilindrada());
+				System.out.println("Capacidade do tanque: "+moto.getCapacidadeDoTanque()+" Litros");
 				System.out.println("Preço: "+moto.getPreco());
 			}
 			System.out.println("");
@@ -96,27 +98,27 @@ public class Loja {
 	
 	public void excluirMotocicleta(int posicaoLista) {
 		this.estoqueDeMotocicletas.remove(posicaoLista);
-	}
+	}*/
 	
-	public void listarEstoquedeCarros(){
-		int posicaoLista = 0;
-		Carro carro = new Carro();
+	public void listarCarros(){
 		
-		while(posicaoLista < this.estoqueDeCarros.size()){
-			carro = this.estoqueDeCarros.get(posicaoLista);
-			System.out.println("Chassi: "+carro.getChassi());
-			System.out.println("Montadora: "+carro.getMontadora());
-			System.out.println("Tipo: "+carro.getTipo());
-			System.out.println("Modelo: "+carro.getModelo());
-			System.out.println("Cor: "+carro.getCor());
-			System.out.println("Motorizacao: "+carro.getMotorizacao());
-			System.out.println("Cambio: "+carro.getCambio());
-			System.out.println("Preço: "+carro.getPreco());
-			posicaoLista++;
-		}		
+		for(Veiculo veiculo : this.estoqueDeVeiculos){
+			if(veiculo instanceof Carro){
+				Carro carro = (Carro) veiculo;
+				System.out.println("-------CARRO-------");
+				System.out.println("chassi: "+carro.getChassi());
+				System.out.println("Montadora: "+carro.getMontadora());
+				System.out.println("Tipo: "+carro.getTipo());
+				System.out.println("Modelo: "+carro.getModelo());
+				System.out.println("Cor: "+carro.getCor());
+				System.out.println("motorizacao: "+carro.getMotorizacao());
+				System.out.println("Cambio: "+carro.getCambio());
+				System.out.println("Preço: "+carro.getPreco());
+				System.out.println("");
+			}
+		}	
 	}
-	public void pesquisarCarro(){
-		int posicaoLista = 0;
+	/*public void listarCarros(){
 		Carro carro = new Carro();
 		
 		while(posicaoLista < this.estoqueDeCarros.size()){
@@ -156,26 +158,28 @@ public class Loja {
 		if(!achouCarro){
 			System.out.println("Carro não encontrado.");
 		}
-	}
+	}*/
 	
-	public void listarMotocicleta(){
-		int posicaoLista = 0;
-		Motocicleta motocicleta = new Motocicleta();
+	public void listarMotos(){
 		
-		while(posicaoLista < this.estoqueDeCarros.size()){
-			motocicleta = this.estoqueDeMotocicletas.get(posicaoLista);
-			System.out.println("Chassi: " + motocicleta.getChassi());
-			System.out.println("Modelo: " + motocicleta.getModelo());
-			System.out.println("Tipo: " + motocicleta.getTipo());
-			System.out.println("Cor: " + motocicleta.getCor());
-			System.out.println("Cilindrada: " + motocicleta.getCilindrada());
-			System.out.println("Capacidade do Tanque: " + motocicleta.getCapacidade_do_tanque());
-			System.out.println("Preço: " + motocicleta.getPreco());
-			posicaoLista++;
+		for(Veiculo veiculo : this.estoqueDeVeiculos){
+			if(veiculo instanceof Motocicleta){
+				Motocicleta moto = (Motocicleta) veiculo;
+				System.out.println("-------MOTO-------");
+				System.out.println("chassi: "+moto.getChassi());
+				System.out.println("Montadora: "+moto.getMontadora());
+				System.out.println("Tipo: "+moto.getTipo());
+				System.out.println("Modelo: "+moto.getModelo());
+				System.out.println("Cor: "+moto.getCor());
+				System.out.println("Cilindradas: "+moto.getCilindrada());
+				System.out.println("Capacidade do tanque: "+moto.getCapacidadeDoTanque()+" Litros");
+				System.out.println("Preço: "+moto.getPreco());	
+				System.out.println("");
+			}
 		}
 	}
 	
-	public void buscarMotocicleta(String chassi){
+	/*public void buscarMotocicleta(String chassi){
 		boolean achouMoto = false;
 		int posicaoLista = 0;
 		Motocicleta motocicleta = new Motocicleta();
