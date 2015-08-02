@@ -34,6 +34,7 @@ public class Main {
 						break;
 					/*case 2:
 						loja.excluirVeiculo();
+						MetodosAuxiliares.pressionarEnter();
 						break;*/
 					case 3:
 						loja.listarVeiculos();
@@ -41,6 +42,7 @@ public class Main {
 						break;
 					/*case 4:
 						loja.buscarVeiculo(input.nextLine());
+						MetodosAuxiliares.pressionarEnter();
 						break;*/
 					case 5:
 						loja.listarCarros();

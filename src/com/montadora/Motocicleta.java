@@ -8,7 +8,7 @@ public class Motocicleta extends Veiculo {
 	private int capacidadeDoTanque;
 	private String tipo;
 
-	public enum Tipos{
+	public enum Tipos{//enum de tipos de motos
 		SCOOTER(1, "Scooter"), CUSTOM(2, "Custom"), CHOPPER(3, "Chopper"), STREET(4, "Street"), ESPORTIVA(5, "Esportiva");
 		
 		private int opcaoTipo;
@@ -52,7 +52,7 @@ public class Motocicleta extends Veiculo {
 		return tipo;
 	}
 	
-	public enum Montadoras{
+	public enum Montadoras{//enum das montadoras de moto
 		HARLEY(1,"HARLEY-DAVIDSON"), HONDA(2, "HONDA"), SUZUKI(3, "SUZUKI"), KAWASAKI(4, "KAWASAKI"), SHINERAY(5, "SHINERAY");
 		
 		private int opcaoMontadoras;
@@ -113,7 +113,7 @@ public class Motocicleta extends Veiculo {
 		this.capacidadeDoTanque = capacidadeDoTanque;
 	}
 	
-	public Motocicleta criarVeiculo(Scanner input) {
+	public Motocicleta criarVeiculo(Scanner input) {// método que cria moto a partir do que foi informado pelo usuário
 		Motocicleta moto = new Motocicleta();
 		
 		System.out.println("Entre com o chassi do veículo:");
@@ -139,5 +139,4 @@ public class Motocicleta extends Veiculo {
 		
 		return moto;
 	}
-
 }

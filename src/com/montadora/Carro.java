@@ -8,7 +8,7 @@ public class Carro extends Veiculo {
 	private String cambio;
 	private float motorizacao;
 	
-	public enum Cambios{
+	public enum Cambios{//enum de cambios
 		MANUAL(1, "Manual"), AUTOMATICO(2, "Automático"), AUTOMATIZADO(3, "Automatizado"), CVT(4, "CVT");
 		
 		private int opcaoCambio;
@@ -49,7 +49,7 @@ public class Carro extends Veiculo {
 		return cambio;
 	}
 	
-	public enum Tipos{
+	public enum Tipos{//enum de tipos de carro
 		HATCH(1, "Hatch"), SEDAN(2, "Sedan"), MINIVAN(3, "Minivan"), PICAPE(4, "Picape"), ESPORTIVO(5, "Esportivo");
 		
 		private int opcaoTipo;
@@ -93,7 +93,7 @@ public class Carro extends Veiculo {
 		return tipo;
 	}
 	
-	public enum Montadoras{
+	public enum Montadoras{//enum das montadoras de carro
 		GM(1,"GM"), VOLKSWAGEN(2, "VOLKSWAGEN"), BMW(3, "BMW"), FIAT(4, "FIAT"), FORD(5, "FORD");
 		
 		private int opcaoMontadoras;
@@ -138,7 +138,7 @@ public class Carro extends Veiculo {
 		return montadora;
 	}
 	
-	public enum Motorizacoes{
+	public enum Motorizacoes{//enum das enumerações
 		MOTOR10(1, (float)1.0), MOTOR13(2, (float)1.3), MOTOR14(3, (float)1.4), MOTOR15(4,(float) 1.5), MOTOR16(5, (float)1.6), MOTOR18(6, (float)1.8), MOTOR20(7, (float)2.0);
 		
 		private int opcaoMotorizacao;
@@ -188,7 +188,7 @@ public class Carro extends Veiculo {
 		return motorizacao;
 	}
 	
-	public Carro criarVeiculo(Scanner input){
+	public Carro criarVeiculo(Scanner input){//metodo que cria o veiculo a partir do que usuario informar do teclado
 		
 		Carro carro = new Carro();
 		

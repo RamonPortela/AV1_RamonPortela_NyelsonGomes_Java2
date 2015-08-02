@@ -31,8 +31,7 @@ public class Loja {
 		
 		int opcaoDeVeiculo;
 		
-		do{
-			
+		do{//do while pra ficar pedindo pro usuario digitar novamente caso ele não entre com 1 ou 2
 			System.out.println("Entre com 1 para adicionar um carro.");
 			System.out.println("Entre com 2 para adicionar uma motocicleta.");
 			
@@ -46,23 +45,21 @@ public class Loja {
 		switch(opcaoDeVeiculo){
 			case 1:
 					Carro carro = new Carro();
-					carro = carro.criarVeiculo(input);
-					this.estoqueDeVeiculos.add(carro);
+					carro = carro.criarVeiculo(input);//chama método de criar carro
+					this.estoqueDeVeiculos.add(carro);//adiciona carro na lista
 				break;
 			case 2:
 					Motocicleta moto = new Motocicleta();
-					moto = moto.criarVeiculo(input);
-					this.estoqueDeVeiculos.add(moto);
+					moto = moto.criarVeiculo(input);//chama método de criar moto
+					this.estoqueDeVeiculos.add(moto);//adiciona carro na moto
 				break;
-		}
-		
-		
+		}		
 	}
 	
 	public void listarVeiculos(){
-		for(Veiculo veiculo : this.estoqueDeVeiculos){
-			if(veiculo instanceof Carro){
-				Carro carro = (Carro) veiculo;
+		for(Veiculo veiculo : this.estoqueDeVeiculos){//for-each que percorre a lista de veiculos
+			if(veiculo instanceof Carro){//checa se o veiculo é um carro
+				Carro carro = (Carro) veiculo;//se o veiculo for um carro, transforma de volta em um objeto carro
 				System.out.println("-------CARRO-------");
 				System.out.println("chassi: "+carro.getChassi());
 				System.out.println("Montadora: "+carro.getMontadora());
@@ -72,8 +69,8 @@ public class Loja {
 				System.out.println("motorizacao: "+carro.getMotorizacao());
 				System.out.println("Cambio: "+carro.getCambio());
 				System.out.println("Preço: "+carro.getPreco());
-			}else{
-				Motocicleta moto = (Motocicleta) veiculo;
+			}else{//se for moto
+				Motocicleta moto = (Motocicleta) veiculo;//transforma o veiculo de volta em um objeto motocicleta
 				System.out.println("-------MOTO-------");
 				System.out.println("chassi: "+moto.getChassi());
 				System.out.println("Montadora: "+moto.getMontadora());
@@ -88,22 +85,10 @@ public class Loja {
 		}
 	}
 	
-/*	public void adicionarMotocicleta(Motocicleta motocicleta) {
-		this.estoqueDeMotocicletas.add(motocicleta);
-	}
-	
-	public void excluirCarro(int posicaoLista){
-		this.estoqueDeCarros.remove(posicaoLista);
-	}
-	
-	public void excluirMotocicleta(int posicaoLista) {
-		this.estoqueDeMotocicletas.remove(posicaoLista);
-	}*/
-	
-	public void listarCarros(){
+	public void listarCarros(){//imprime somente o estoque de carros
 		
-		for(Veiculo veiculo : this.estoqueDeVeiculos){
-			if(veiculo instanceof Carro){
+		for(Veiculo veiculo : this.estoqueDeVeiculos){//percorre arraylist
+			if(veiculo instanceof Carro){//checa se o veiculo é um carro, se for imprime os dados do carro na tela
 				Carro carro = (Carro) veiculo;
 				System.out.println("-------CARRO-------");
 				System.out.println("chassi: "+carro.getChassi());
@@ -118,23 +103,8 @@ public class Loja {
 			}
 		}	
 	}
-	/*public void listarCarros(){
-		Carro carro = new Carro();
-		
-		while(posicaoLista < this.estoqueDeCarros.size()){
-			carro = this.estoqueDeCarros.get(posicaoLista);			
-			System.out.println("Chassi: "+carro.getChassi());
-			System.out.println("Montadora: "+carro.getMontadora());
-			System.out.println("Tipo: "+carro.getTipo());
-			System.out.println("Modelo: "+carro.getModelo());
-			System.out.println("Cor: "+carro.getCor());
-			System.out.println("Motorizacao: "+carro.getMotorizacao());
-			System.out.println("Cambio: "+carro.getCambio());
-			System.out.println("Preço: "+carro.getPreco());
-			posicaoLista++;
-		}		
-	}
-	public void buscarCarro(String chassi){
+	
+	/*public void buscarCarro(String chassi){
 		boolean achouCarro = false;
 		int posicaoLista = 0;
 		Carro carro = new Carro();
@@ -160,10 +130,10 @@ public class Loja {
 		}
 	}*/
 	
-	public void listarMotos(){
+	public void listarMotos(){//imprime somente estoque de motos
 		
-		for(Veiculo veiculo : this.estoqueDeVeiculos){
-			if(veiculo instanceof Motocicleta){
+		for(Veiculo veiculo : this.estoqueDeVeiculos){//percorre arraylist de veiculos
+			if(veiculo instanceof Motocicleta){//checa se é moto
 				Motocicleta moto = (Motocicleta) veiculo;
 				System.out.println("-------MOTO-------");
 				System.out.println("chassi: "+moto.getChassi());

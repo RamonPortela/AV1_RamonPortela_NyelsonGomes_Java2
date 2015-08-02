@@ -21,13 +21,13 @@ public abstract class Veiculo {
 	
 	public abstract void setMontadora(int opcaoMontadora);
 	
-	public enum Cores{
+	public enum Cores{//enum das cores
 		AZUL(1,"azul"), VERMELHO(2, "vermelho"), BRANCO(3, "branco"), PRETO(4, "preto"), VERDE(5, "verde");
 		
 		private int opcaoCores;
 		private String nomeCores;
 		
-		private Cores(int opcaoCores, String nomeCores){
+		private Cores(int opcaoCores, String nomeCores){//construtor do enum
 			this.opcaoCores = opcaoCores;
 			this.nomeCores = nomeCores;
 		}		
@@ -39,7 +39,7 @@ public abstract class Veiculo {
 		}
 	};
 
-	public void setCor(int opcaoCor){
+	public void setCor(int opcaoCor){//seleciona uma cor a partir do que foi digitado no teclado
 		switch(opcaoCor){
 			case 1:
 				this.cor = Cores.AZUL.getNomeCores();
@@ -79,5 +79,5 @@ public abstract class Veiculo {
 		this.modelo = modelo;
 	}
 	
-	protected abstract Veiculo criarVeiculo(Scanner input);
+	protected abstract Veiculo criarVeiculo(Scanner input);//força as subclasses a fazerem esse método obrigatóriamente
 }
