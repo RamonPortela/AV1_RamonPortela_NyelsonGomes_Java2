@@ -1,11 +1,15 @@
 package com.operacional;
 
-import com.montadora.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.montadora.Carro;
+import com.montadora.Motocicleta;
+import com.montadora.Veiculo;
+
 public class Loja {
+	
+	private static final int VEICULO_NAO_ENCONTRADO = -1;
 	
 	private String endereco;
 	private String nome;
@@ -27,8 +31,7 @@ public class Loja {
 		this.nome = nome;
 	}
 	
-	public void adicionarVeiculo(Scanner input) {
-		
+	public void adicionarVeiculo(Scanner input) {		
 		int opcaoDeVeiculo;
 		
 		do{//do while pra ficar pedindo pro usuario digitar novamente caso ele não entre com 1 ou 2
@@ -53,33 +56,31 @@ public class Loja {
 					moto = moto.criarVeiculo(input);//chama método de criar moto
 					this.estoqueDeVeiculos.add(moto);//adiciona carro na moto
 				break;
-		}		
+		}
+		System.out.println("Veículo adicionado ao estoque com sucesso.");
 	}
+	
+	public void excluirVeiculo(Scanner input){
+	 	
+		int posicaoLista = procurarVeiculo(input);//chama o método procuraVeiculo(ele retorna a posição do veiculo na lista)
+		
+		if(posicaoLista != VEICULO_NAO_ENCONTRADO){
+			this.estoqueDeVeiculos.remove(posicaoLista);//remove o veiculo que está na posição retornada pelo método
+			System.out.println("Veiculo removido do estoque com sucesso.");
+		}
+		else{
+			System.out.println("Veiculo não encontrado no estoque");
+		}
+	}	
 	
 	public void listarVeiculos(){
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//for-each que percorre a lista de veiculos
 			if(veiculo instanceof Carro){//checa se o veiculo é um carro
 				Carro carro = (Carro) veiculo;//se o veiculo for um carro, transforma de volta em um objeto carro
-				System.out.println("-------CARRO-------");
-				System.out.println("chassi: "+carro.getChassi());
-				System.out.println("Montadora: "+carro.getMontadora());
-				System.out.println("Tipo: "+carro.getTipo());
-				System.out.println("Modelo: "+carro.getModelo());
-				System.out.println("Cor: "+carro.getCor());
-				System.out.println("motorizacao: "+carro.getMotorizacao());
-				System.out.println("Cambio: "+carro.getCambio());
-				System.out.println("Preço: "+carro.getPreco());
+				imprimeCarro(carro);
 			}else{//se for moto
 				Motocicleta moto = (Motocicleta) veiculo;//transforma o veiculo de volta em um objeto motocicleta
-				System.out.println("-------MOTO-------");
-				System.out.println("chassi: "+moto.getChassi());
-				System.out.println("Montadora: "+moto.getMontadora());
-				System.out.println("Tipo: "+moto.getTipo());
-				System.out.println("Modelo: "+moto.getModelo());
-				System.out.println("Cor: "+moto.getCor());
-				System.out.println("Cilindradas: "+moto.getCilindrada());
-				System.out.println("Capacidade do tanque: "+moto.getCapacidadeDoTanque()+" Litros");
-				System.out.println("Preço: "+moto.getPreco());
+				imprimeMoto(moto);
 			}
 			System.out.println("");
 		}
@@ -90,87 +91,83 @@ public class Loja {
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//percorre arraylist
 			if(veiculo instanceof Carro){//checa se o veiculo é um carro, se for imprime os dados do carro na tela
 				Carro carro = (Carro) veiculo;
-				System.out.println("-------CARRO-------");
-				System.out.println("chassi: "+carro.getChassi());
-				System.out.println("Montadora: "+carro.getMontadora());
-				System.out.println("Tipo: "+carro.getTipo());
-				System.out.println("Modelo: "+carro.getModelo());
-				System.out.println("Cor: "+carro.getCor());
-				System.out.println("motorizacao: "+carro.getMotorizacao());
-				System.out.println("Cambio: "+carro.getCambio());
-				System.out.println("Preço: "+carro.getPreco());
+				imprimeCarro(carro);
 				System.out.println("");
 			}
 		}	
 	}
 	
-	/*public void buscarCarro(String chassi){
-		boolean achouCarro = false;
-		int posicaoLista = 0;
-		Carro carro = new Carro();
+	public void buscarVeiculo(Scanner input){
+	 	
+		int posicaoLista = procurarVeiculo(input);//chama o método procuraVeiculo(ele retorna a posição do veiculo na lista)
 		
-		while(posicaoLista < this.estoqueDeCarros.size()){
-			carro = this.estoqueDeCarros.get(posicaoLista);
-			if(carro.getChassi() == chassi){
-				System.out.println("Chassi: "+carro.getChassi());
-				//System.out.println("Montadora: "+carro.getMontadora());
-				System.out.println("Tipo: "+carro.getTipo());
-				System.out.println("Modelo: "+carro.getModelo());
-				System.out.println("Cor: "+carro.getCor());
-				System.out.println("Motorizacao: "+carro.getMotorizacao());
-				System.out.println("Cambio: "+carro.getCambio());
-				System.out.println("Preço: "+carro.getPreco());
-				achouCarro = true;
-				break;
+		if(posicaoLista != VEICULO_NAO_ENCONTRADO){
+			Veiculo veiculo = this.estoqueDeVeiculos.get(posicaoLista);//recupera o veiculo que está na posição retornada pelo método
+			if(veiculo instanceof Carro){
+				Carro carro = (Carro) veiculo;
+				imprimeCarro(carro);
 			}
-			posicaoLista++;
+			else{
+				Motocicleta moto = (Motocicleta) veiculo;
+				imprimeMoto(moto);
+			}	
 		}
-		if(!achouCarro){
-			System.out.println("Carro não encontrado.");
+		else{
+			System.out.println("Veiculo não encontrado no estoque");
 		}
-	}*/
+	}
 	
 	public void listarMotos(){//imprime somente estoque de motos
 		
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//percorre arraylist de veiculos
 			if(veiculo instanceof Motocicleta){//checa se é moto
 				Motocicleta moto = (Motocicleta) veiculo;
-				System.out.println("-------MOTO-------");
-				System.out.println("chassi: "+moto.getChassi());
-				System.out.println("Montadora: "+moto.getMontadora());
-				System.out.println("Tipo: "+moto.getTipo());
-				System.out.println("Modelo: "+moto.getModelo());
-				System.out.println("Cor: "+moto.getCor());
-				System.out.println("Cilindradas: "+moto.getCilindrada());
-				System.out.println("Capacidade do tanque: "+moto.getCapacidadeDoTanque()+" Litros");
-				System.out.println("Preço: "+moto.getPreco());	
+				imprimeMoto(moto);
 				System.out.println("");
 			}
 		}
 	}
 	
-	/*public void buscarMotocicleta(String chassi){
-		boolean achouMoto = false;
+	private int procurarVeiculo(Scanner input){
 		int posicaoLista = 0;
-		Motocicleta motocicleta = new Motocicleta();
+		String chassi;
+		Veiculo veiculo;
 		
-		while(posicaoLista < this.estoqueDeMotocicletas.size()){
-			motocicleta = this.estoqueDeMotocicletas.get(posicaoLista);
-			if(motocicleta.getChassi() == chassi){
-				System.out.println("Chassi: " + motocicleta.getChassi());
-				System.out.println("Modelo: " + motocicleta.getModelo());
-				System.out.println("Tipo: " + motocicleta.getTipo());
-				System.out.println("Cor: " + motocicleta.getCor());
-				System.out.println("Cilindrada: " + motocicleta.getCilindrada());
-				System.out.println("Capacidade do Tanque: " + motocicleta.getCapacidade_do_tanque());
-				System.out.println("Preço: " + motocicleta.getPreco());
-				achouMoto = true;
-				break;
+		input.nextLine();
+		System.out.println("Entre com o chassi do veiculo: ");
+		chassi = input.nextLine();
+		
+		while(posicaoLista < this.estoqueDeVeiculos.size()){//while que percorre toda a lista e se tem o controle de que posição da lista em que ele está
+			veiculo = this.estoqueDeVeiculos.get(posicaoLista);//recupera o veiculo da lista
+			if(veiculo.getChassi().equals(chassi)){//checa se o chassi é igual ao indicado pelo usuário
+				return posicaoLista;//se for igual retorna qual posição da lista aquele veiculo está
 			}
 			posicaoLista++;
 		}
-		if(!achouMoto){
-			System.out.println("Moto não encontrada.");
-		}
-	}*/
+		return VEICULO_NAO_ENCONTRADO;
+	}
+	
+	private void imprimeCarro(Carro carro){
+		System.out.println("-------CARRO-------");
+		System.out.println("chassi: "+carro.getChassi());
+		System.out.println("Montadora: "+carro.getMontadora());
+		System.out.println("Tipo: "+carro.getTipo());
+		System.out.println("Modelo: "+carro.getModelo());
+		System.out.println("Cor: "+carro.getCor());
+		System.out.println("motorizacao: "+carro.getMotorizacao());
+		System.out.println("Cambio: "+carro.getCambio());
+		System.out.println("Preço: "+carro.getPreco());
+	}	
+	
+	private void imprimeMoto(Motocicleta moto){
+		System.out.println("-------MOTO-------");
+		System.out.println("chassi: "+moto.getChassi());
+		System.out.println("Montadora: "+moto.getMontadora());
+		System.out.println("Tipo: "+moto.getTipo());
+		System.out.println("Modelo: "+moto.getModelo());
+		System.out.println("Cor: "+moto.getCor());
+		System.out.println("Cilindradas: "+moto.getCilindrada());
+		System.out.println("Capacidade do tanque: "+moto.getCapacidadeDoTanque()+" Litros");
+		System.out.println("Preço: "+moto.getPreco());		
+	}
 }

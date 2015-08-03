@@ -189,7 +189,6 @@ public class Carro extends Veiculo {
 	}
 	
 	public Carro criarVeiculo(Scanner input){//metodo que cria o veiculo a partir do que usuario informar do teclado
-		
 		Carro carro = new Carro();
 		
 		System.out.println("Entre com o chassi do veículo:");
@@ -214,6 +213,7 @@ public class Carro extends Veiculo {
 		carro.setCambio(input.nextInt());
 		System.out.println("Entre com o preço do veículo: ");
 		carro.setPreco(input.nextFloat());
+		
 		return carro;
 	}
 	

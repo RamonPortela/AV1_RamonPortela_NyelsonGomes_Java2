@@ -29,21 +29,20 @@ public class Main {
 				switch(opcaoMenu){
 					case 1:
 						loja.adicionarVeiculo(input);
-						System.out.println("Veículo adicionado ao estoque com sucesso.");
 						MetodosAuxiliares.pressionarEnter();
 						break;
-					/*case 2:
-						loja.excluirVeiculo();
+					case 2:
+						loja.excluirVeiculo(input);
 						MetodosAuxiliares.pressionarEnter();
-						break;*/
+						break;
 					case 3:
 						loja.listarVeiculos();
 						MetodosAuxiliares.pressionarEnter();
 						break;
-					/*case 4:
-						loja.buscarVeiculo(input.nextLine());
+					case 4:
+						loja.buscarVeiculo(input);
 						MetodosAuxiliares.pressionarEnter();
-						break;*/
+						break;
 					case 5:
 						loja.listarCarros();
 						MetodosAuxiliares.pressionarEnter();
