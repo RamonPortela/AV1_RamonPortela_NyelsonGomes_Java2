@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.montadora.Carro;
 import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
+import com.utilitarios.teste.MetodosAuxiliares;
 
 public class Loja {
 	
@@ -13,7 +14,7 @@ public class Loja {
 	
 	private String endereco;
 	private String nome;
-	ArrayList<Veiculo> estoqueDeVeiculos = new ArrayList<Veiculo>();
+	public ArrayList<Veiculo> estoqueDeVeiculos = new ArrayList<Veiculo>();
 	
 	public String getEndereco() {
 		return endereco;
@@ -77,10 +78,10 @@ public class Loja {
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//for-each que percorre a lista de veiculos
 			if(veiculo instanceof Carro){//checa se o veiculo é um carro
 				Carro carro = (Carro) veiculo;//se o veiculo for um carro, transforma de volta em um objeto carro
-				imprimeCarro(carro);
+				MetodosAuxiliares.imprimeCarro(carro);
 			}else{//se for moto
 				Motocicleta moto = (Motocicleta) veiculo;//transforma o veiculo de volta em um objeto motocicleta
-				imprimeMoto(moto);
+				MetodosAuxiliares.imprimeMoto(moto);
 			}
 			System.out.println("");
 		}
@@ -91,7 +92,7 @@ public class Loja {
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//percorre arraylist
 			if(veiculo instanceof Carro){//checa se o veiculo é um carro, se for imprime os dados do carro na tela
 				Carro carro = (Carro) veiculo;
-				imprimeCarro(carro);
+				MetodosAuxiliares.imprimeCarro(carro);
 				System.out.println("");
 			}
 		}	
@@ -105,11 +106,11 @@ public class Loja {
 			Veiculo veiculo = this.estoqueDeVeiculos.get(posicaoLista);//recupera o veiculo que está na posição retornada pelo método
 			if(veiculo instanceof Carro){
 				Carro carro = (Carro) veiculo;
-				imprimeCarro(carro);
+				MetodosAuxiliares.imprimeCarro(carro);
 			}
 			else{
 				Motocicleta moto = (Motocicleta) veiculo;
-				imprimeMoto(moto);
+				MetodosAuxiliares.imprimeMoto(moto);
 			}	
 		}
 		else{
@@ -122,7 +123,7 @@ public class Loja {
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//percorre arraylist de veiculos
 			if(veiculo instanceof Motocicleta){//checa se é moto
 				Motocicleta moto = (Motocicleta) veiculo;
-				imprimeMoto(moto);
+				MetodosAuxiliares.imprimeMoto(moto);
 				System.out.println("");
 			}
 		}
@@ -145,29 +146,5 @@ public class Loja {
 			posicaoLista++;
 		}
 		return VEICULO_NAO_ENCONTRADO;
-	}
-	
-	private void imprimeCarro(Carro carro){
-		System.out.println("-------CARRO-------");
-		System.out.println("chassi: "+carro.getChassi());
-		System.out.println("Montadora: "+carro.getMontadora());
-		System.out.println("Tipo: "+carro.getTipo());
-		System.out.println("Modelo: "+carro.getModelo());
-		System.out.println("Cor: "+carro.getCor());
-		System.out.println("motorizacao: "+carro.getMotorizacao());
-		System.out.println("Cambio: "+carro.getCambio());
-		System.out.println("Preço: "+carro.getPreco());
 	}	
-	
-	private void imprimeMoto(Motocicleta moto){
-		System.out.println("-------MOTO-------");
-		System.out.println("chassi: "+moto.getChassi());
-		System.out.println("Montadora: "+moto.getMontadora());
-		System.out.println("Tipo: "+moto.getTipo());
-		System.out.println("Modelo: "+moto.getModelo());
-		System.out.println("Cor: "+moto.getCor());
-		System.out.println("Cilindradas: "+moto.getCilindrada());
-		System.out.println("Capacidade do tanque: "+moto.getCapacidadeDoTanque()+" Litros");
-		System.out.println("Preço: "+moto.getPreco());		
-	}
 }
