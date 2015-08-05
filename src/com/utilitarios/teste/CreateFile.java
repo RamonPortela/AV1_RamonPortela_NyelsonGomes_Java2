@@ -25,12 +25,13 @@ public class CreateFile {
 	
 	public void mostrarEstoque(){
 		Loja loja = new Loja();
+		int indice = 0;
 		
 		Carro carro = new Carro();
 		Motocicleta estoqueDeMoto = new Motocicleta();
 		loja.estoqueDeVeiculos.get(contador);
 		
-		if(loja.getEstoqueDeVeiculos().get(contador) instanceof Carro){
+		if(loja.getEstoqueDeVeiculos().get(indice) instanceof Carro){
 			for(contador = 0; contador < loja.getEstoqueDeVeiculos().size(); contador++){
 				output.format("+=====================================================================+%n"
 						+ "| Chassi:%-10s \t   |"
@@ -39,9 +40,10 @@ public class CreateFile {
 						+ "%n| Cor:%-10s\t          |"
 						+ "%n+=====================================================================+", loja.getEstoqueDeVeiculos().get(contador).getChassi() ,loja.getEstoqueDeVeiculos().get(contador).getMontadora(), loja.getEstoqueDeVeiculos().get(contador).getModelo(), loja.getEstoqueDeVeiculos().get(contador).getCor(), loja.getEstoqueDeVeiculos().get(contador).getPreco());
 			}
+			indice++;
 		}
 		
-		else if(loja.getEstoqueDeVeiculos().get(contador) instanceof Motocicleta){
+		else if(loja.getEstoqueDeVeiculos().get(indice) instanceof Motocicleta){
 			for(contador = 0; contador < loja.getEstoqueDeVeiculos().size(); contador++){
 				output.format("+=====================================================================+%n"
 						+ "| Chassi:%-10s \t   |"
@@ -50,6 +52,7 @@ public class CreateFile {
 						+ "%n| Cor:%-10s\t          |"
 						+ "%n+=====================================================================+", loja.getEstoqueDeVeiculos().get(contador).getChassi() ,loja.getEstoqueDeVeiculos().get(contador).getMontadora(), loja.getEstoqueDeVeiculos().get(contador).getModelo(), loja.getEstoqueDeVeiculos().get(contador).getCor(), loja.getEstoqueDeVeiculos().get(contador).getPreco());
 			}
+			indice++;
 		}
 		else {
 			System.err.println("Nenhum veículo encontrado.");
