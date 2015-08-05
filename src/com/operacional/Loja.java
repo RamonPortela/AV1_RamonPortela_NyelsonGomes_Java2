@@ -16,6 +16,14 @@ public class Loja {
 	private String nome;
 	public ArrayList<Veiculo> estoqueDeVeiculos = new ArrayList<Veiculo>();
 	
+	public ArrayList<Veiculo> getEstoqueDeVeiculos() {
+		return estoqueDeVeiculos;
+	}
+
+	public void setEstoqueDeVeiculos(ArrayList<Veiculo> estoqueDeVeiculos) {
+		this.estoqueDeVeiculos = estoqueDeVeiculos;
+	}
+
 	public String getEndereco() {
 		return endereco;
 	}
