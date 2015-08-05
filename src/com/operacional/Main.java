@@ -2,6 +2,7 @@ package com.operacional;
 
 import java.util.Scanner;
 
+import com.utilitarios.teste.CreateFile;
 import com.utilitarios.teste.MetodosAuxiliares;
 
 public class Main {
@@ -50,6 +51,11 @@ public class Main {
 					case 6:
 						loja.listarMotos();
 						MetodosAuxiliares.pressionarEnter();
+						break;
+					case 7:
+						CreateFile file = new CreateFile();
+						file.openFile();
+						file.gravarEstoque(loja);
 						break;
 					default:
 						System.out.println("Opção inválida.");

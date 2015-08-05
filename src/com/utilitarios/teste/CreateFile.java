@@ -10,7 +10,6 @@ import com.operacional.Loja;
 
 public class CreateFile {
 	
-	private static int contador;
 	private Formatter output;
 	
 	public void openFile(){
@@ -23,70 +22,43 @@ public class CreateFile {
 		}
 	}	
 	
-	public void mostrarEstoque(){
-		Loja loja = new Loja();
-		int indice = 0;
+	public void gravarEstoque(Loja loja){
 		
-		Carro carro = new Carro();
-		Motocicleta estoqueDeMoto = new Motocicleta();
-		loja.estoqueDeVeiculos.get(contador);
-		
-		if(loja.getEstoqueDeVeiculos().get(indice) instanceof Carro){
-			for(contador = 0; contador < loja.getEstoqueDeVeiculos().size(); contador++){
-				output.format("+=====================================================================+%n"
-						+ "| Chassi:%-10s \t   |"
-						+ "%n| Montadora:%-10s \t   |"
-						+ "%n| Modelo:%-10s \t |"
-						+ "%n| Cor:%-10s\t          |"
-						+ "%n+=====================================================================+", loja.getEstoqueDeVeiculos().get(contador).getChassi() ,loja.getEstoqueDeVeiculos().get(contador).getMontadora(), loja.getEstoqueDeVeiculos().get(contador).getModelo(), loja.getEstoqueDeVeiculos().get(contador).getCor(), loja.getEstoqueDeVeiculos().get(contador).getPreco());
-			}
-			indice++;
-		}
-		
-		else if(loja.getEstoqueDeVeiculos().get(indice) instanceof Motocicleta){
-			for(contador = 0; contador < loja.getEstoqueDeVeiculos().size(); contador++){
-				output.format("+=====================================================================+%n"
-						+ "| Chassi:%-10s \t   |"
-						+ "%n| Montadora:%-10s \t   |"
-						+ "%n| Modelo:%-10s \t |"
-						+ "%n| Cor:%-10s\t          |"
-						+ "%n+=====================================================================+", loja.getEstoqueDeVeiculos().get(contador).getChassi() ,loja.getEstoqueDeVeiculos().get(contador).getMontadora(), loja.getEstoqueDeVeiculos().get(contador).getModelo(), loja.getEstoqueDeVeiculos().get(contador).getCor(), loja.getEstoqueDeVeiculos().get(contador).getPreco());
-			}
-			indice++;
-		}
-		else {
-			System.err.println("Nenhum veículo encontrado.");
-			System.exit(1);
-		}
-		
-		for(contador = 0; contador < loja.getEstoqueDeVeiculos().size(); contador++){
-			output.format("+=====================================================================+%n"
-					+ "| Chassi:%-10s \t   |"
-					+ "%n| Montadora:%-10s \t   |"
-					+ "%n| Modelo:%-10s \t |"
-					+ "%n| Cor:%-10s\t          |"
-					+ "%n+=====================================================================+", loja.getEstoqueDeVeiculos().get(contador).getChassi() ,loja.getEstoqueDeVeiculos().get(contador).getMontadora(), loja.getEstoqueDeVeiculos().get(contador).getModelo(), loja.getEstoqueDeVeiculos().get(contador).getCor(), loja.getEstoqueDeVeiculos().get(contador).getPreco());
-		}
-		
+
 		for(Veiculo veiculo : loja.estoqueDeVeiculos){
-			output.format("+=====================================================================+%n"
-				+ "| Chassi:%-10s \t   |"
-				+ "%n| Montadora:%-10s \t   |"
-				+ "%n| Modelo:%-10s \t |"
-				+ "%n| Cor:%-10s\t          |"
-				+ "%n+=====================================================================+", loja.getEstoqueDeVeiculos().get(contador).getChassi() ,loja.getEstoqueDeVeiculos().get(contador).getMontadora(), loja.getEstoqueDeVeiculos().get(contador).getModelo(), loja.getEstoqueDeVeiculos().get(contador).getCor(), loja.getEstoqueDeVeiculos().get(contador).getPreco());
+			if(veiculo instanceof Carro){
+				Carro carro = (Carro) veiculo;
+				output.format("Chassi: ");
+				/*output.format("+=====================================================================+%n"
+						+ "| Chassi:%-10s \t   |"
+						+ "%n| Montadora:%-10s \t   |"
+						+ "%n| Tipo:%-10s \t |"
+						+ "%n| Modelo:%-10s \t |"
+						+ "%n| Motorização:%-10f \t |"
+						+ "%n| Câmbio:%-10s \t |"
+						+ "%n| Cor:%-10s\t          |"
+						+ "%n| Preço:%-10f \t |"
+						+ "%n+=====================================================================+", carro.getChassi() 
+						, carro.getMontadora(), carro.getTipo(), carro.getModelo()
+						, carro.getMotorizacao(), carro.getCambio(), carro.getCor(), carro.getPreco());
+			*/}else{
+				Motocicleta moto = (Motocicleta) veiculo;
+				output.format("+=====================================================================+%n"
+						+ "| Chassi:%-10s \t   |"
+						+ "%n| Montadora:%-10s \t   |"
+						+ "%n| Tipo:%-10s \t |"
+						+ "%n| Modelo:%-10s \t |"
+						+ "%n| Cilindrada:%-10d \t |"
+						+ "%n| Capacidade do Tanque:%-10d litros \t |"
+						+ "%n| Cor:%-10s\t          |"
+						+ "%n| Preço:%-10f \t |"
+						+ "%n+=====================================================================+", moto.getChassi()
+						, moto.getMontadora(), moto.getTipo(), moto.getModelo()
+						, moto.getCilindrada(), moto.getCapacidadeDoTanque(), moto.getCor(), moto.getPreco());
+				}
+			}
 		}
-		
-		MetodosAuxiliares.imprimeCarro(carro);
-		MetodosAuxiliares.imprimeMoto(estoqueDeMoto);
-		
-		output.format("+=====================================================================+%n"
-				+ "| Nome:%-39s \t Cpf:%-14s   |"
-				+ "%n| Classe:%-10s \t Numero do Assento:%-2d \t Numero do Vagão:%-2d   |"
-				+ "%n| Data da Viagem:%-10s \tHora da Viagem:%-5s\tDuração:%-2s hr |"
-				+ "%n| Origem:%-20s\tDestino:%-20s          |"
-				+ "%n+=====================================================================+", carro.getChassi());
-	}
+
 	
 	public void closedFile(){		
 		if(output != null){
