@@ -20,42 +20,44 @@ public class CreateFile {
 			System.err.println("Erro na abertura do arquivo.");
 			System.exit(1);
 		}
+	
 	}	
 	
-	public void gravarEstoque(Loja loja){
-		
+	public void gravarEstoque(Loja loja){		
 
-		for(Veiculo veiculo : loja.estoqueDeVeiculos){
-			if(veiculo instanceof Carro){
+		for(Veiculo veiculo : loja.estoqueDeVeiculos){			
+			if(veiculo instanceof Carro){					
 				Carro carro = (Carro) veiculo;
-				output.format("Chassi: ");
-				/*output.format("+=====================================================================+%n"
-						+ "| Chassi:%-10s \t   |"
-						+ "%n| Montadora:%-10s \t   |"
-						+ "%n| Tipo:%-10s \t |"
-						+ "%n| Modelo:%-10s \t |"
-						+ "%n| Motorização:%-10f \t |"
-						+ "%n| Câmbio:%-10s \t |"
-						+ "%n| Cor:%-10s\t          |"
-						+ "%n| Preço:%-10f \t |"
-						+ "%n+=====================================================================+", carro.getChassi() 
+				
+				output.format("+==================================+%n"
+						+ "| Chassi:%-25s |"
+						+ "%n| Montadora:%-22s |"
+						+ "%n| Tipo:%-27s |"
+						+ "%n| Modelo:%-25s |"
+						+ "%n| Motorização:%-20.1f |"
+						+ "%n| Câmbio:%-25s |"
+						+ "%n| Cor:%-28s |"
+						+ "%n| Preço:%-26.2f |"
+						+ "%n+==================================+", carro.getChassi() 
 						, carro.getMontadora(), carro.getTipo(), carro.getModelo()
 						, carro.getMotorizacao(), carro.getCambio(), carro.getCor(), carro.getPreco());
-			*/}else{
+			}else{				
 				Motocicleta moto = (Motocicleta) veiculo;
-				output.format("+=====================================================================+%n"
-						+ "| Chassi:%-10s \t   |"
-						+ "%n| Montadora:%-10s \t   |"
-						+ "%n| Tipo:%-10s \t |"
-						+ "%n| Modelo:%-10s \t |"
-						+ "%n| Cilindrada:%-10d \t |"
-						+ "%n| Capacidade do Tanque:%-10d litros \t |"
-						+ "%n| Cor:%-10s\t          |"
-						+ "%n| Preço:%-10f \t |"
-						+ "%n+=====================================================================+", moto.getChassi()
+				
+				output.format("+==================================+%n"
+						+ "| Chassi:%-25s |"
+						+ "%n| Montadora:%-22s |"
+						+ "%n| Tipo:%-27s |"
+						+ "%n| Modelo:%-25s |"
+						+ "%n| Cilindrada:%-21d |"
+						+ "%n| Capacidade do Tanque:%-4d litros |"
+						+ "%n| Cor:%-28s |"
+						+ "%n| Preço:%-26.2f |"
+						+ "%n+==================================+", moto.getChassi()
 						, moto.getMontadora(), moto.getTipo(), moto.getModelo()
 						, moto.getCilindrada(), moto.getCapacidadeDoTanque(), moto.getCor(), moto.getPreco());
 				}
+			output.format("%n");
 			}
 		}
 

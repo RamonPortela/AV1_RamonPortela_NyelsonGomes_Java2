@@ -22,8 +22,9 @@ public class Main {
 		System.out.println("Entre com 4 para buscar veículo pelo número de chassi.");
 		System.out.println("Entre com 5 para listar estoque de carros.");
 		System.out.println("Entre com 6 para listar estoque das motos.");	
-		System.out.println("Entre com a opcao desejada ou 0 para sair: ");
+		System.out.print("Entre com a opcao desejada ou 0 para sair: ");
 		opcaoMenu = input.nextInt();
+		System.out.println("");
 		
 		while(opcaoMenu != sair){			
 			if(opcaoMenu != sair){
@@ -56,6 +57,7 @@ public class Main {
 						CreateFile file = new CreateFile();
 						file.openFile();
 						file.gravarEstoque(loja);
+						file.closedFile();
 						break;
 					default:
 						System.out.println("Opção inválida.");
@@ -69,8 +71,9 @@ public class Main {
 				System.out.println("Entre com 4 para buscar veículo pelo número de chassi.");
 				System.out.println("Entre com 5 para listar estoque de carros.");
 				System.out.println("Entre com 6 para listar estoque das motos.");	
-				System.out.println("Entre com a opcao desejada ou 0 para sair: ");
+				System.out.print("Entre com a opcao desejada ou 0 para sair: ");
 				opcaoMenu = input.nextInt();
+				System.out.println("");
 			}
 		}
 	}
