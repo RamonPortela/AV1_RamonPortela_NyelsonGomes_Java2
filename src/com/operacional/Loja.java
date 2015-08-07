@@ -44,10 +44,13 @@ public class Loja {
 		int opcaoDeVeiculo;
 		
 		do{//do while pra ficar pedindo pro usuario digitar novamente caso ele não entre com 1 ou 2
-			System.out.println("Entre com 1 para adicionar um carro.");
-			System.out.println("Entre com 2 para adicionar uma motocicleta.");
+			System.out.println("Digite 1 para adicionar um carro.");
+			System.out.println("Digite 2 para adicionar uma motocicleta.");
+			System.out.print("Entre com a opção desejada: ");
 			
 			opcaoDeVeiculo = input.nextInt();
+			System.out.println("");
+			
 			if((opcaoDeVeiculo < 1) || (opcaoDeVeiculo > 2)){
 				System.out.println("Opção inválida. Entre com a opção novamente.");
 			}

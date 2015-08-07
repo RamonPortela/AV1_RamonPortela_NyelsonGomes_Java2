@@ -42,4 +42,20 @@ public class MetodosAuxiliares {
 		System.out.println("Preço: "+moto.getPreco());		
 	}
 	
+	public static int imprimeMenu(Scanner input){
+		int opcaoMenu;
+		
+		System.out.println("********MENU********\n");
+		System.out.println("Entre com 1 para para adicionar veículo.");
+		System.out.println("Entre com 2 para excluir veículo.");
+		System.out.println("Entre com 3 para listar todos os veículos.");
+		System.out.println("Entre com 4 para buscar veículo pelo número de chassi.");
+		System.out.println("Entre com 5 para listar estoque de carros.");
+		System.out.println("Entre com 6 para listar estoque das motos.");	
+		System.out.print("Entre com a opcao desejada ou 0 para sair: ");
+		opcaoMenu = input.nextInt();
+		
+		return opcaoMenu;
+	}
+	
 }
