@@ -8,18 +8,19 @@ import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
 import com.operacional.Loja;
 
-public class CreateFile {
+public class CreateFile {	
+		
+	private Formatter output; // Objeto utilizado para gerar o arquivo de texto
 	
-	private Formatter output;
-	
-	public void openFile(){
-		try{
+	// Cria ou abre um arquivo
+	public void openFile(){		
+		try {
 			output = new Formatter("Estoque.txt");
-		}
-		catch(FileNotFoundException falhaAbertura){
-			System.err.println("Erro na abertura do arquivo.");
+		} catch (FileNotFoundException falhaAbertura) {
+			System.err.println("Erro na criação ou Abertura do Arquivo");
 			System.exit(1);
 		}
+		output.format("teste ramon");
 	}	
 	
 	public void gravarEstoque(Loja loja){
