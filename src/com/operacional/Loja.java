@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.montadora.Carro;
 import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
-import com.utilitarios.teste.MetodosAuxiliares;
+import com.utilitarios.teste.Impressora;
 
 public class Loja {
 	
@@ -59,12 +59,12 @@ public class Loja {
 		
 		switch(opcaoDeVeiculo){
 			case 1:
-					Carro carro = new Carro();
+					Veiculo carro = new Carro();
 					carro = carro.criarVeiculo(input);//chama método de criar carro
 					this.estoqueDeVeiculos.add(carro);//adiciona carro na lista
 				break;
 			case 2:
-					Motocicleta moto = new Motocicleta();
+					Veiculo moto = new Motocicleta();
 					moto = moto.criarVeiculo(input);//chama método de criar moto
 					this.estoqueDeVeiculos.add(moto);//adiciona carro na moto
 				break;
@@ -89,10 +89,10 @@ public class Loja {
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//for-each que percorre a lista de veiculos
 			if(veiculo instanceof Carro){//checa se o veiculo é um carro
 				Carro carro = (Carro) veiculo;//se o veiculo for um carro, transforma de volta em um objeto carro
-				MetodosAuxiliares.imprimeCarro(carro);
+				Impressora.imprimeCarro(carro);
 			}else{//se for moto
 				Motocicleta moto = (Motocicleta) veiculo;//transforma o veiculo de volta em um objeto motocicleta
-				MetodosAuxiliares.imprimeMoto(moto);
+				Impressora.imprimeMoto(moto);
 			}
 			System.out.println("");
 		}
@@ -103,7 +103,7 @@ public class Loja {
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//percorre arraylist
 			if(veiculo instanceof Carro){//checa se o veiculo é um carro, se for imprime os dados do carro na tela
 				Carro carro = (Carro) veiculo;
-				MetodosAuxiliares.imprimeCarro(carro);
+				Impressora.imprimeCarro(carro);
 				System.out.println("");
 			}
 		}	
@@ -117,11 +117,11 @@ public class Loja {
 			Veiculo veiculo = this.estoqueDeVeiculos.get(posicaoLista);//recupera o veiculo que está na posição retornada pelo método
 			if(veiculo instanceof Carro){
 				Carro carro = (Carro) veiculo;
-				MetodosAuxiliares.imprimeCarro(carro);
+				Impressora.imprimeCarro(carro);
 			}
 			else{
 				Motocicleta moto = (Motocicleta) veiculo;
-				MetodosAuxiliares.imprimeMoto(moto);
+				Impressora.imprimeMoto(moto);
 			}	
 		}
 		else{
@@ -134,7 +134,7 @@ public class Loja {
 		for(Veiculo veiculo : this.estoqueDeVeiculos){//percorre arraylist de veiculos
 			if(veiculo instanceof Motocicleta){//checa se é moto
 				Motocicleta moto = (Motocicleta) veiculo;
-				MetodosAuxiliares.imprimeMoto(moto);
+				Impressora.imprimeMoto(moto);
 				System.out.println("");
 			}
 		}

@@ -113,6 +113,7 @@ public class Motocicleta extends Veiculo {
 		this.capacidadeDoTanque = capacidadeDoTanque;
 	}
 	
+	@Override
 	public Motocicleta criarVeiculo(Scanner input) {// método que cria moto a partir do que foi informado pelo usuário
 		Motocicleta moto = new Motocicleta();
 		

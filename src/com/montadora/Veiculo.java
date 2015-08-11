@@ -79,5 +79,5 @@ public abstract class Veiculo {
 		this.modelo = modelo;
 	}
 	
-	protected abstract Veiculo criarVeiculo(Scanner input);//força as subclasses a fazerem esse método obrigatóriamente
+	public abstract Veiculo criarVeiculo(Scanner input);//força as subclasses a fazerem esse método obrigatóriamente
 }
