@@ -18,50 +18,45 @@ public class Menu {
 		System.out.println("");
 			
 		while(opcaoMenu != sair){
-			if(opcaoMenu != sair){
-				switch(opcaoMenu){
-					case -1:
+			switch(opcaoMenu){
+				case -1:
+				break;
+				case 1:
+					loja.adicionarVeiculo(input);
+					MetodosAuxiliares.pressionarEnter();
 					break;
-					case 1:
-						loja.adicionarVeiculo(input);
-						MetodosAuxiliares.pressionarEnter();
-						break;
-					case 2:
-						loja.excluirVeiculo(input);
-						MetodosAuxiliares.pressionarEnter();
-						break;
-					case 3:
-						loja.listarVeiculos();
-						MetodosAuxiliares.pressionarEnter();
-						break;
-					case 4:
-						loja.buscarVeiculo(input);
-						MetodosAuxiliares.pressionarEnter();
-						break;
-					case 5:
-						loja.listarCarros();
-						MetodosAuxiliares.pressionarEnter();
-						break;
-					case 6:
-						loja.listarMotos();
-						MetodosAuxiliares.pressionarEnter();
-						break;
-					case 7:
-						CreateFile file = new CreateFile();
-						file.openFile();
-						file.gravarEstoque(loja);
-						file.closedFile();
-						break;
-					default:
-						System.out.println("Opção inválida.");
-						MetodosAuxiliares.pressionarEnter();
-				}				
-				opcaoMenu = Impressora.imprimeMenu(input);
-				System.out.println("");
-			}
-			else{
-				System.out.print("Encerrando o programa.");
-			}
+				case 2:
+					loja.excluirVeiculo(input);
+					MetodosAuxiliares.pressionarEnter();
+					break;
+				case 3:
+					loja.listarVeiculos();
+					MetodosAuxiliares.pressionarEnter();
+					break;
+				case 4:
+					loja.buscarVeiculo(input);
+					MetodosAuxiliares.pressionarEnter();
+					break;
+				case 5:
+					loja.listarCarros();
+					MetodosAuxiliares.pressionarEnter();
+					break;
+				case 6:
+					loja.listarMotos();
+					MetodosAuxiliares.pressionarEnter();
+					break;
+				case 7:
+					CreateFile file = new CreateFile();
+					file.openFile();
+					file.gravarEstoque(loja);
+					file.closedFile();
+					break;
+				default:
+					System.out.println("Opção inválida.");
+					MetodosAuxiliares.pressionarEnter();
+			}				
+			opcaoMenu = Impressora.imprimeMenu(input);
+			System.out.println("");
 		}
 	}
 }
