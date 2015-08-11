@@ -1,4 +1,4 @@
-package com.utilitarios.teste;
+package com.utilitarios;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -48,12 +48,12 @@ public class Impressora {
 			opcaoMenu = input.nextInt();
 		}catch(InputMismatchException e){
 			Impressora.imprimeOpcaoInvalida();
-			MetodosAuxiliares.pressionarEnter();
+			MetodosAuxiliares.pressionarEnterErro();
 			temExcecao = true;
 			input.nextLine();
 		}catch(Exception e){
 			Impressora.imprimeErroInesperado();
-			MetodosAuxiliares.pressionarEnter();
+			MetodosAuxiliares.pressionarEnterErro();
 			temExcecao = true;
 			input.nextLine();
 		}

@@ -1,6 +1,6 @@
 package com.operacional;
 
-import com.utilitarios.teste.Menu;
+import com.utilitarios.Menu;
 
 public class Main {
 

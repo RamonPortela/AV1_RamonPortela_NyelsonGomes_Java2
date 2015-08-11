@@ -1,12 +1,12 @@
-package com.utilitarios.teste;
+package com.utilitarios;
 
 import java.io.FileNotFoundException;
 import java.util.Formatter;
 
+import com.loja.Loja;
 import com.montadora.Carro;
 import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
-import com.operacional.Loja;
 
 public class CreateFile {	
 		

@@ -1,4 +1,4 @@
-package com.operacional;
+package com.loja;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.montadora.Carro;
 import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
-import com.utilitarios.teste.Impressora;
+import com.utilitarios.Impressora;
 
 public class Loja {
 	

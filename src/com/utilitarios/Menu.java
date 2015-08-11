@@ -1,8 +1,8 @@
-package com.utilitarios.teste;
+package com.utilitarios;
 
 import java.util.Scanner;
 
-import com.operacional.Loja;
+import com.loja.Loja;
 
 public class Menu {
 	
@@ -23,27 +23,27 @@ public class Menu {
 				break;
 				case 1:
 					loja.adicionarVeiculo(input);
-					MetodosAuxiliares.pressionarEnter();
+					MetodosAuxiliares.pressionarEnterErro();
 					break;
 				case 2:
 					loja.excluirVeiculo(input);
-					MetodosAuxiliares.pressionarEnter();
+					MetodosAuxiliares.pressionarEnterErro();
 					break;
 				case 3:
 					loja.listarVeiculos();
-					MetodosAuxiliares.pressionarEnter();
+					MetodosAuxiliares.pressionarEnterErro();
 					break;
 				case 4:
 					loja.buscarVeiculo(input);
-					MetodosAuxiliares.pressionarEnter();
+					MetodosAuxiliares.pressionarEnterErro();
 					break;
 				case 5:
 					loja.listarCarros();
-					MetodosAuxiliares.pressionarEnter();
+					MetodosAuxiliares.pressionarEnterErro();
 					break;
 				case 6:
 					loja.listarMotos();
-					MetodosAuxiliares.pressionarEnter();
+					MetodosAuxiliares.pressionarEnterErro();
 					break;
 				case 7:
 					CreateFile file = new CreateFile();
@@ -53,7 +53,7 @@ public class Menu {
 					break;
 				default:
 					System.out.println("Opção inválida.");
-					MetodosAuxiliares.pressionarEnter();
+					MetodosAuxiliares.pressionarEnterErro();
 			}				
 			opcaoMenu = Impressora.imprimeMenu(input);
 			System.out.println("");

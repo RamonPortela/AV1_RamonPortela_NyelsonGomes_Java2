@@ -3,9 +3,9 @@ package com.montadora;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.utilitarios.teste.Excecoes;
-import com.utilitarios.teste.Impressora;
-import com.utilitarios.teste.MetodosAuxiliares;
+import com.utilitarios.Excecoes;
+import com.utilitarios.Impressora;
+import com.utilitarios.MetodosAuxiliares;
 
 public class Carro extends Veiculo {
 	
@@ -206,26 +206,30 @@ public class Carro extends Veiculo {
 		System.out.println("Entre com o chassi do veículo:");
 		carro.setChassi(input.next());
 		
+		String texto = "Escolha uma montadora: ";
+		String opcoes = "1 - GM   \t 2 - VOLKSWAGEN \t 3 - BMW \t 4 - FIAT \t 5 - FORD";
 		do{
-			System.out.println("Escolha uma montadora: ");
-			System.out.println("1 - GM   \t 2 - VOLKSWAGEN \t 3 - BMW \t 4 - FIAT \t 5 - FORD");
-			opcaoMontadora = Excecoes.lancaExcecaoOpcoesVeiculo(input);
+			System.out.println(texto);
+			System.out.println(opcoes);
+			opcaoMontadora = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
 			if((opcaoMontadora < 1) || (opcaoMontadora > 5)){
 				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnter();
+				MetodosAuxiliares.pressionarEnterErro();
 			}else{
 				carro.setMontadora(opcaoMontadora);
 			}
 			
 		}while((opcaoMontadora < 1) || (opcaoMontadora > 5));
 		
+		texto = "Entre com o tipo do veículo: ";
+		opcoes = "1 - Hatch   \t 2 - Sedan \t 3 - Minivan \t 4 - Picape \t 5 - Esportivo";
 		do{
-			System.out.println("Entre com o tipo do veículo: ");
-			System.out.println("1 - Hatch   \t 2 - Sedan \t 3 - Minivan \t 4 - Picape \t 5 - Esportivo");
-			opcaoTipo = Excecoes.lancaExcecaoOpcoesVeiculo(input);
+			System.out.println(texto);
+			System.out.println(opcoes);
+			opcaoTipo = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
 			if((opcaoTipo < 1) || (opcaoTipo > 5)){
 				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnter();					
+				MetodosAuxiliares.pressionarEnterErro();					
 			}else{
 				carro.setTipo(opcaoTipo);	
 			}			
@@ -236,42 +240,48 @@ public class Carro extends Veiculo {
 		
 		System.out.println("Entre com o modelo do veículo:");
 		carro.setModelo(input.nextLine());
-		
+
+		texto = "Selecione a cor do veículo: ";
+		opcoes = "1 - azul   \t 2 - vermelho \t 3 - branco \t 4 - preto \t 5 - verde";
 		do{
-			System.out.println("Selecione a cor do veículo: ");
-			System.out.println("1 - azul   \t 2 - vermelho \t 3 - branco \t 4 - preto \t 5 - verde");
-			opcaoCor = Excecoes.lancaExcecaoOpcoesVeiculo(input);
+			System.out.println(texto);
+			System.out.println(opcoes);
+			opcaoCor = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
 			if((opcaoCor < 1) || (opcaoCor > 5)){
 				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnter();
+				MetodosAuxiliares.pressionarEnterErro();
 			}else{
 				carro.setCor(opcaoCor);	
 			}				
 			
 		}while((opcaoCor < 1) || (opcaoCor > 5));
 		
+		texto = "Selecione a motorização do carro: ";
+		opcoes = "1 - 1.0   \t 2 - 1.3 \t 3 - 1.4 \t 4 - 1.5 \t 5 - 1.6 \t 6 - 1.8 \t 7 - 2.0";		
 		do{
-			System.out.println("Selecione a motorização do carro: ");
-			System.out.println("1 - 1.0   \t 2 - 1.3 \t 3 - 1.4 \t 4 - 1.5 \t 5 - 1.6 \t 6 - 1.8 \t 7 - 2.0");
+			System.out.println(texto);
+			System.out.println(opcoes);
 			
-			opcaoMotorizacao = Excecoes.lancaExcecaoOpcoesVeiculo(input);
+			opcaoMotorizacao = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
 			
 			if((opcaoMotorizacao < 1) || (opcaoMotorizacao > 7)){
 				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnter();
+				MetodosAuxiliares.pressionarEnterErro();
 			}else{
 				carro.setCambio(opcaoMotorizacao);
 			}
 			
 		}while((opcaoMotorizacao < 1) || (opcaoMotorizacao > 7));
-		
+
+		texto = "Selecione o tipo de câmbio do carro: ";
+		opcoes = "1 - Manual   \t 2 - Automático \t 3 - Automatizado \t 4 - CVT";			
 		do{
-			System.out.println("Selecione o tipo de câmbio do carro: ");
-			System.out.println("1 - Manual   \t 2 - Automático \t 3 - Automatizado \t 4 - CVT");
-			opcaoCambio = Excecoes.lancaExcecaoOpcoesVeiculo(input);
+			System.out.println(texto);
+			System.out.println(opcoes);
+			opcaoCambio = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
 			if((opcaoCambio < 1) || (opcaoCambio > 4)){
 				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnter();
+				MetodosAuxiliares.pressionarEnterErro();
 			}else{
 				carro.setCambio(opcaoCambio);
 			}				
@@ -285,18 +295,18 @@ public class Carro extends Veiculo {
 				carro.setPreco(input.nextFloat());	
 			}catch(InputMismatchException e){
 				System.out.println("O preço deve ser um número.");
-				MetodosAuxiliares.pressionarEnter();
+				MetodosAuxiliares.pressionarEnterErro();
 				temExcecao = true;
 				input.nextLine();
 			}catch(Exception e){
 				Impressora.imprimeErroInesperado();
-				MetodosAuxiliares.pressionarEnter();
+				MetodosAuxiliares.pressionarEnterErro();
 				temExcecao = true;
 				input.nextLine();
 			}
 					
 		}while(temExcecao);
-		
+
 		return carro;
 	}
 	
