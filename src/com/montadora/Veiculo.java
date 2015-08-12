@@ -7,6 +7,7 @@ public abstract class Veiculo {
 	protected String chassi;
 	protected String montadora;
 	protected String modelo;
+	protected String tipo;
 	protected String cor;
 	protected float preco;
 	
@@ -20,6 +21,14 @@ public abstract class Veiculo {
 	public abstract String getMontadora();
 	
 	public abstract void setMontadora(int opcaoMontadora);
+	public abstract void setMontadora(String montadora);
+	
+	public String getTipo(){
+		return tipo;
+	}
+	
+	public abstract void setTipo(int opcaoTipo);
+	public abstract void setTipo(String tipo);
 	
 	public enum Cores{//enum das cores
 		AZUL(1,"azul"), VERMELHO(2, "vermelho"), BRANCO(3, "branco"), PRETO(4, "preto"), VERDE(5, "verde");
@@ -57,6 +66,10 @@ public abstract class Veiculo {
 				this.cor = Cores.VERDE.getNomeCores();
 				break;
 		}
+	}
+	
+	public void setCor(String cor){
+		this.cor = cor;
 	}
 	
 	public String getCor() {

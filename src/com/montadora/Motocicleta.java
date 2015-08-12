@@ -6,7 +6,6 @@ public class Motocicleta extends Veiculo {
 	
 	private int cilindrada;
 	private int capacidadeDoTanque;
-	private String tipo;
 
 	public enum Tipos{//enum de tipos de motos
 		SCOOTER(1, "Scooter"), CUSTOM(2, "Custom"), CHOPPER(3, "Chopper"), STREET(4, "Street"), ESPORTIVA(5, "Esportiva");
@@ -48,8 +47,8 @@ public class Motocicleta extends Veiculo {
 		}
 	}
 	
-	public String getTipo(){
-		return tipo;
+	public void setTipo(String tipo){
+		this.tipo = tipo;
 	}
 	
 	public enum Montadoras{//enum das montadoras de moto
@@ -93,9 +92,13 @@ public class Motocicleta extends Veiculo {
 		}
 	}
 	
+	public void setMontadora(String montadora) {
+		this.montadora = montadora;		
+	}
+	
 	public String getMontadora(){
 		return montadora;
-	}
+	}	
 	
 	public int getCilindrada() {
 		return cilindrada;
@@ -140,4 +143,5 @@ public class Motocicleta extends Veiculo {
 		
 		return moto;
 	}
+
 }

@@ -1,8 +1,10 @@
 package com.utilitarios;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.loja.Loja;
+import com.montadora.Veiculo;
 
 public class Menu {
 	
@@ -23,33 +25,52 @@ public class Menu {
 				break;
 				case 1:
 					loja.adicionarVeiculo(input);
-					MetodosAuxiliares.pressionarEnterErro();
+					MetodosAuxiliares.pressionarEnter();
 					break;
 				case 2:
 					loja.excluirVeiculo(input);
-					MetodosAuxiliares.pressionarEnterErro();
+					MetodosAuxiliares.pressionarEnter();
 					break;
 				case 3:
 					loja.listarVeiculos();
-					MetodosAuxiliares.pressionarEnterErro();
+					MetodosAuxiliares.pressionarEnter();
 					break;
 				case 4:
 					loja.buscarVeiculo(input);
-					MetodosAuxiliares.pressionarEnterErro();
+					MetodosAuxiliares.pressionarEnter();
 					break;
 				case 5:
 					loja.listarCarros();
-					MetodosAuxiliares.pressionarEnterErro();
+					MetodosAuxiliares.pressionarEnter();
 					break;
 				case 6:
 					loja.listarMotos();
-					MetodosAuxiliares.pressionarEnterErro();
+					MetodosAuxiliares.pressionarEnter();
 					break;
 				case 7:
-					CreateFile file = new CreateFile();
-					file.openFile();
-					file.gravarEstoque(loja);
-					file.closedFile();
+					SalvaEstoque file = new SalvaEstoque();
+					if(file.abrirArquivo()){
+						file.gravarEstoque(loja);
+						file.fecharArquivo();						
+					}else{
+						MetodosAuxiliares.pressionarEnter();
+					}
+
+					break;
+				case 8:
+					CarregarEstoque arquivo = new CarregarEstoque();
+					
+					ArrayList<Veiculo> estoqueDeVeiculos = loja.getEstoqueDeVeiculos();
+					estoqueDeVeiculos.clear();
+					
+					if(arquivo.abrirArquivo()){
+						arquivo.lerEstoqueSalvo(estoqueDeVeiculos);
+						arquivo.fecharArquivo();
+						loja.setEstoqueDeVeiculos(estoqueDeVeiculos);
+					}else{
+						MetodosAuxiliares.pressionarEnter();
+					}
+
 					break;
 				default:
 					System.out.println("Opção inválida.");

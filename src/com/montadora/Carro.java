@@ -9,7 +9,6 @@ import com.utilitarios.MetodosAuxiliares;
 
 public class Carro extends Veiculo {
 	
-	private String tipo;
 	private String cambio;
 	private float motorizacao;
 	
@@ -48,6 +47,10 @@ public class Carro extends Veiculo {
 				this.cambio = Cambios.CVT.getNomeCambio();
 				break;
 		}
+	}
+	
+	public void setCambio(String cambio){
+		this.cambio = cambio;
 	}
 	
 	public String getCambio(){
@@ -94,8 +97,8 @@ public class Carro extends Veiculo {
 		}
 	}
 	
-	public String getTipo(){
-		return tipo;
+	public void setTipo(String tipo){
+		this.tipo = tipo;
 	}
 	
 	public enum Montadoras{//enum das montadoras de carro
@@ -137,6 +140,10 @@ public class Carro extends Veiculo {
 				this.montadora = Montadoras.FORD.getNomeMontadoras();
 				break;
 		}
+	}
+	
+	public void setMontadora(String montadora) {
+		this.montadora = montadora;		
 	}
 	
 	public String getMontadora(){
@@ -189,6 +196,10 @@ public class Carro extends Veiculo {
 		}
 	}
 	
+	public void setMotorizacao(float motorizacao){
+		this.motorizacao = motorizacao;
+	}
+	
 	public float getMotorizacao(){
 		return motorizacao;
 	}
@@ -196,11 +207,11 @@ public class Carro extends Veiculo {
 	@Override
 	public Carro criarVeiculo(Scanner input){//metodo que cria o veiculo a partir do que usuario informar do teclado
 		boolean temExcecao = false;
-		int opcaoMontadora = 0;
-		int opcaoTipo = 0;
+		int opcaoMontadora;
+		int opcaoTipo;
 		int opcaoCor = 0;
-		int opcaoMotorizacao = 0;
-		int opcaoCambio = 0;
+		int opcaoMotorizacao;
+		int opcaoCambio;
 		Carro carro = new Carro();
 		
 		System.out.println("Entre com o chassi do veículo:");
@@ -268,7 +279,7 @@ public class Carro extends Veiculo {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			}else{
-				carro.setCambio(opcaoMotorizacao);
+				carro.setMotorizacao(opcaoMotorizacao);
 			}
 			
 		}while((opcaoMotorizacao < 1) || (opcaoMotorizacao > 7));

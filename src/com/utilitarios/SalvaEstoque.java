@@ -1,6 +1,7 @@
 package com.utilitarios;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Formatter;
 
 import com.loja.Loja;
@@ -8,27 +9,29 @@ import com.montadora.Carro;
 import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
 
-public class CreateFile {	
-		
+public class SalvaEstoque {	
+
 	private Formatter output; // Objeto utilizado para gerar o arquivo de texto
 	
 	// Cria ou abre um arquivo
-	public void openFile(){		
+	public boolean abrirArquivo(){		
 		try {
 			output = new Formatter("Estoque.txt");
 		} catch (FileNotFoundException falhaAbertura) {
 			System.err.println("Erro na criação ou Abertura do Arquivo");
-			System.exit(1);
+			return false;
 		}
+		return true;
 	}	
 	
 	public void gravarEstoque(Loja loja){		
-
-		for(Veiculo veiculo : loja.estoqueDeVeiculos){			
+		ArrayList<Veiculo> estoqueDeVeiculos = loja.getEstoqueDeVeiculos();
+		
+		for(Veiculo veiculo : estoqueDeVeiculos){			
 			if(veiculo instanceof Carro){					
 				Carro carro = (Carro) veiculo;
 				
-				output.format("+==================================+%n"
+				output.format("+============-CARRO-===============+%n"
 						+ "| Chassi:%-25s |"
 						+ "%n| Montadora:%-22s |"
 						+ "%n| Tipo:%-27s |"
@@ -43,7 +46,7 @@ public class CreateFile {
 			}else{				
 				Motocicleta moto = (Motocicleta) veiculo;
 				
-				output.format("+==================================+%n"
+				output.format("+============-MOTO-================+%n"
 						+ "| Chassi:%-25s |"
 						+ "%n| Montadora:%-22s |"
 						+ "%n| Tipo:%-27s |"
@@ -61,7 +64,7 @@ public class CreateFile {
 		}
 
 	
-	public void closedFile(){		
+	public void fecharArquivo(){		
 		if(output != null){
 			output.close();
 		}

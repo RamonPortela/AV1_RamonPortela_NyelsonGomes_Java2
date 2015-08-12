@@ -63,10 +63,10 @@ public class Impressora {
 	}
 	
 	public static void imprimeOpcaoInvalida(){
-		System.out.println("Opcao digitada invalida, entre com uma opcao válida.");
+		System.err.println("Opção digitada inválida, entre com uma opcao válida.");
 	}
 	
 	public static void imprimeErroInesperado(){
-		System.out.println("Um erro inesperado ocorreu, por favor entre com a opção novamente.");
+		System.err.println("Um erro inesperado ocorreu, por favor entre com a opção novamente.");
 	}
 }

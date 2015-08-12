@@ -14,7 +14,7 @@ public class Loja {
 	
 	private String endereco;
 	private String nome;
-	public ArrayList<Veiculo> estoqueDeVeiculos = new ArrayList<Veiculo>();
+	private ArrayList<Veiculo> estoqueDeVeiculos = new ArrayList<Veiculo>();
 	
 	public ArrayList<Veiculo> getEstoqueDeVeiculos() {
 		return estoqueDeVeiculos;
@@ -86,15 +86,19 @@ public class Loja {
 	}	
 	
 	public void listarVeiculos(){
-		for(Veiculo veiculo : this.estoqueDeVeiculos){//for-each que percorre a lista de veiculos
-			if(veiculo instanceof Carro){//checa se o veiculo é um carro
-				Carro carro = (Carro) veiculo;//se o veiculo for um carro, transforma de volta em um objeto carro
-				Impressora.imprimeCarro(carro);
-			}else{//se for moto
-				Motocicleta moto = (Motocicleta) veiculo;//transforma o veiculo de volta em um objeto motocicleta
-				Impressora.imprimeMoto(moto);
-			}
-			System.out.println("");
+		if(this.estoqueDeVeiculos.isEmpty()){
+			System.out.println("Estoque está vazio.");
+		}else{
+			for(Veiculo veiculo : this.estoqueDeVeiculos){//for-each que percorre a lista de veiculos
+				if(veiculo instanceof Carro){//checa se o veiculo é um carro
+					Carro carro = (Carro) veiculo;//se o veiculo for um carro, transforma de volta em um objeto carro
+					Impressora.imprimeCarro(carro);
+				}else{//se for moto
+					Motocicleta moto = (Motocicleta) veiculo;//transforma o veiculo de volta em um objeto motocicleta
+					Impressora.imprimeMoto(moto);
+				}
+				System.out.println("");
+			}			
 		}
 	}
 	
