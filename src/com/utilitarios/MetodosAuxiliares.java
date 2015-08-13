@@ -1,6 +1,11 @@
 package com.utilitarios;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import com.montadora.Carro;
+import com.montadora.Motocicleta;
+import com.montadora.Veiculo;
 
 public class MetodosAuxiliares {
 	
@@ -21,6 +26,17 @@ public class MetodosAuxiliares {
 		for(int i = 0; i < 25; i++){
 			System.out.println("\n");
 		}
+	}
+	
+	public static boolean checarChassi(String checaChassi, ArrayList<Veiculo> comparaVeiculo){
+		
+		for(Veiculo checaVeiculo : comparaVeiculo){
+			if(checaVeiculo.getChassi().equals(checaChassi)){
+				
+				return true;
+			}		
+		}		
+		return false;		
 	}
 	
 }

@@ -7,6 +7,7 @@ import com.montadora.Carro;
 import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
 import com.utilitarios.Impressora;
+import com.utilitarios.MetodosAuxiliares;
 
 public class Loja {
 	
@@ -60,17 +61,18 @@ public class Loja {
 		switch(opcaoDeVeiculo){
 			case 1:
 					Veiculo carro = new Carro();
-					carro = carro.criarVeiculo(input);//chama método de criar carro
+					carro = carro.criarVeiculo(input, this.getEstoqueDeVeiculos());//chama método de criar carro
 					this.estoqueDeVeiculos.add(carro);//adiciona carro na lista
 				break;
 			case 2:
 					Veiculo moto = new Motocicleta();
-					moto = moto.criarVeiculo(input);//chama método de criar moto
+					moto = moto.criarVeiculo(input, this.getEstoqueDeVeiculos());//chama método de criar moto
 					this.estoqueDeVeiculos.add(moto);//adiciona carro na moto
 				break;
 		}
 		System.out.println("Veículo adicionado ao estoque com sucesso.");
 	}
+	
 	
 	public void excluirVeiculo(Scanner input){
 	 	

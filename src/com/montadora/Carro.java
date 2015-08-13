@@ -1,8 +1,10 @@
 package com.montadora;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import com.loja.Loja;
 import com.utilitarios.Excecoes;
 import com.utilitarios.Impressora;
 import com.utilitarios.MetodosAuxiliares;
@@ -205,17 +207,28 @@ public class Carro extends Veiculo {
 	}
 	
 	@Override
-	public Carro criarVeiculo(Scanner input){//metodo que cria o veiculo a partir do que usuario informar do teclado
+	public Carro criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo){//metodo que cria o veiculo a partir do que usuario informar do teclado
 		boolean temExcecao = false;
+		boolean temVeiculo;
 		int opcaoMontadora;
 		int opcaoTipo;
 		int opcaoCor = 0;
 		int opcaoMotorizacao;
 		int opcaoCambio;
-		Carro carro = new Carro();
+		String chassi;
+		Carro carro = new Carro();		
 		
-		System.out.println("Entre com o chassi do veículo:");
-		carro.setChassi(input.next());
+		do{
+			System.out.println("Entre com o chassi do veículo:");
+			chassi = input.next();
+			temVeiculo = MetodosAuxiliares.checarChassi(chassi, estoqueDeVeiculo);
+			if(!temVeiculo){
+				carro.setChassi(chassi);
+			}
+			else{
+				System.out.println("Chassi já existe no estoque, favor entrar com outro chassi.");
+			}
+		}while(temVeiculo);
 		
 		String texto = "Escolha uma montadora: ";
 		String opcoes = "1 - GM   \t 2 - VOLKSWAGEN \t 3 - BMW \t 4 - FIAT \t 5 - FORD";

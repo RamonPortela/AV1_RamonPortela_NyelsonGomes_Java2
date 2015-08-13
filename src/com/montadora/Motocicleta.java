@@ -1,5 +1,6 @@
 package com.montadora;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -122,7 +123,7 @@ public class Motocicleta extends Veiculo {
 	}
 	
 	@Override
-	public Motocicleta criarVeiculo(Scanner input) {// método que cria moto a partir do que foi informado pelo usuário
+	public Motocicleta criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo) {// método que cria moto a partir do que foi informado pelo usuário
 		
 		Motocicleta moto = new Motocicleta();
 		boolean temExcecao = false;
@@ -131,9 +132,20 @@ public class Motocicleta extends Veiculo {
 		int opcaoCor;
 		int opcaoCilindrada;
 		int opcaoCapacidadeDoTanque;
+		boolean temVeiculo;
+		String chassi;
 		
-		System.out.println("Entre com o chassi do veículo:");
-		moto.setChassi(input.next());
+		do{
+			System.out.println("Entre com o chassi do veículo:");
+			chassi = input.next();
+			temVeiculo = MetodosAuxiliares.checarChassi(chassi, estoqueDeVeiculo);
+			if(!temVeiculo){
+				moto.setChassi(chassi);
+			}
+			else{
+				System.out.println("Chassi já existe no estoque, favor entrar com outro chassi.");
+			}
+		}while(temVeiculo);
 		
 		String texto = "Escolha uma montadora: ";
 		String opcoes = "1 - HARLEY-DAVIDSON   \t 2 - HONDA \t 3 - SUZUKI \t 4 - KAWASAKI \t 5 - SHINERAY";

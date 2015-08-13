@@ -1,5 +1,6 @@
 package com.montadora;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Veiculo {
@@ -92,5 +93,5 @@ public abstract class Veiculo {
 		this.modelo = modelo;
 	}
 	
-	public abstract Veiculo criarVeiculo(Scanner input);//força as subclasses a fazerem esse método obrigatóriamente
+	public abstract Veiculo criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo);//força as subclasses a fazerem esse método obrigatóriamente
 }
