@@ -51,8 +51,11 @@ public class Menu {
 					SalvaEstoque file = new SalvaEstoque();
 					if(file.abrirArquivo()){
 						file.gravarEstoque(loja);
-						file.fecharArquivo();						
+						file.fecharArquivo();
+						System.out.println("Estoque salvo com sucesso.");
+						MetodosAuxiliares.pressionarEnter();
 					}else{
+						System.out.println("Um erro ocorreu durante o processo de salvar o arquivo.");
 						MetodosAuxiliares.pressionarEnter();
 					}
 
@@ -67,7 +70,10 @@ public class Menu {
 						arquivo.lerEstoqueSalvo(estoqueDeVeiculos);
 						arquivo.fecharArquivo();
 						loja.setEstoqueDeVeiculos(estoqueDeVeiculos);
+						System.out.println("Estoque carregado com sucesso.");
+						MetodosAuxiliares.pressionarEnter();
 					}else{
+						System.out.println("Um erro ocrreu durante o processo de carregar o arquivo.");
 						MetodosAuxiliares.pressionarEnter();
 					}
 
