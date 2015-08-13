@@ -47,7 +47,7 @@ public class Menu {
 					loja.listarMotos();
 					MetodosAuxiliares.pressionarEnter();
 					break;
-				case 7:
+				case 7:					
 					SalvaEstoque file = new SalvaEstoque();
 					if(file.abrirArquivo()){
 						file.gravarEstoque(loja);
@@ -61,16 +61,22 @@ public class Menu {
 
 					break;
 				case 8:
+					boolean temVeiculo;
+					
 					CarregarEstoque arquivo = new CarregarEstoque();
 					
 					ArrayList<Veiculo> estoqueDeVeiculos = loja.getEstoqueDeVeiculos();
 					estoqueDeVeiculos.clear();
 					
 					if(arquivo.abrirArquivo()){
-						arquivo.lerEstoqueSalvo(estoqueDeVeiculos);
-						arquivo.fecharArquivo();
-						loja.setEstoqueDeVeiculos(estoqueDeVeiculos);
-						System.out.println("Estoque carregado com sucesso.");
+						temVeiculo = arquivo.lerEstoqueSalvo(estoqueDeVeiculos);
+						if(temVeiculo){
+							System.out.println("Estoque carregado com sucesso.");
+							loja.setEstoqueDeVeiculos(estoqueDeVeiculos);
+						}else{
+							System.out.println("Não há veiculos para serem carregados no estoque");
+						}
+						arquivo.fecharArquivo();						
 						MetodosAuxiliares.pressionarEnter();
 					}else{
 						System.out.println("Um erro ocrreu durante o processo de carregar o arquivo.");

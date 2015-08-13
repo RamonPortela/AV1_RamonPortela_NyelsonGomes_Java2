@@ -26,11 +26,13 @@ public class CarregarEstoque {
 		return true;
 	}
 	
-	public void lerEstoqueSalvo(ArrayList<Veiculo> estoqueDeVeiculos){
+	public boolean lerEstoqueSalvo(ArrayList<Veiculo> estoqueDeVeiculos){
 		int contadorDeLinhas;
 		boolean temExcecao;
+		boolean temVeiculo = false;
 		
 		while(input.hasNext()){
+			temVeiculo = true;
 			contadorDeLinhas = 0;	
 			
 			if(input.nextLine().indexOf("CARRO") > 0){
@@ -121,6 +123,9 @@ public class CarregarEstoque {
 			
 			input.nextLine();
 		}
+		if(!temVeiculo)
+			return false;
+		return true;
 	}
 	
 	private int leDadosVeiculoInicio(Veiculo veiculo, int contadorDeLinhas){
