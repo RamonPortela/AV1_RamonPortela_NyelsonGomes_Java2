@@ -11,17 +11,6 @@ public class Motocicleta extends Veiculo {
 	
 	private int cilindrada;
 	private int capacidadeDoTanque;
-	
-	private int validarCilindrada(int cilindrada){
-		if(cilindrada <= 0 || cilindrada > 999){
-			this.cilindrada = cilindrada;
-		}
-		else{
-			System.out.println("Cilindrada invalida.");
-			return 0;
-		}
-		return cilindrada;
-	}
 
 	public enum Tipos{//enum de tipos de motos
 		SCOOTER(1, "Scooter"), CUSTOM(2, "Custom"), CHOPPER(3, "Chopper"), STREET(4, "Street"), ESPORTIVA(5, "Esportiva");
@@ -121,7 +110,7 @@ public class Motocicleta extends Veiculo {
 	}
 	
 	public void setCilindrada(int cilindrada) {
-		validarCilindrada(cilindrada);
+		this.cilindrada = cilindrada;
 	}
 	
 	public int getCapacidadeDoTanque() {
@@ -136,12 +125,12 @@ public class Motocicleta extends Veiculo {
 	public Motocicleta criarVeiculo(Scanner input) {// método que cria moto a partir do que foi informado pelo usuário
 		
 		Motocicleta moto = new Motocicleta();
-		boolean deuExcecao = false;
+		boolean temExcecao = false;
 		int opcaoMontadora;
 		int opcaoTipo;
 		int opcaoCor;
-		int opcaoCilindrada = 0;
-		int opcaoCambio;
+		int opcaoCilindrada;
+		int opcaoCapacidadeDoTanque;
 		
 		System.out.println("Entre com o chassi do veículo:");
 		moto.setChassi(input.next());
@@ -177,7 +166,7 @@ public class Motocicleta extends Veiculo {
 			
 		}while((opcaoTipo < 1) || (opcaoTipo > 5));
 		
-		input.nextLine(); // Não sei pra que que serve.
+		input.nextLine();
 		
 		System.out.println("Entre com o modelo do veículo:");
 		moto.setModelo(input.nextLine());
@@ -197,70 +186,53 @@ public class Motocicleta extends Veiculo {
 			
 		}while((opcaoCor < 1) || (opcaoCor > 5));
 		
-		texto = "Entre com as cilindradas da moto: ";
-		opcoes = "Limite de 3 numeros de cilindradas.";
-		
+		texto = "Entre com as cilindradas da moto: ";		
 		do{
-			deuExcecao = false;
 			System.out.println(texto);
-			System.out.println(opcoes);
-
-			try{
-				moto.setCilindrada(input.nextInt());
-			}catch(InputMismatchException e){
-				System.out.println("O preço deve ser um número.");
-				MetodosAuxiliares.pressionarEnterErro();
-				deuExcecao = true;
-				input.nextLine();
-			}catch(Exception e){
-				Impressora.imprimeErroInesperado();
-				MetodosAuxiliares.pressionarEnterErro();
-				deuExcecao = true;
-				input.nextLine();
+			
+			opcaoCilindrada = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto);
+			if((opcaoCilindrada < 1) || (opcaoCilindrada > 999)){
+				System.out.println("Cilindrada inválida.");
+			}
+			else{
+				moto.setCilindrada(opcaoCilindrada);
 			}
 		}
-		while(deuExcecao);
+		while((opcaoCilindrada < 1) || (opcaoCilindrada > 999));
 		
-		/*do{
-			deuExcecao = false;
-			System.out.println("Entre com as cilindradas da moto: ");
-			try{
-				moto.setCilindrada(input.nextInt());	
-			}catch(InputMismatchException e){
-				System.out.println("O preço deve ser um número.");
-				MetodosAuxiliares.pressionarEnterErro();
-				deuExcecao = true;
-				input.nextLine();
-			}catch(Exception e){
-				Impressora.imprimeErroInesperado();
-				MetodosAuxiliares.pressionarEnterErro();
-				deuExcecao = true;
-				input.nextLine();
+		texto = "Entre com a capacidade do tanque em Litros: ";
+		do{
+			System.out.println(texto);
+			opcaoCapacidadeDoTanque = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto);
+			if((opcaoCapacidadeDoTanque < 1) || (opcaoCapacidadeDoTanque > 99)){
+				System.out.println("Capacidade do tanque acima do limite.");
 			}
-					
-		}while(deuExcecao);*/
+			else{
+				moto.setCapacidadeDoTanque(opcaoCapacidadeDoTanque);
+			}
+		}while((opcaoCapacidadeDoTanque < 1) || (opcaoCapacidadeDoTanque > 99));
 
 		System.out.println("Entre com a capacidade do taque de combustível: ");
 		moto.setCapacidadeDoTanque(input.nextInt());
 		
 		do{
-			deuExcecao = false;
+			temExcecao = false;
 			System.out.println("Entre com o preço do veículo: ");
 			try{
 				moto.setPreco(input.nextFloat());	
 			}catch(InputMismatchException e){
 				System.out.println("O preço deve ser um número.");
 				MetodosAuxiliares.pressionarEnterErro();
-				deuExcecao = true;
+				temExcecao = true;
 				input.nextLine();
 			}catch(Exception e){
 				Impressora.imprimeErroInesperado();
 				MetodosAuxiliares.pressionarEnterErro();
-				deuExcecao = true;
+				temExcecao = true;
 				input.nextLine();
 			}
 					
-		}while(deuExcecao);
+		}while(temExcecao);
 		
 		return moto;
 	}
