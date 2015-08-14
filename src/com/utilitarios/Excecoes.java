@@ -32,6 +32,7 @@ public class Excecoes {
 		
 		return opcaoVeiculo;
 	}
+	
 
 	public static int lancaExcecaoOpcoesVeiculo(Scanner input, String texto){
 		int opcaoVeiculo = 0;
@@ -59,6 +60,34 @@ public class Excecoes {
 		}while(temExcecao);
 		
 		return opcaoVeiculo;
+	}
+	
+	public static float lancaExcecaoPreco(Scanner input, String texto){
+		float preco = 0;
+		boolean temExcecao = false;
+		do{
+			temExcecao = false;
+			
+			try{
+				preco = input.nextFloat();
+			}catch(InputMismatchException e){
+				System.out.println("O preço deve ser um número.");
+				MetodosAuxiliares.pressionarEnterErro();
+				input.nextLine();
+				temExcecao = true;
+			}catch(Exception e){
+				Impressora.imprimeErroInesperado();
+				MetodosAuxiliares.pressionarEnterErro();
+				input.nextLine();
+				temExcecao = true;
+			}
+			
+			if(temExcecao){
+				System.out.println(texto);
+			}
+		}while(temExcecao);
+		
+		return preco;
 	}
 	
 	public static boolean lancaExcecaoLeituraVeiculo(String dadoDoVeiculo, String chassi){

@@ -1,6 +1,5 @@
 package com.utilitarios;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.montadora.Carro;
@@ -33,7 +32,6 @@ public class Impressora {
 	}
 	
 	public static int imprimeMenu(Scanner input){
-		boolean temExcecao = false;
 		int opcaoMenu = -1;
 		
 		System.out.println("********MENU********\n");
@@ -46,23 +44,13 @@ public class Impressora {
 		System.out.println("Entre com 7 para salvar o estoque em um arquivo.");
 		System.out.println("Entre com 8 para recuperar um estoque salvo.");
 		System.out.print("Entre com a opcao desejada ou 0 para sair: ");
-		try{
-			opcaoMenu = input.nextInt();
-		}catch(InputMismatchException e){
-			Impressora.imprimeOpcaoInvalida();
-			MetodosAuxiliares.pressionarEnterErro();
-			temExcecao = true;
-			input.nextLine();
-		}catch(Exception e){
-			Impressora.imprimeErroInesperado();
-			MetodosAuxiliares.pressionarEnterErro();
-			temExcecao = true;
-			input.nextLine();
-		}
+		opcaoMenu = MetodosAuxiliares.leOpcaoMenu(input, opcaoMenu);
 		
 		
 		return opcaoMenu;
 	}
+
+
 	
 	public static void imprimeOpcaoInvalida(){
 		System.err.println("Opção digitada inválida, entre com uma opcao válida.");

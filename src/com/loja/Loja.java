@@ -7,11 +7,12 @@ import com.montadora.Carro;
 import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
 import com.utilitarios.Impressora;
-import com.utilitarios.MetodosAuxiliares;
 
 public class Loja {
 	
 	private static final int VEICULO_NAO_ENCONTRADO = -1;
+	private static final int OPCAO_MINIMA = 1;
+	private static final int OPCAO_MAXIMA = 2;
 	
 	private String endereco;
 	private String nome;
@@ -52,11 +53,11 @@ public class Loja {
 			opcaoDeVeiculo = input.nextInt();
 			System.out.println("");
 			
-			if((opcaoDeVeiculo < 1) || (opcaoDeVeiculo > 2)){
+			if((opcaoDeVeiculo < OPCAO_MINIMA) || (opcaoDeVeiculo > OPCAO_MAXIMA)){
 				System.out.println("Opção inválida. Entre com a opção novamente.");
 			}
 			
-		}while((opcaoDeVeiculo < 1) || (opcaoDeVeiculo > 2));
+		}while((opcaoDeVeiculo < OPCAO_MINIMA) || (opcaoDeVeiculo > OPCAO_MAXIMA));
 		
 		switch(opcaoDeVeiculo){
 			case 1:

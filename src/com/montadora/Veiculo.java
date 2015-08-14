@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public abstract class Veiculo {
 	
+	public static final float PRECO_MINIMO = 1;
 	protected String chassi;
 	protected String montadora;
 	protected String modelo;

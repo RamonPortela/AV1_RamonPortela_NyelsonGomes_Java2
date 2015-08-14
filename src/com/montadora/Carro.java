@@ -1,13 +1,9 @@
 package com.montadora;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.loja.Loja;
-import com.utilitarios.Excecoes;
-import com.utilitarios.Impressora;
-import com.utilitarios.MetodosAuxiliares;
+import com.utilitarios.LeVeiculos;
 
 public class Carro extends Veiculo {
 	
@@ -208,130 +204,29 @@ public class Carro extends Veiculo {
 	
 	@Override
 	public Carro criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo){//metodo que cria o veiculo a partir do que usuario informar do teclado
-		boolean temExcecao = false;
-		boolean temVeiculo;
-		int opcaoMontadora;
-		int opcaoTipo;
-		int opcaoCor = 0;
-		int opcaoMotorizacao;
-		int opcaoCambio;
-		String chassi;
-		Carro carro = new Carro();		
+		Carro carro = new Carro();	
+		String texto;
+		String opcoes;
 		
-		do{
-			System.out.println("Entre com o chassi do veículo:");
-			chassi = input.next();
-			temVeiculo = MetodosAuxiliares.checarChassi(chassi, estoqueDeVeiculo);
-			if(!temVeiculo){
-				carro.setChassi(chassi);
-			}
-			else{
-				System.out.println("Chassi já existe no estoque, favor entrar com outro chassi.");
-			}
-		}while(temVeiculo);
+		LeVeiculos.leChassi(input, estoqueDeVeiculo, carro);
 		
-		String texto = "Escolha uma montadora: ";
-		String opcoes = "1 - GM   \t 2 - VOLKSWAGEN \t 3 - BMW \t 4 - FIAT \t 5 - FORD";
-		do{
-			System.out.println(texto);
-			System.out.println(opcoes);
-			opcaoMontadora = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
-			if((opcaoMontadora < 1) || (opcaoMontadora > 5)){
-				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnterErro();
-			}else{
-				carro.setMontadora(opcaoMontadora);
-			}
-			
-		}while((opcaoMontadora < 1) || (opcaoMontadora > 5));
+		texto = "Escolha uma montadora: ";
+		opcoes = "1 - GM   \t 2 - VOLKSWAGEN \t 3 - BMW \t 4 - FIAT \t 5 - FORD";
+		LeVeiculos.leMontadora(input, carro, texto, opcoes);
 		
 		texto = "Entre com o tipo do veículo: ";
 		opcoes = "1 - Hatch   \t 2 - Sedan \t 3 - Minivan \t 4 - Picape \t 5 - Esportivo";
-		do{
-			System.out.println(texto);
-			System.out.println(opcoes);
-			opcaoTipo = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
-			if((opcaoTipo < 1) || (opcaoTipo > 5)){
-				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnterErro();					
-			}else{
-				carro.setTipo(opcaoTipo);	
-			}			
-			
-		}while((opcaoTipo < 1) || (opcaoTipo > 5));
-
+		LeVeiculos.leTipo(input, carro, texto, opcoes);
+		
 		input.nextLine();
 		
-		System.out.println("Entre com o modelo do veículo:");
-		carro.setModelo(input.nextLine());
-
-		texto = "Selecione a cor do veículo: ";
-		opcoes = "1 - azul   \t 2 - vermelho \t 3 - branco \t 4 - preto \t 5 - verde";
-		do{
-			System.out.println(texto);
-			System.out.println(opcoes);
-			opcaoCor = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
-			if((opcaoCor < 1) || (opcaoCor > 5)){
-				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnterErro();
-			}else{
-				carro.setCor(opcaoCor);	
-			}				
-			
-		}while((opcaoCor < 1) || (opcaoCor > 5));
-		
-		texto = "Selecione a motorização do carro: ";
-		opcoes = "1 - 1.0   \t 2 - 1.3 \t 3 - 1.4 \t 4 - 1.5 \t 5 - 1.6 \t 6 - 1.8 \t 7 - 2.0";		
-		do{
-			System.out.println(texto);
-			System.out.println(opcoes);
-			
-			opcaoMotorizacao = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
-			
-			if((opcaoMotorizacao < 1) || (opcaoMotorizacao > 7)){
-				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnterErro();
-			}else{
-				carro.setMotorizacao(opcaoMotorizacao);
-			}
-			
-		}while((opcaoMotorizacao < 1) || (opcaoMotorizacao > 7));
-
-		texto = "Selecione o tipo de câmbio do carro: ";
-		opcoes = "1 - Manual   \t 2 - Automático \t 3 - Automatizado \t 4 - CVT";			
-		do{
-			System.out.println(texto);
-			System.out.println(opcoes);
-			opcaoCambio = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
-			if((opcaoCambio < 1) || (opcaoCambio > 4)){
-				Impressora.imprimeOpcaoInvalida();
-				MetodosAuxiliares.pressionarEnterErro();
-			}else{
-				carro.setCambio(opcaoCambio);
-			}				
-				
-		}while((opcaoCambio < 1) || (opcaoCambio > 4));
-		
-		do{
-			temExcecao = false;
-			System.out.println("Entre com o preço do veículo: ");
-			try{
-				carro.setPreco(input.nextFloat());	
-			}catch(InputMismatchException e){
-				System.out.println("O preço deve ser um número.");
-				MetodosAuxiliares.pressionarEnterErro();
-				temExcecao = true;
-				input.nextLine();
-			}catch(Exception e){
-				Impressora.imprimeErroInesperado();
-				MetodosAuxiliares.pressionarEnterErro();
-				temExcecao = true;
-				input.nextLine();
-			}
-					
-		}while(temExcecao);
+		LeVeiculos.leModelo(input, carro);
+		LeVeiculos.leCor(input, carro);		
+		LeVeiculos.leMotorizacao(input, carro);
+		LeVeiculos.leCambio(input, carro);		
+		LeVeiculos.lePreco(input, carro);
 
 		return carro;
 	}
-	
+
 }
