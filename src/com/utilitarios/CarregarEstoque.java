@@ -125,6 +125,7 @@ public class CarregarEstoque {
 		}
 		if(!temVeiculo)
 			return false;
+		
 		return true;
 	}
 	

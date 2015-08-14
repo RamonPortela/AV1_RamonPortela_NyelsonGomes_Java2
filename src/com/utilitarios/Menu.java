@@ -3,6 +3,8 @@ package com.utilitarios;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import com.loja.Loja;
 import com.montadora.Veiculo;
 
@@ -67,27 +69,28 @@ public class Menu {
 				break;
 				
 			case 8:
-				boolean temVeiculo;
-				
 				CarregarEstoque arquivo = new CarregarEstoque();
+				boolean temVeiculo;
 				
 				ArrayList<Veiculo> estoqueDeVeiculos = loja.getEstoqueDeVeiculos();
 				estoqueDeVeiculos.clear();
 				
 				if(arquivo.abrirArquivo()){
-					arquivo.lerEstoqueSalvo(estoqueDeVeiculos);
 					temVeiculo = arquivo.lerEstoqueSalvo(estoqueDeVeiculos);
 					if(temVeiculo){
-						System.out.println("Estoque carregado com sucesso.");
 						loja.setEstoqueDeVeiculos(estoqueDeVeiculos);
+						System.out.println("Estoque carregado com sucesso.");
 					}else{
-						System.out.println("Não há veiculos para serem carregados no estoque");
+						System.out.println("Não há veiculos para serem carrados.");
 					}
-					arquivo.fecharArquivo();						
+					arquivo.fecharArquivo();
 					MetodosAuxiliares.pressionarEnter();
 				}else{
 					System.out.println("Um erro ocrreu durante o processo de carregar o arquivo.");
+					MetodosAuxiliares.pressionarEnter();
 				}
+
+				break;
 				
 			default:
 				System.out.println("Opção inválida.");
