@@ -112,6 +112,7 @@ public class CarregarEstoque {
 
 			input.nextLine();
 		}
+		
 		if (!temVeiculo)
 			return false;
 

@@ -28,6 +28,7 @@ public class Motocicleta extends Veiculo {
 		public String getNomeTipo() {
 			return nomeTipo;
 		}
+		
 	};
 
 	public void setTipo(int opcaoTipo) {
@@ -35,18 +36,23 @@ public class Motocicleta extends Veiculo {
 		case 1:
 			this.tipo = Tipos.SCOOTER.getNomeTipo();
 			break;
+			
 		case 2:
 			this.tipo = Tipos.CUSTOM.getNomeTipo();
 			break;
+			
 		case 3:
 			this.tipo = Tipos.CHOPPER.getNomeTipo();
 			break;
+			
 		case 4:
 			this.tipo = Tipos.STREET.getNomeTipo();
 			break;
+			
 		case 5:
 			this.tipo = Tipos.ESPORTIVA.getNomeTipo();
 			break;
+			
 		}
 	}
 
@@ -80,19 +86,25 @@ public class Motocicleta extends Veiculo {
 		case 1:
 			this.montadora = Montadoras.HARLEY.getNomeMontadoras();
 			break;
+			
 		case 2:
 			this.montadora = Montadoras.HONDA.getNomeMontadoras();
 			break;
+			
 		case 3:
 			this.montadora = Montadoras.SUZUKI.getNomeMontadoras();
 			break;
+			
 		case 4:
 			this.montadora = Montadoras.KAWASAKI.getNomeMontadoras();
 			break;
+			
 		case 5:
 			this.montadora = Montadoras.SHINERAY.getNomeMontadoras();
 			break;
+			
 		}
+		
 	}
 
 	public void setMontadora(String montadora) {

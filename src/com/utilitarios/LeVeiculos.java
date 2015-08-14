@@ -38,7 +38,9 @@ public class LeVeiculos {
 				System.out.println("Chassi já existe no estoque, favor entrar com outro chassi.");
 				MetodosAuxiliares.pressionarEnterErro();
 			}
+			
 		} while (temVeiculo || chassiInvalido);
+		
 	}
 
 	public static void leMontadora(Scanner input, Veiculo veiculo, String texto, String opcoes) {
@@ -54,6 +56,7 @@ public class LeVeiculos {
 			}
 
 		} while ((opcaoMontadora < VALOR_MINIMO) || (opcaoMontadora > VALOR_MAXIMO));
+		
 	}
 
 	public static void leTipo(Scanner input, Veiculo veiculo, String texto,
@@ -70,6 +73,7 @@ public class LeVeiculos {
 			}
 
 		} while ((opcaoTipo < VALOR_MINIMO) || (opcaoTipo > VALOR_MAXIMO));
+		
 	}
 
 	public static void leModelo(Scanner input, Veiculo veiculo) {
@@ -94,6 +98,7 @@ public class LeVeiculos {
 			}
 
 		} while ((opcaoCor < VALOR_MINIMO) || (opcaoCor > VALOR_MAXIMO));
+		
 	}
 
 	public static void lePreco(Scanner input, Veiculo veiculo) {
@@ -113,6 +118,7 @@ public class LeVeiculos {
 			}
 
 		} while (preco < Veiculo.PRECO_MINIMO);
+		
 	}
 
 	public static void leMotorizacao(Scanner input, Carro carro) {
@@ -133,6 +139,7 @@ public class LeVeiculos {
 			}
 
 		} while ((opcaoMotorizacao < VALOR_MINIMO) || (opcaoMotorizacao > VALOR_MAXIMO_MOTORIZACAO));
+		
 	}
 
 	public static void leCambio(Scanner input, Carro carro) {
@@ -143,8 +150,8 @@ public class LeVeiculos {
 		opcoes = "1 - Manual   \t 2 - Automático \t 3 - Automatizado \t 4 - CVT";
 		
 		do {
-			opcaoCambio = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto,
-					opcoes);
+			opcaoCambio = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
+			
 			if ((opcaoCambio < VALOR_MINIMO) || (opcaoCambio > VALOR_MAXIMO_CAMBIO)) {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
@@ -153,6 +160,7 @@ public class LeVeiculos {
 			}
 
 		} while ((opcaoCambio < VALOR_MINIMO) || (opcaoCambio > VALOR_MAXIMO_CAMBIO));
+		
 	}
 
 	public static void leCilindradas(Scanner input, Motocicleta moto) {
@@ -162,12 +170,15 @@ public class LeVeiculos {
 		
 		do {
 			opcaoCilindrada = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto);
+			
 			if ((opcaoCilindrada < VALOR_MINIMO) || (opcaoCilindrada > VALOR_MAXIMO_CILINDRADAS)) {
 				System.out.println("Cilindrada inválida.");
 			} else {
 				moto.setCilindrada(opcaoCilindrada);
 			}
+			
 		} while ((opcaoCilindrada < VALOR_MINIMO) || (opcaoCilindrada > VALOR_MAXIMO_CILINDRADAS));
+		
 	}
 
 	public static void leCapacidadeDoTanque(Scanner input, Motocicleta moto) {
@@ -177,12 +188,15 @@ public class LeVeiculos {
 		
 		do {			
 			opcaoCapacidadeDoTanque = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto);
+			
 			if ((opcaoCapacidadeDoTanque < VALOR_MINIMO) || (opcaoCapacidadeDoTanque > VALOR_MAXIMO_CAPACIDADE_DO_TANQUE)) {
 				System.out.println("Capacidade do tanque acima do limite.");
 			} else {
 				moto.setCapacidadeDoTanque(opcaoCapacidadeDoTanque);
 			}
+			
 		} while ((opcaoCapacidadeDoTanque < VALOR_MINIMO) || (opcaoCapacidadeDoTanque > VALOR_MAXIMO_CAPACIDADE_DO_TANQUE));
+		
 	}
-
+	
 }

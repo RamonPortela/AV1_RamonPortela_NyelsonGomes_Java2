@@ -56,4 +56,5 @@ public class Impressora {
 	public static void imprimeErroInesperado() {
 		System.err.println("Um erro inesperado ocorreu, por favor entre com a opção novamente.");
 	}
+	
 }

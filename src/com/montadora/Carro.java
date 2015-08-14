@@ -28,6 +28,7 @@ public class Carro extends Veiculo {
 		public String getNomeCambio(){
 			return nomeCambio;
 		}
+		
 	};
 	
 	public void setCambio(int opcaoCambio){
@@ -35,16 +36,20 @@ public class Carro extends Veiculo {
 			case 1:
 				this.cambio = Cambios.MANUAL.getNomeCambio();
 				break;
+				
 			case 2:
 				this.cambio = Cambios.AUTOMATICO.getNomeCambio();
 				break;
+				
 			case 3:
 				this.cambio = Cambios.AUTOMATIZADO.getNomeCambio();
 				break;
+				
 			case 4:
 				this.cambio = Cambios.CVT.getNomeCambio();
 				break;
 		}
+		
 	}
 	
 	public void setCambio(String cambio){
@@ -73,6 +78,7 @@ public class Carro extends Veiculo {
 		public String getNomeTipo(){
 			return nomeTipo;
 		}
+		
 	};
 	
 	public void setTipo(int opcaoTipo){
@@ -80,19 +86,25 @@ public class Carro extends Veiculo {
 			case 1:
 				this.tipo = Tipos.HATCH.getNomeTipo();
 				break;
+				
 			case 2:
 				this.tipo = Tipos.SEDAN.getNomeTipo();
 				break;
+				
 			case 3:
 				this.tipo = Tipos.MINIVAN.getNomeTipo();
 				break;
+				
 			case 4:
 				this.tipo = Tipos.PICAPE.getNomeTipo();
 				break;
+				
 			case 5:
 				this.tipo = Tipos.ESPORTIVO.getNomeTipo();
 				break;
+				
 		}
+		
 	}
 	
 	public void setTipo(String tipo){
@@ -125,19 +137,25 @@ public class Carro extends Veiculo {
 			case 1:
 				this.montadora = Montadoras.GM.getNomeMontadoras();
 				break;
+				
 			case 2:
 				this.montadora = Montadoras.VOLKSWAGEN.getNomeMontadoras();
 				break;
+				
 			case 3:
 				this.montadora = Montadoras.BMW.getNomeMontadoras();
 				break;
+				
 			case 4:
 				this.montadora = Montadoras.FIAT.getNomeMontadoras();
 				break;
+				
 			case 5:
 				this.montadora = Montadoras.FORD.getNomeMontadoras();
 				break;
+				
 		}
+		
 	}
 	
 	public void setMontadora(String montadora) {
@@ -166,6 +184,7 @@ public class Carro extends Veiculo {
 		public float getValorMotorizacao(){
 			return valorMotorizacao;
 		}
+		
 	};
 	
 	public void setMotorizacao(int opcaoMotorizacao){
@@ -173,24 +192,31 @@ public class Carro extends Veiculo {
 			case 1:
 				this.motorizacao = Motorizacoes.MOTOR10.getValorMotorizacao();
 				break;
+				
 			case 2:
 				this.motorizacao = Motorizacoes.MOTOR13.getValorMotorizacao();
 				break;
+				
 			case 3:
 				this.motorizacao = Motorizacoes.MOTOR14.getValorMotorizacao();
 				break;
+				
 			case 4:
 				this.motorizacao = Motorizacoes.MOTOR15.getValorMotorizacao();
 				break;
+				
 			case 5:
 				this.motorizacao = Motorizacoes.MOTOR16.getValorMotorizacao();
 				break;
+				
 			case 6:
 				this.motorizacao = Motorizacoes.MOTOR18.getValorMotorizacao();
 				break;
+				
 			case 7:
 				this.motorizacao = Motorizacoes.MOTOR20.getValorMotorizacao();
 				break;
+				
 		}
 	}
 	

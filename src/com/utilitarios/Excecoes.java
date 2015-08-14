@@ -28,6 +28,7 @@ public class Excecoes {
 				input.nextLine();
 				temExcecao = true;
 			}
+			
 		} while (temExcecao);
 
 		return opcaoVeiculo;
@@ -85,6 +86,7 @@ public class Excecoes {
 				input.nextLine();
 				temExcecao = true;
 			}
+			
 		} while (temExcecao);
 
 		return opcaoVeiculo;
@@ -113,6 +115,7 @@ public class Excecoes {
 			if (temExcecao) {
 				System.out.println(texto);
 			}
+			
 		} while (temExcecao);
 
 		return preco;
@@ -136,6 +139,7 @@ public class Excecoes {
 				return true;
 			}
 		}
+		
 		return false;
 	}
 }

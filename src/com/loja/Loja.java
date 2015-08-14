@@ -80,7 +80,7 @@ public class Loja {
 
 	public void excluirVeiculo(Scanner input) {
 
-		int posicaoLista = procurarVeiculo(input);// chama o método procuraVeiculo(ele retorna a posição do veiculo na lista)
+		int posicaoLista = procurarVeiculo(input);//chama o método procuraVeiculo(ele retorna a posição do veiculo na lista)
 
 		if (posicaoLista != VEICULO_NAO_ENCONTRADO) {
 			this.estoqueDeVeiculos.remove(posicaoLista);// remove o veiculo que está na posição retornada pelo método

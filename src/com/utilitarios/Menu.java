@@ -94,7 +94,7 @@ public class Menu {
 					arquivo.fecharArquivo();
 					MetodosAuxiliares.pressionarEnter();
 				} else {
-					System.out.println("Um erro ocrreu durante o processo de carregar o arquivo.");
+					System.out.println("Um erro ocrreu durante o processo de carregar o arquivo."); 
 					MetodosAuxiliares.pressionarEnter();
 				}
 

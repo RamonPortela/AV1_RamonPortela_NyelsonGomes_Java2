@@ -13,7 +13,7 @@ public class SalvaEstoque {
 
 	private Formatter output; // Objeto utilizado para gerar o arquivo de texto
 
-	// Cria ou abre um arquivo
+	// Cria ou abre um arquivo 
 	public boolean abrirArquivo() {
 		try {
 			output = new Formatter("Estoque.txt");

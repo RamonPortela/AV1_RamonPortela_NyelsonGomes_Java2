@@ -99,6 +99,5 @@ public abstract class Veiculo {
 		this.modelo = modelo;
 	}
 
-	public abstract Veiculo criarVeiculo(Scanner input,
-			ArrayList<Veiculo> estoqueDeVeiculo);// força as subclasses a fazerem esse método obrigatóriamente
+	public abstract Veiculo criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo);// força as subclasses a fazerem esse método obrigatóriamente
 }
