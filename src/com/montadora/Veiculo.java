@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Veiculo {
-	
+
 	public static final float PRECO_MINIMO = 1;
 	protected String chassi;
 	protected String montadora;
@@ -12,76 +12,81 @@ public abstract class Veiculo {
 	protected String tipo;
 	protected String cor;
 	protected float preco;
-	
+
 	public String getChassi() {
 		return chassi;
 	}
+
 	public void setChassi(String chassi) {
 		this.chassi = chassi;
 	}
-	
+
 	public abstract String getMontadora();
-	
+
 	public abstract void setMontadora(int opcaoMontadora);
+
 	public abstract void setMontadora(String montadora);
-	
-	public String getTipo(){
+
+	public String getTipo() {
 		return tipo;
 	}
-	
+
 	public abstract void setTipo(int opcaoTipo);
+
 	public abstract void setTipo(String tipo);
-	
-	public enum Cores{//enum das cores
-		AZUL(1,"azul"), VERMELHO(2, "vermelho"), BRANCO(3, "branco"), PRETO(4, "preto"), VERDE(5, "verde");
-		
+
+	public enum Cores {// enum das cores
+		AZUL(1, "azul"), VERMELHO(2, "vermelho"), BRANCO(3, "branco"), PRETO(4,"preto"), VERDE(5, "verde");
+
 		private int opcaoCores;
 		private String nomeCores;
-		
-		private Cores(int opcaoCores, String nomeCores){//construtor do enum
+
+		private Cores(int opcaoCores, String nomeCores) {// construtor do enum
 			this.opcaoCores = opcaoCores;
 			this.nomeCores = nomeCores;
-		}		
-		public int getOpcaoCores(){
+		}
+
+		public int getOpcaoCores() {
 			return opcaoCores;
 		}
-		public String getNomeCores(){
+
+		public String getNomeCores() {
 			return nomeCores;
 		}
 	};
 
-	public void setCor(int opcaoCor){//seleciona uma cor a partir do que foi digitado no teclado
-		switch(opcaoCor){
-			case 1:
-				this.cor = Cores.AZUL.getNomeCores();
-				break;
-			case 2:
-				this.cor = Cores.VERMELHO.getNomeCores();
-				break;
-			case 3:
-				this.cor = Cores.BRANCO.getNomeCores();
-				break;
-			case 4:
-				this.cor = Cores.PRETO.getNomeCores();
-				break;
-			case 5:
-				this.cor = Cores.VERDE.getNomeCores();
-				break;
+	public void setCor(int opcaoCor) {// seleciona uma cor a partir do que foi digitado no teclado
+		switch (opcaoCor) {
+		case 1:
+			this.cor = Cores.AZUL.getNomeCores();
+			break;
+		case 2:
+			this.cor = Cores.VERMELHO.getNomeCores();
+			break;
+		case 3:
+			this.cor = Cores.BRANCO.getNomeCores();
+			break;
+		case 4:
+			this.cor = Cores.PRETO.getNomeCores();
+			break;
+		case 5:
+			this.cor = Cores.VERDE.getNomeCores();
+			break;
 		}
 	}
-	
-	public void setCor(String cor){
+
+	public void setCor(String cor) {
 		this.cor = cor;
 	}
-	
+
 	public String getCor() {
 		return cor;
 	}
-	
+
 	public float getPreco() {
 		return preco;
 	}
-	
+
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
@@ -89,10 +94,11 @@ public abstract class Veiculo {
 	public String getModelo() {
 		return modelo;
 	}
-	
+
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
-	
-	public abstract Veiculo criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo);//força as subclasses a fazerem esse método obrigatóriamente
+
+	public abstract Veiculo criarVeiculo(Scanner input,
+			ArrayList<Veiculo> estoqueDeVeiculo);// força as subclasses a fazerem esse método obrigatóriamente
 }
