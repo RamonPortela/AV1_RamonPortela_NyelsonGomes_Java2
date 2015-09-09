@@ -81,7 +81,7 @@ public class Carro extends Veiculo {
 		
 	};
 	
-	public void setTipo(int opcaoTipo){
+	/*public void setTipo(int opcaoTipo){
 		switch(opcaoTipo){
 			case 1:
 				this.tipo = Tipos.HATCH.getNomeTipo();
@@ -109,7 +109,7 @@ public class Carro extends Veiculo {
 	
 	public void setTipo(String tipo){
 		this.tipo = tipo;
-	}
+	}*/
 	
 	public enum Montadoras{//enum das montadoras de carro
 		GM(1,"GM"), VOLKSWAGEN(2, "VOLKSWAGEN"), BMW(3, "BMW"), FIAT(4, "FIAT"), FORD(5, "FORD");
@@ -132,7 +132,7 @@ public class Carro extends Veiculo {
 		
 	};	
 	
-	public void setMontadora(int opcaoMontadora){
+	/*public void setMontadora(int opcaoMontadora){
 		switch(opcaoMontadora){
 			case 1:
 				this.montadora = Montadoras.GM.getNomeMontadoras();
@@ -164,7 +164,7 @@ public class Carro extends Veiculo {
 	
 	public String getMontadora(){
 		return montadora;
-	}
+	}*/
 	
 	public enum Motorizacoes{//enum das enumerações
 		MOTOR10(1, (float)1.0), MOTOR13(2, (float)1.3), MOTOR14(3, (float)1.4), MOTOR15(4,(float) 1.5), MOTOR16(5, (float)1.6), MOTOR18(6, (float)1.8), MOTOR20(7, (float)2.0);
@@ -228,7 +228,7 @@ public class Carro extends Veiculo {
 		return motorizacao;
 	}
 	
-	@Override
+	/*@Override
 	public Carro criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo){//metodo que cria o veiculo a partir do que usuario informar do teclado
 		Carro carro = new Carro();	
 		String texto;
@@ -253,6 +253,6 @@ public class Carro extends Veiculo {
 		LeVeiculos.lePreco(input, carro);
 
 		return carro;
-	}
+	}*/
 
 }

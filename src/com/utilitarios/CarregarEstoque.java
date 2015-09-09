@@ -129,13 +129,13 @@ public class CarregarEstoque {
 		String[] segundaLinha = input.nextLine().split(":");
 		String[] montadora = segundaLinha[1].split(" ");
 		String montadoraFormatada = montadora[0].trim();
-		veiculo.setMontadora(montadoraFormatada);
+		//veiculo.setMontadora(montadoraFormatada);
 		contadorDeLinhas++;
 
 		String[] terceiraLinha = input.nextLine().split(":");
 		String[] tipo = terceiraLinha[1].split(" ");
 		String tipoFormatado = tipo[0].trim();
-		veiculo.setTipo(tipoFormatado);
+		//veiculo.setTipo(tipoFormatado);
 		contadorDeLinhas++;
 
 		String[] quartaLinha = input.nextLine().split(":");
@@ -148,7 +148,7 @@ public class CarregarEstoque {
 			modeloFormatado += " ";
 		}
 		modeloFormatado = modeloFormatado.trim();
-		veiculo.setModelo(modeloFormatado);
+		//veiculo.setModelo(modeloFormatado);
 		contadorDeLinhas++;
 
 		return contadorDeLinhas;
@@ -160,7 +160,7 @@ public class CarregarEstoque {
 		String[] setimaLinha = input.nextLine().split(":");
 		String[] cor = setimaLinha[1].split(" ");
 		String corFormatada = cor[0].trim();
-		veiculo.setCor(corFormatada);
+		//veiculo.setCor(corFormatada);
 		contadorDeLinhas++;
 
 		String[] oitavaLinha = input.nextLine().split(":");

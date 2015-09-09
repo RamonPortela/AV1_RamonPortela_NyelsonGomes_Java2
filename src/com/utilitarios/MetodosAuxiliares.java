@@ -13,11 +13,13 @@ public class MetodosAuxiliares {
 
 	public static void pressionarEnter() {
 		System.out.println("Pressione enter para voltar ao menu.");
+		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		input.nextLine();//só continua pro proximo passo se o usuario apertar a tecla enter
 		limparTela();// chama metodo de limpar tela
 	}
 
+	@SuppressWarnings("resource")
 	public static void pressionarEnterErro() {
 		System.out.println("Pressione enter para continuar.");
 		Scanner input = new Scanner(System.in);

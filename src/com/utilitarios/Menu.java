@@ -66,7 +66,7 @@ public class Menu {
 			case SETIMA_OPCAO:
 				SalvaEstoque file = new SalvaEstoque();
 				if (file.abrirArquivo()) {
-					file.gravarEstoque(loja);
+				//	file.gravarEstoque(loja);
 					file.fecharArquivo();
 					System.out.println("Estoque salvo com sucesso.");
 					MetodosAuxiliares.pressionarEnter();

@@ -52,7 +52,7 @@ public class LeVeiculos {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			} else {
-				veiculo.setMontadora(opcaoMontadora);
+			//	veiculo.setMontadora(opcaoMontadora);
 			}
 
 		} while ((opcaoMontadora < VALOR_MINIMO) || (opcaoMontadora > VALOR_MAXIMO));
@@ -69,7 +69,7 @@ public class LeVeiculos {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			} else {
-				veiculo.setTipo(opcaoTipo);
+		//		veiculo.setTipo(opcaoTipo);
 			}
 
 		} while ((opcaoTipo < VALOR_MINIMO) || (opcaoTipo > VALOR_MAXIMO));
@@ -78,7 +78,7 @@ public class LeVeiculos {
 
 	public static void leModelo(Scanner input, Veiculo veiculo) {
 		System.out.println("Entre com o modelo do veículo:");
-		veiculo.setModelo(input.nextLine());
+		//veiculo.setModelo(input.nextLine());
 	}
 
 	public static void leCor(Scanner input, Veiculo veiculo) {
@@ -94,7 +94,7 @@ public class LeVeiculos {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			} else {
-				veiculo.setCor(opcaoCor);
+				//veiculo.setCor(opcaoCor);
 			}
 
 		} while ((opcaoCor < VALOR_MINIMO) || (opcaoCor > VALOR_MAXIMO));

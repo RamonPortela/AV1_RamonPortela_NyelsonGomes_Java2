@@ -24,7 +24,7 @@ public class SalvaEstoque {
 		return true;
 	}
 
-	public void gravarEstoque(Loja loja) {
+	/*public void gravarEstoque(Loja loja) {
 		ArrayList<Veiculo> estoqueDeVeiculos = loja.getEstoqueDeVeiculos();
 
 		for (Veiculo veiculo : estoqueDeVeiculos) {
@@ -58,7 +58,7 @@ public class SalvaEstoque {
 			}
 			output.format("%n");
 		}
-	}
+	}*/
 
 	public void fecharArquivo() {
 		if (output != null) {

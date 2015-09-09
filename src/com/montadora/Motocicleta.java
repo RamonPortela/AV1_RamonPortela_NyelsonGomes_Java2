@@ -31,7 +31,7 @@ public class Motocicleta extends Veiculo {
 		
 	};
 
-	public void setTipo(int opcaoTipo) {
+	/*public void setTipo(int opcaoTipo) {
 		switch (opcaoTipo) {
 		case 1:
 			this.tipo = Tipos.SCOOTER.getNomeTipo();
@@ -54,11 +54,11 @@ public class Motocicleta extends Veiculo {
 			break;
 			
 		}
-	}
+	}*/
 
-	public void setTipo(String tipo) {
+	/*public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
+	}*/
 
 	public enum Montadoras {// enum das montadoras de moto
 		HARLEY(1, "HARLEY-DAVIDSON"), HONDA(2, "HONDA"), SUZUKI(3, "SUZUKI"), KAWASAKI(4, "KAWASAKI"), SHINERAY(5, "SHINERAY");
@@ -81,7 +81,7 @@ public class Motocicleta extends Veiculo {
 
 	};
 
-	public void setMontadora(int opcaoMontadora) {
+	/*public void setMontadora(int opcaoMontadora) {
 		switch (opcaoMontadora) {
 		case 1:
 			this.montadora = Montadoras.HARLEY.getNomeMontadoras();
@@ -113,7 +113,7 @@ public class Motocicleta extends Veiculo {
 
 	public String getMontadora() {
 		return montadora;
-	}
+	}*/
 
 	public int getCilindrada() {
 		return cilindrada;
@@ -131,7 +131,7 @@ public class Motocicleta extends Veiculo {
 		this.capacidadeDoTanque = capacidadeDoTanque;
 	}
 
-	@Override
+	/*@Override
 	public Motocicleta criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo) {// método que cria moto a partir do que foi informado pelo usuário
 		Motocicleta moto = new Motocicleta();
 		String texto;
@@ -156,6 +156,6 @@ public class Motocicleta extends Veiculo {
 		LeVeiculos.lePreco(input, moto);
 
 		return moto;
-	}
+	}*/
 
 }

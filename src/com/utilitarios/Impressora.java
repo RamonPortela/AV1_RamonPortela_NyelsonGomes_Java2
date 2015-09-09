@@ -7,7 +7,7 @@ import com.montadora.Motocicleta;
 
 public class Impressora {
 
-	public static void imprimeCarro(Carro carro) {
+	/*public static void imprimeCarro(Carro carro) {
 		System.out.println("-------CARRO-------");
 		System.out.println("chassi: " + carro.getChassi());
 		System.out.println("Montadora: " + carro.getMontadora());
@@ -29,7 +29,7 @@ public class Impressora {
 		System.out.println("Cilindradas: " + moto.getCilindrada());
 		System.out.println("Capacidade do tanque: "+ moto.getCapacidadeDoTanque() + " Litros");
 		System.out.println("Preço: " + moto.getPreco());
-	}
+	}*/
 
 	public static int imprimeMenu(Scanner input) {
 		int opcaoMenu = -1;

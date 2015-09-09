@@ -3,85 +3,36 @@ package com.montadora;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class Veiculo {
+public class Veiculo {
 
 	public static final float PRECO_MINIMO = 1;
-	protected String chassi;
-	protected String montadora;
-	protected String modelo;
-	protected String tipo;
-	protected String cor;
-	protected float preco;
+	private String chassi;
+	private String montadora;
+	private String modelo;
+	private String tipo;
+	private String cor;
+	private float preco;
+	private Especificacao especificacaoVeiculo;
 
-	public String getChassi() {
-		return chassi;
-	}
+	public enum tipoVeiculo {
+		CARRO("Carro", 1), MOTO("Moto", 2);
 
-	public void setChassi(String chassi) {
-		this.chassi = chassi;
-	}
+		private String nome;
+		private int opcao;
 
-	public abstract String getMontadora();
-
-	public abstract void setMontadora(int opcaoMontadora);
-
-	public abstract void setMontadora(String montadora);
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public abstract void setTipo(int opcaoTipo);
-
-	public abstract void setTipo(String tipo);
-
-	public enum Cores {// enum das cores
-		AZUL(1, "azul"), VERMELHO(2, "vermelho"), BRANCO(3, "branco"), PRETO(4,"preto"), VERDE(5, "verde");
-
-		private int opcaoCores;
-		private String nomeCores;
-
-		private Cores(int opcaoCores, String nomeCores) {// construtor do enum
-			this.opcaoCores = opcaoCores;
-			this.nomeCores = nomeCores;
+		private tipoVeiculo(String nome, int opcao) {
+			this.nome = nome;
+			this.opcao = opcao;
 		}
 
-		public int getOpcaoCores() {
-			return opcaoCores;
+		public String getNome() {
+			return nome;
 		}
 
-		public String getNomeCores() {
-			return nomeCores;
+		public int getOpcao() {
+			return opcao;
 		}
 	};
-
-	public void setCor(int opcaoCor) {// seleciona uma cor a partir do que foi digitado no teclado
-		switch (opcaoCor) {
-		case 1:
-			this.cor = Cores.AZUL.getNomeCores();
-			break;
-		case 2:
-			this.cor = Cores.VERMELHO.getNomeCores();
-			break;
-		case 3:
-			this.cor = Cores.BRANCO.getNomeCores();
-			break;
-		case 4:
-			this.cor = Cores.PRETO.getNomeCores();
-			break;
-		case 5:
-			this.cor = Cores.VERDE.getNomeCores();
-			break;
-		}
-	}
-
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
-
-	public String getCor() {
-		return cor;
-	}
 
 	public float getPreco() {
 		return preco;
@@ -91,13 +42,18 @@ public abstract class Veiculo {
 		this.preco = preco;
 	}
 
-	public String getModelo() {
-		return modelo;
+	public String getChassi() {
+		return chassi;
 	}
 
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
+	public void setChassi(String chassi) {
+		this.chassi = chassi;
 	}
 
-	public abstract Veiculo criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo);// força as subclasses a fazerem esse método obrigatóriamente
+	/*public Veiculo criarVeiculo(Scanner input,
+			ArrayList<Veiculo> estoqueDeVeiculo) {
+		
+		
+		return especificacaoVeiculo;
+	}*/
 }
