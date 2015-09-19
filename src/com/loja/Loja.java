@@ -3,8 +3,6 @@ package com.loja;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.montadora.Carro;
-import com.montadora.Motocicleta;
 import com.montadora.Veiculo;
 import com.utilitarios.Excecoes;
 import com.utilitarios.Impressora;
@@ -47,7 +45,7 @@ public class Loja {
 
 	public void adicionarVeiculo(Scanner input) {
 		int opcaoDeVeiculo;
-		String texto1 = "Digite 1 para adicionar um carro."; 
+		String texto1 = "Digite 1 para adicionar um carro.";
 		String texto2 = "Digite 2 para adicionar uma motocicleta.";
 		String texto3 = "Entre com a opção desejada: ";
 
@@ -63,17 +61,24 @@ public class Loja {
 
 		} while ((opcaoDeVeiculo < OPCAO_MINIMA) || (opcaoDeVeiculo > OPCAO_MAXIMA));
 
+		ArrayList<String> informacoes = new ArrayList<String>();
+		Veiculo veiculo = new Veiculo();
+
 		switch (opcaoDeVeiculo) {
-		case 1:
-			Veiculo carro = new Carro();
-			//carro = carro.criarVeiculo(input, this.getEstoqueDeVeiculos());// chama método de criar carro
-			this.estoqueDeVeiculos.add(carro);// adiciona carro na lista
+			case 1: //carro
+				informacoes.add(String.valueOf(opcaoDeVeiculo));
+				veiculo.setTipoVeiculo(opcaoDeVeiculo);
+				veiculo.setEspecificacaoVeiculo(veiculo.criarVeiculo(input, this.getEstoqueDeVeiculos(), informacoes));// chama método de criar especificações
+				this.estoqueDeVeiculos.add(veiculo);// adiciona carro na lista
 			break;
-		case 2:
-			Veiculo moto = new Motocicleta();
-			//moto = moto.criarVeiculo(input, this.getEstoqueDeVeiculos());// chama método  de criar moto
-			this.estoqueDeVeiculos.add(moto);// adiciona carro na moto
+
+			case 2: //moto
+				informacoes.add(String.valueOf(opcaoDeVeiculo));
+				veiculo.setTipoVeiculo(opcaoDeVeiculo);
+				veiculo.setEspecificacaoVeiculo(veiculo.criarVeiculo(input, this.getEstoqueDeVeiculos(), informacoes));// chama método  de criar especificações
+				this.estoqueDeVeiculos.add(veiculo);// adiciona carro na moto
 			break;
+
 		}
 		System.out.println("Veículo adicionado ao estoque com sucesso.");
 	}
@@ -95,12 +100,14 @@ public class Loja {
 			System.out.println("Estoque está vazio.");
 		} else {
 			for (Veiculo veiculo : this.estoqueDeVeiculos) {// for-each que percorre a lista de veiculos
-				if (veiculo instanceof Carro) {// checa se o veiculo é um carro se o veiculo for um carro, transforma de volta em um objeto carro
-					Carro carro = (Carro) veiculo; 
-				//	Impressora.imprimeCarro(carro);
-				} else {// se for moto transforma o veiculo de volta em um objeto motocicleta
-					Motocicleta moto = (Motocicleta) veiculo;
-				//	Impressora.imprimeMoto(moto);
+				switch (veiculo.getTipoVeiculo()) {
+					case 1:
+						Impressora.imprimeCarro(veiculo);
+					break;
+
+					case 2:
+						Impressora.imprimeMoto(veiculo);
+					break;
 				}
 				System.out.println("");
 			}
@@ -110,9 +117,8 @@ public class Loja {
 	public void listarCarros() {// imprime somente o estoque de carros
 
 		for (Veiculo veiculo : this.estoqueDeVeiculos) {// percorre arraylist
-			if (veiculo instanceof Carro) {// checa se o veiculo é um carro, se for imprime os dados do carro na tela
-				Carro carro = (Carro) veiculo;
-			//	Impressora.imprimeCarro(carro);
+			if (veiculo.getTipoVeiculo() == 1) {// checa se o veiculo é um carro, se for imprime os dados do carro na tela
+				Impressora.imprimeCarro(veiculo);
 				System.out.println("");
 			}
 		}
@@ -124,13 +130,17 @@ public class Loja {
 
 		if (posicaoLista != VEICULO_NAO_ENCONTRADO) {
 			Veiculo veiculo = this.estoqueDeVeiculos.get(posicaoLista);// recupera o veiculo que está na posição retornada pelo método
-			if (veiculo instanceof Carro) {
-				Carro carro = (Carro) veiculo;
-				//Impressora.imprimeCarro(carro);
-			} else {
-				Motocicleta moto = (Motocicleta) veiculo;
-				//Impressora.imprimeMoto(moto);
+
+			switch (veiculo.getTipoVeiculo()) {
+				case 1:
+					Impressora.imprimeCarro(veiculo);
+				break;
+
+				case 2:
+					Impressora.imprimeMoto(veiculo);
+				break;
 			}
+
 		} else {
 			System.out.println("Veiculo não encontrado no estoque");
 		}
@@ -138,10 +148,9 @@ public class Loja {
 
 	public void listarMotos() {// imprime somente estoque de motos
 
-		for (Veiculo veiculo : this.estoqueDeVeiculos) {// percorre arraylist de veiculos
-			if (veiculo instanceof Motocicleta) {// checa se é moto
-				Motocicleta moto = (Motocicleta) veiculo;
-				//Impressora.imprimeMoto(moto);
+		for (Veiculo veiculo : this.estoqueDeVeiculos) {// percorre arraylist
+			if (veiculo.getTipoVeiculo() == 2) {// checa se o veiculo é um carro, se for imprime os dados do carro na tela
+				Impressora.imprimeMoto(veiculo);
 				System.out.println("");
 			}
 		}
@@ -158,7 +167,7 @@ public class Loja {
 
 		while (posicaoLista < this.estoqueDeVeiculos.size()) {// while que percorre toda a lista e se tem o controle de que posição da lista em que ele está
 			veiculo = this.estoqueDeVeiculos.get(posicaoLista);// recupera o veiculo da lista
-			if (veiculo.getChassi().equals(chassi)) {// checa se o chassi é igual ao indicado pelo usuário
+			if (veiculo.getEspecificacaoVeiculo().getChassi().equals(chassi)) {// checa se o chassi é igual ao indicado pelo usuário
 				return posicaoLista;// se for igual retorna qual posição da lista aquele veiculo está
 			}
 			posicaoLista++;

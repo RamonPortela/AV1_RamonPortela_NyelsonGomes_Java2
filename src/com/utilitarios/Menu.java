@@ -7,7 +7,7 @@ import com.loja.Loja;
 import com.montadora.Veiculo;
 
 public class Menu {
-	
+
 	private static final int SAIR = 0;
 	private static final int PRIMEIRA_OPCAO = 1;
 	private static final int SEGUNDA_OPCAO = 2;
@@ -20,7 +20,7 @@ public class Menu {
 
 	public static void menu() {
 
-		
+
 
 		Scanner input = new Scanner(System.in);
 		Loja loja = new Loja();
@@ -66,7 +66,7 @@ public class Menu {
 			case SETIMA_OPCAO:
 				SalvaEstoque file = new SalvaEstoque();
 				if (file.abrirArquivo()) {
-				//	file.gravarEstoque(loja);
+					file.gravarEstoque(loja);
 					file.fecharArquivo();
 					System.out.println("Estoque salvo com sucesso.");
 					MetodosAuxiliares.pressionarEnter();
@@ -94,7 +94,7 @@ public class Menu {
 					arquivo.fecharArquivo();
 					MetodosAuxiliares.pressionarEnter();
 				} else {
-					System.out.println("Um erro ocrreu durante o processo de carregar o arquivo."); 
+					System.out.println("Um erro ocrreu durante o processo de carregar o arquivo.");
 					MetodosAuxiliares.pressionarEnter();
 				}
 

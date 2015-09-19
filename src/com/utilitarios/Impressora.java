@@ -2,34 +2,33 @@ package com.utilitarios;
 
 import java.util.Scanner;
 
-import com.montadora.Carro;
-import com.montadora.Motocicleta;
+import com.montadora.Veiculo;
 
 public class Impressora {
 
-	/*public static void imprimeCarro(Carro carro) {
+	public static void imprimeCarro(Veiculo veiculo) {
 		System.out.println("-------CARRO-------");
-		System.out.println("chassi: " + carro.getChassi());
-		System.out.println("Montadora: " + carro.getMontadora());
-		System.out.println("Tipo: " + carro.getTipo());
-		System.out.println("Modelo: " + carro.getModelo());
-		System.out.println("Cor: " + carro.getCor());
-		System.out.println("motorizacao: " + carro.getMotorizacao());
-		System.out.println("Cambio: " + carro.getCambio());
-		System.out.println("Preço: " + carro.getPreco());
+		System.out.println("chassi: " + veiculo.getEspecificacaoVeiculo().getChassi());
+		System.out.println("Montadora: " + veiculo.getEspecificacaoVeiculo().getMontadora());
+		System.out.println("Tipo: " + veiculo.getEspecificacaoVeiculo().getTipo());
+		System.out.println("Modelo: " + veiculo.getEspecificacaoVeiculo().getModelo());
+		System.out.println("Cor: " + veiculo.getEspecificacaoVeiculo().getCor());
+		System.out.println("motorizacao: " + veiculo.getEspecificacaoVeiculo().getMotorizacao());
+		System.out.println("Cambio: " + veiculo.getEspecificacaoVeiculo().getCambio());
+		System.out.println("Preço: " + veiculo.getEspecificacaoVeiculo().getPreco());
 	}
 
-	public static void imprimeMoto(Motocicleta moto) {
+	public static void imprimeMoto(Veiculo veiculo) {
 		System.out.println("-------MOTO-------");
-		System.out.println("chassi: " + moto.getChassi());
-		System.out.println("Montadora: " + moto.getMontadora());
-		System.out.println("Tipo: " + moto.getTipo());
-		System.out.println("Modelo: " + moto.getModelo());
-		System.out.println("Cor: " + moto.getCor());
-		System.out.println("Cilindradas: " + moto.getCilindrada());
-		System.out.println("Capacidade do tanque: "+ moto.getCapacidadeDoTanque() + " Litros");
-		System.out.println("Preço: " + moto.getPreco());
-	}*/
+		System.out.println("chassi: " + veiculo.getEspecificacaoVeiculo().getChassi());
+		System.out.println("Montadora: " + veiculo.getEspecificacaoVeiculo().getMontadora());
+		System.out.println("Tipo: " + veiculo.getEspecificacaoVeiculo().getTipo());
+		System.out.println("Modelo: " + veiculo.getEspecificacaoVeiculo().getModelo());
+		System.out.println("Cor: " + veiculo.getEspecificacaoVeiculo().getCor());
+		System.out.println("Cilindradas: " + veiculo.getEspecificacaoVeiculo().getCilindrada());
+		System.out.println("Capacidade do tanque: "+ veiculo.getEspecificacaoVeiculo().getCapacidadeDoTanque() + " Litros");
+		System.out.println("Preço: " + veiculo.getEspecificacaoVeiculo().getPreco());
+	}
 
 	public static int imprimeMenu(Scanner input) {
 		int opcaoMenu = -1;
@@ -56,5 +55,5 @@ public class Impressora {
 	public static void imprimeErroInesperado() {
 		System.err.println("Um erro inesperado ocorreu, por favor entre com a opção novamente.");
 	}
-	
+
 }

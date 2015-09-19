@@ -7,7 +7,7 @@ import java.util.Scanner;
 import com.montadora.Veiculo;
 
 public class MetodosAuxiliares {
-	
+
 	private static final int LINHAS_PARA_PULAR = 25;
 	private static final int TAMANHO_MAXIMO_CHASSI = 17;
 
@@ -37,7 +37,7 @@ public class MetodosAuxiliares {
 	public static boolean checarChassi(String checaChassi, ArrayList<Veiculo> comparaVeiculo) {
 
 		for (Veiculo checaVeiculo : comparaVeiculo) {
-			if (checaVeiculo.getChassi().equals(checaChassi)) {
+			if (checaVeiculo.getEspecificacaoVeiculo().getChassi().equals(checaChassi)) {
 
 				return true;
 			}

@@ -1,82 +1,109 @@
 package com.montadora;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Especificacao {
 
-	HashMap<String, Float> especificacaoVeiculo;
+	HashMap<String, String> especificacaoVeiculo;
 
-	public Especificacao(HashMap<String, Float> veiculo) {
+	public Especificacao(HashMap<String, String> veiculo) {
 		especificacaoVeiculo = veiculo;
 	}
 
-	public void setMontadora(int opcaoMontadora) {
-		float montadora = opcaoMontadora;
-		especificacaoVeiculo.put("montadora", montadora);
-	}
+	public Especificacao(ArrayList<String> informacoes) {
+		int posicaoArray = 0;
+		int tipoDeVeiculo = Integer.parseInt(informacoes.get(posicaoArray));
 
-	public void setTipo(int opcaoTipo) {
-		float tipo = opcaoTipo;
-		especificacaoVeiculo.put("tipo", tipo);
-	}
+		especificacaoVeiculo = new HashMap<String, String>();
 
-	public void setCor(int opcaoCor) {
-		float cor = opcaoCor;
-		especificacaoVeiculo.put("cor", cor);
-	}
+		switch(tipoDeVeiculo){
 
-	public void setModelo(int opcaoModelo) {
-		float modelo = opcaoModelo;
-		especificacaoVeiculo.put("modelo", modelo);
-	}
+			case 1:
+				posicaoArray++;
+				especificacaoVeiculo.put("chassi", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("montadora", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("tipo", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("modelo", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("cor", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("motorizacao", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("cambio", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("preco", informacoes.get(posicaoArray));
+				break;
 
-	public float getOpcaoMontadora() {
-		return especificacaoVeiculo.get("montadora").floatValue();
-	}
+			case 2:
+				posicaoArray++;
+				especificacaoVeiculo.put("chassi", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("montadora", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("tipo", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("modelo", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("cor", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("cilindradas", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("capacidadeDoTanque", informacoes.get(posicaoArray));
+				posicaoArray++;
+				especificacaoVeiculo.put("preco", informacoes.get(posicaoArray));
+				break;
 
-	public float getOpcaoTipo() {
-		return especificacaoVeiculo.get("tipo").floatValue();
-	}
-
-	public float getOpcaoCor() {
-		return especificacaoVeiculo.get("cor").floatValue();
-	}
-
-	public float getOpcaoModelo() {
-		return especificacaoVeiculo.get("modelo").floatValue();
-	}
-
-	public enum Cores {// enum das cores
-		AZUL(1, "azul"), VERMELHO(2, "vermelho"), BRANCO(3, "branco"), PRETO(4,
-				"preto"), VERDE(5, "verde");
-
-		private int opcaoCores;
-		private String nomeCores;
-
-		private Cores(int opcaoCores, String nomeCores) {// construtor do enum
-			this.opcaoCores = opcaoCores;
-			this.nomeCores = nomeCores;
 		}
+	}
 
-		public int getOpcaoCores() {
-			return opcaoCores;
-		}
+	public String getChassi(){
+		return especificacaoVeiculo.get("chassi");
+	}
 
-		public String getNomeCores() {
-			return nomeCores;
-		}
-	};
+	public String getMontadora(){
+		return especificacaoVeiculo.get("montadora");
+	}
 
-	// eu sei que tem um problema
-	/*
-	 * public void setCor(int opcaoCor) {// seleciona uma cor a partir do que
-	 * foi digitado no teclado switch (opcaoCor) { case 1: this.cor =
-	 * Cores.AZUL.getNomeCores(); break; case 2: this.cor =
-	 * Cores.VERMELHO.getNomeCores(); break; case 3: this.cor =
-	 * Cores.BRANCO.getNomeCores(); break; case 4: this.cor =
-	 * Cores.PRETO.getNomeCores(); break; case 5: this.especificacaoVeiculo =
-	 * Cores.VERDE.getNomeCores(); break; } }
-	 */
+	public String getTipo(){
+		return especificacaoVeiculo.get("tipo");
+	}
+
+	public String getModelo(){
+		return especificacaoVeiculo.get("modelo");
+	}
+
+	public String getCor(){
+		return especificacaoVeiculo.get("cor");
+	}
+
+	public String getPreco(){
+		return especificacaoVeiculo.get("preco");
+	}
+
+	public String getMotorizacao(){
+		return especificacaoVeiculo.get("motorizacao");
+	}
+
+	public String getCambio(){
+		return especificacaoVeiculo.get("cambio");
+	}
+
+	public String getCilindrada(){
+		return especificacaoVeiculo.get("cilindradas");
+	}
+
+	public String getCapacidadeDoTanque(){
+		return especificacaoVeiculo.get("capacidadeDoTanque");
+	}
+
+	public HashMap<String, String> getEspecificacaoVeiculo() {
+		return especificacaoVeiculo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -112,51 +139,50 @@ public class Especificacao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Especificacao other = (Especificacao) obj;
+		Especificacao outro = (Especificacao) obj;
 		if (especificacaoVeiculo == null) {
-			if (other.especificacaoVeiculo != null)
+			if (outro.especificacaoVeiculo != null)
 				return false;
 		} else {
-			if (other.especificacaoVeiculo.get("cambio") != null) {
-				if (other.especificacaoVeiculo.get("cambio").floatValue() != especificacaoVeiculo
-						.get("cambio").floatValue()) {
+			if (outro.especificacaoVeiculo.get("cambio") != null) {
+				if (!outro.especificacaoVeiculo.get("cambio").equals(especificacaoVeiculo
+						.get("cambio"))) {
 					return false;
 				}
 			}
-			if (other.especificacaoVeiculo.get("montadora") != null) {
-				if (other.especificacaoVeiculo.get("montadora").floatValue() != especificacaoVeiculo
-						.get("montadora").floatValue()) {
+			if (outro.especificacaoVeiculo.get("montadora") != null) {
+				if (!outro.especificacaoVeiculo.get("montadora").equals(especificacaoVeiculo
+						.get("montadora"))) {
 					return false;
 				}
 			}
-			if (other.especificacaoVeiculo.get("tipo") != null) {
-				if (other.especificacaoVeiculo.get("tipo").floatValue() != especificacaoVeiculo
-						.get("tipo").floatValue()) {
+			if (outro.especificacaoVeiculo.get("tipo") != null) {
+				if (!outro.especificacaoVeiculo.get("tipo").equals(especificacaoVeiculo
+						.get("tipo"))) {
 					return false;
 				}
 			}
-			if (other.especificacaoVeiculo.get("motorizacao") != null) {
-				if (other.especificacaoVeiculo.get("motorizacao").floatValue() != especificacaoVeiculo
-						.get("motorizacao").floatValue()) {
+			if (outro.especificacaoVeiculo.get("motorizacao") != null) {
+				if (!outro.especificacaoVeiculo.get("motorizacao").equals(especificacaoVeiculo
+						.get("motorizacao"))) {
 					return false;
 				}
 			}
-			if (other.especificacaoVeiculo.get("cilindrada") != null) {
-				if (other.especificacaoVeiculo.get("cilindrada").floatValue() != especificacaoVeiculo
-						.get("cilindrada").floatValue()) {
+			if (outro.especificacaoVeiculo.get("cilindrada") != null) {
+				if (!outro.especificacaoVeiculo.get("cilindrada").equals(especificacaoVeiculo
+						.get("cilindrada"))) {
 					return false;
 				}
 			}
-			if (other.especificacaoVeiculo.get("capacidadeDoTanque") != null) {
-				if (other.especificacaoVeiculo.get("capacidadeDoTanque")
-						.floatValue() != especificacaoVeiculo.get(
-						"capacidadeDoTanque").floatValue()) {
+			if (outro.especificacaoVeiculo.get("capacidadeDoTanque") != null) {
+				if (!outro.especificacaoVeiculo.get("capacidadeDoTanque").equals(especificacaoVeiculo.get(
+						"capacidadeDoTanque"))) {
 					return false;
 				}
 			}
-			if (other.especificacaoVeiculo.get("cor") != null) {
-				if (other.especificacaoVeiculo.get("cor").floatValue() != especificacaoVeiculo
-						.get("cor").floatValue()) {
+			if (outro.especificacaoVeiculo.get("cor") != null) {
+				if (!outro.especificacaoVeiculo.get("cor").equals(especificacaoVeiculo
+						.get("cor"))) {
 					return false;
 				}
 			}

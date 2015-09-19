@@ -5,14 +5,16 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.montadora.Carro;
-import com.montadora.Motocicleta;
+import com.montadora.Especificacao;
 import com.montadora.Veiculo;
 
 public class CarregarEstoque {
 
 	private static final int QUANTIDADE_DE_LINHAS_REGISTRO = 10;
 	private static final int TEM_EXCECAO = 0;
+	private static final int CARRO = 1;
+	private static final int MOTO = 2;
+	private static final int CHASSI = 1;
 
 	private Scanner input;
 
@@ -36,106 +38,119 @@ public class CarregarEstoque {
 			contadorDeLinhas = 0;
 
 			if (input.nextLine().indexOf("CARRO") > 0) {
-				Carro carro = new Carro();
+				ArrayList<String> informacoes = new ArrayList<String>();
+				Veiculo veiculo = new Veiculo();
+
+				veiculo.setTipoVeiculo(CARRO);
+				informacoes.add(String.valueOf(CARRO));
+
 				contadorDeLinhas++;
 
-				contadorDeLinhas = leDadosVeiculoInicio(carro, contadorDeLinhas);
+				contadorDeLinhas = leDadosVeiculoInicio(veiculo, contadorDeLinhas, informacoes);
 
 				String[] quintaLinha = input.nextLine().split(":");
 				String[] motorizacao = quintaLinha[1].split(" ");
 				String motorizacaoString = motorizacao[0].trim();
 				motorizacaoString = motorizacaoString.replace(",", ".");
-				temExcecao = Excecoes.lancaExcecaoLeituraVeiculo(motorizacaoString, carro.getChassi());
+				temExcecao = Excecoes.lancaExcecaoLeituraVeiculo(motorizacaoString, informacoes.get(CHASSI));
 				if (temExcecao) {
 					contadorDeLinhas = pulaLinhasParaProximoRegistro(contadorDeLinhas);
 					continue;
 				} else {
-					float motorizacaoFormatado = Float.parseFloat(motorizacaoString);
-					carro.setMotorizacao(motorizacaoFormatado);
+					informacoes.add(motorizacaoString);
 				}
 				contadorDeLinhas++;
 
 				String[] sextaLinha = input.nextLine().split(":");
 				String[] cambio = sextaLinha[1].split(" ");
 				String cambioFormatado = cambio[0].trim();
-				carro.setCambio(cambioFormatado);
+				informacoes.add(cambioFormatado);
 				contadorDeLinhas++;
 
-				contadorDeLinhas = leDadosVeiculoFim(carro, contadorDeLinhas);
+				contadorDeLinhas = leDadosVeiculoFim(veiculo, contadorDeLinhas, informacoes);
 
 				if (contadorDeLinhas == TEM_EXCECAO) {
 					continue;
 				}
 
-				estoqueDeVeiculos.add(carro);
+				Especificacao especificacao = new Especificacao(informacoes);
+				veiculo.setEspecificacaoVeiculo(especificacao);
+
+				estoqueDeVeiculos.add(veiculo);
+
 			} else {
-				Motocicleta moto = new Motocicleta();
+				ArrayList<String> informacoes = new ArrayList<String>();
+				Veiculo veiculo = new Veiculo();
+
+				veiculo.setTipoVeiculo(MOTO);
+				informacoes.add(String.valueOf(MOTO));
 				contadorDeLinhas++;
 
-				contadorDeLinhas = leDadosVeiculoInicio(moto, contadorDeLinhas);
+				contadorDeLinhas = leDadosVeiculoInicio(veiculo, contadorDeLinhas, informacoes);
 
 				String[] quintaLinha = input.nextLine().split(":");
 				String[] cilindrada = quintaLinha[1].split(" ");
 				String cilindradaString = cilindrada[0].trim();
-				temExcecao = Excecoes.lancaExcecaoLeituraVeiculo(cilindradaString, moto.getChassi());
+				temExcecao = Excecoes.lancaExcecaoLeituraVeiculo(cilindradaString, informacoes.get(CHASSI));
 				if (temExcecao) {
 					contadorDeLinhas = pulaLinhasParaProximoRegistro(contadorDeLinhas);
 					continue;
 				} else {
-					int cilindradaFormatada = Integer.parseInt(cilindradaString);
-					moto.setCilindrada(cilindradaFormatada);
+					informacoes.add(cilindradaString);
 				}
 				contadorDeLinhas++;
 
 				String[] sextaLinha = input.nextLine().split(":");
 				String[] capacidadeDoTanque = sextaLinha[1].split(" ");
 				String capacidadeDoTanqueString = capacidadeDoTanque[0].trim();
-				temExcecao = Excecoes.lancaExcecaoLeituraVeiculo(capacidadeDoTanqueString, moto.getChassi());
+				temExcecao = Excecoes.lancaExcecaoLeituraVeiculo(capacidadeDoTanqueString, informacoes.get(CHASSI));
 				if (temExcecao) {
 					contadorDeLinhas = pulaLinhasParaProximoRegistro(contadorDeLinhas);
 					continue;
 				} else {
-					int capacidadeDoTanqueFormatada = Integer.parseInt(capacidadeDoTanqueString);
-					moto.setCapacidadeDoTanque(capacidadeDoTanqueFormatada);
+					informacoes.add(capacidadeDoTanqueString);
 				}
 
 				contadorDeLinhas++;
 
-				contadorDeLinhas = leDadosVeiculoFim(moto, contadorDeLinhas);
+				contadorDeLinhas = leDadosVeiculoFim(veiculo, contadorDeLinhas, informacoes);
 
 				if (contadorDeLinhas == TEM_EXCECAO) {
 					continue;
 				}
 
-				estoqueDeVeiculos.add(moto);
+				Especificacao especificacao = new Especificacao(informacoes);
+				veiculo.setEspecificacaoVeiculo(especificacao);
+
+				estoqueDeVeiculos.add(veiculo);
 			}
 
 			input.nextLine();
 		}
-		
+
 		if (!temVeiculo)
 			return false;
 
 		return true;
 	}
 
-	private int leDadosVeiculoInicio(Veiculo veiculo, int contadorDeLinhas) {
+	private int leDadosVeiculoInicio(Veiculo veiculo, int contadorDeLinhas, ArrayList<String> informacoes) {
 		String[] primeiraLinha = input.nextLine().split(":");
 		String[] chassi = primeiraLinha[1].split(" ");
 		String chassiFormatado = chassi[0].trim();
-		veiculo.setChassi(chassiFormatado);
+		informacoes.add(chassiFormatado);
 		contadorDeLinhas++;
 
 		String[] segundaLinha = input.nextLine().split(":");
 		String[] montadora = segundaLinha[1].split(" ");
 		String montadoraFormatada = montadora[0].trim();
-		//veiculo.setMontadora(montadoraFormatada);
+		informacoes.add(montadoraFormatada);
 		contadorDeLinhas++;
 
 		String[] terceiraLinha = input.nextLine().split(":");
 		String[] tipo = terceiraLinha[1].split(" ");
 		String tipoFormatado = tipo[0].trim();
-		//veiculo.setTipo(tipoFormatado);
+		informacoes.add(tipoFormatado);
 		contadorDeLinhas++;
 
 		String[] quartaLinha = input.nextLine().split(":");
@@ -148,32 +163,31 @@ public class CarregarEstoque {
 			modeloFormatado += " ";
 		}
 		modeloFormatado = modeloFormatado.trim();
-		//veiculo.setModelo(modeloFormatado);
+		informacoes.add(modeloFormatado);
 		contadorDeLinhas++;
 
 		return contadorDeLinhas;
 	}
 
-	private int leDadosVeiculoFim(Veiculo veiculo, int contadorDeLinhas) {
+	private int leDadosVeiculoFim(Veiculo veiculo, int contadorDeLinhas, ArrayList<String> informacoes) {
 		boolean temExcecao;
 
 		String[] setimaLinha = input.nextLine().split(":");
 		String[] cor = setimaLinha[1].split(" ");
 		String corFormatada = cor[0].trim();
-		//veiculo.setCor(corFormatada);
+		informacoes.add(5, corFormatada);
 		contadorDeLinhas++;
 
 		String[] oitavaLinha = input.nextLine().split(":");
 		String[] preco = oitavaLinha[1].split(" ");
 		String precoString = preco[0].trim();
 		precoString = precoString.replace(",", ".");
-		temExcecao = Excecoes.lancaExcecaoLeituraVeiculo(precoString, veiculo.getChassi());
+		temExcecao = Excecoes.lancaExcecaoLeituraVeiculo(precoString, informacoes.get(CHASSI));
 		if (temExcecao) {
 			contadorDeLinhas = pulaLinhasParaProximoRegistro(contadorDeLinhas);
 			return TEM_EXCECAO;
 		} else {
-			float precoFormatado = Float.parseFloat(precoString);
-			veiculo.setPreco(precoFormatado);
+			informacoes.add(precoString);
 		}
 		contadorDeLinhas++;
 
