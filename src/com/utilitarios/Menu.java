@@ -17,10 +17,9 @@ public class Menu {
 	private static final int SEXTA_OPCAO = 6;
 	private static final int SETIMA_OPCAO = 7;
 	private static final int OITAVA_OPCAO = 8;
+	private static final int NONA_OPCAO = 9;
 
 	public static void menu() {
-
-
 
 		Scanner input = new Scanner(System.in);
 		Loja loja = new Loja();
@@ -52,18 +51,23 @@ public class Menu {
 				loja.buscarVeiculo(input);
 				MetodosAuxiliares.pressionarEnter();
 				break;
-
+				
 			case QUINTA_OPCAO:
-				loja.listarCarros();
+				loja.buscarEspecificacao(input);
 				MetodosAuxiliares.pressionarEnter();
 				break;
 
 			case SEXTA_OPCAO:
-				loja.listarMotos();
+				loja.listarCarros();
 				MetodosAuxiliares.pressionarEnter();
 				break;
 
 			case SETIMA_OPCAO:
+				loja.listarMotos();
+				MetodosAuxiliares.pressionarEnter();
+				break;
+
+			case OITAVA_OPCAO:
 				SalvaEstoque file = new SalvaEstoque();
 				if (file.abrirArquivo()) {
 					file.gravarEstoque(loja);
@@ -76,7 +80,7 @@ public class Menu {
 				}
 				break;
 
-			case OITAVA_OPCAO:
+			case NONA_OPCAO:
 				CarregarEstoque arquivo = new CarregarEstoque();
 				boolean temVeiculo;
 

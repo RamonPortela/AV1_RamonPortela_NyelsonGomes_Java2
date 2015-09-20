@@ -14,6 +14,11 @@ public class LeVeiculos {
 	private static final int VALOR_MAXIMO_CILINDRADAS = 999;
 	private static final int VALOR_MAXIMO_CAPACIDADE_DO_TANQUE = 99;
 
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param estoqueDeVeiculo - Recebe um estoque de veículos do estoque.
+	 * O metodo recebe um chassi inserido pelo usuário.
+	 */
 	public static String leChassi(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo) {
 		boolean temVeiculo;
 		boolean chassiInvalido = false;
@@ -43,66 +48,128 @@ public class LeVeiculos {
 
 		return null;
 
-	}
+	}	
 
-	public static int leMontadora(Scanner input, String texto, String opcoes) {
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param texto - Responsável por exibir o menu no console
+	 * @param opcoes - Responsável por exibir as opções no console
+	 * @param pesquisa - Caso a ação seja de pesquisa retorna verdadeiro, caso seja adicionar retorna falso.
+	 * @return Uma montadora solicitada pelo usuário.
+	 */
+	public static int leMontadora(Scanner input, String texto, String opcoes, boolean pesquisa) {
 		int opcaoMontadora;
+		int valorMinimo;
+		
+		if(pesquisa){
+			valorMinimo = 0;
+		}
+		else{
+			valorMinimo = VALOR_MINIMO;
+		}
 
 		do {
 			opcaoMontadora = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
-			if ((opcaoMontadora < VALOR_MINIMO) || (opcaoMontadora > VALOR_MAXIMO)) {
+			if ((opcaoMontadora < valorMinimo) || (opcaoMontadora > VALOR_MAXIMO)) {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			} else {
 				return opcaoMontadora;
 			}
 
-		} while ((opcaoMontadora < VALOR_MINIMO) || (opcaoMontadora > VALOR_MAXIMO));
+		} while ((opcaoMontadora < valorMinimo) || (opcaoMontadora > VALOR_MAXIMO));
 		return opcaoMontadora;
 
 	}
 
-	public static int leTipo(Scanner input, String texto, String opcoes) {
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param texto - Responsável por exibir o menu no console
+	 * @param opcoes - Responsável por exibir as opções no console
+	 * @param pesquisa - Caso a ação seja de pesquisa retorna verdadeiro, caso seja adicionar retorna falso.
+	 * @return Um tipo solicitado pelo usuário.
+	 */
+	public static int leTipo(Scanner input, String texto, String opcoes, boolean pesquisa) {
 		int opcaoTipo;
+		int valorMinimo;
+		
+		if(pesquisa){
+			valorMinimo = 0;
+		}
+		else{
+			valorMinimo = VALOR_MINIMO;
+		}
 
 		do {
 			opcaoTipo = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
-			if ((opcaoTipo < VALOR_MINIMO) || (opcaoTipo > VALOR_MAXIMO)) {
+			if ((opcaoTipo < valorMinimo) || (opcaoTipo > VALOR_MAXIMO)) {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			} else {
 				return opcaoTipo;
 			}
 
-		} while ((opcaoTipo < VALOR_MINIMO) || (opcaoTipo > VALOR_MAXIMO));
+		} while ((opcaoTipo < valorMinimo) || (opcaoTipo > VALOR_MAXIMO));
 		return opcaoTipo;
 
 	}
 
-	public static String leModelo(Scanner input) {
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param pesquisa - Caso a ação seja de pesquisa retorna verdadeiro, caso seja adicionar retorna falso.
+	 * @return Um modelo solicitado pelo usuário.
+	 */
+	public static String leModelo(Scanner input, boolean pesquisa) {
 
 		String modelo;
 
-		System.out.println("Entre com o modelo do veículo:");
-		modelo = input.nextLine();
-
+		if(pesquisa){
+			System.out.println("Entre com o modelo do veículo ou 0 para qualquer modelo:");
+			modelo = input.nextLine();
+			
+			if(modelo.equals("0")){
+				modelo = null;
+			}
+		}
+		else{
+			System.out.println("Entre com o modelo do veículo:");
+			modelo = input.nextLine();	
+		}
 		return modelo;
 	}
 
-	public static String leCor(Scanner input) {
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param pesquisa - Caso a ação seja de pesquisa retorna verdadeiro, caso seja adicionar retorna falso.
+	 * @return Uma cor solicitada pelo usuário.
+	 */
+	public static String leCor(Scanner input, boolean pesquisa) {
 		int opcaoCor;
 		String texto;
 		String opcoes;
+		int valorMinimo;
+		
+		if(pesquisa){
+			opcoes = "0 - Qualquer \t 1 - azul   \t 2 - vermelho \t 3 - branco \t 4 - preto \t 5 - verde";
+			valorMinimo = 0;
+		}
+		else{
+			opcoes = "1 - azul   \t 2 - vermelho \t 3 - branco \t 4 - preto \t 5 - verde";
+			valorMinimo = VALOR_MINIMO;
+		}
 		texto = "Selecione a cor do veículo: ";
-		opcoes = "1 - azul   \t 2 - vermelho \t 3 - branco \t 4 - preto \t 5 - verde";
 
 		do {
 			opcaoCor = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
-			if ((opcaoCor < VALOR_MINIMO) || (opcaoCor > VALOR_MAXIMO)) {
+			if ((opcaoCor < valorMinimo) || (opcaoCor > VALOR_MAXIMO)) {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			} else {
 				switch (opcaoCor) {
+					
+					case 0:
+						return null;
+					
 					case 1:
 						return "azul";
 
@@ -120,11 +187,15 @@ public class LeVeiculos {
 				}
 			}
 
-		} while ((opcaoCor < VALOR_MINIMO) || (opcaoCor > VALOR_MAXIMO));
+		} while ((opcaoCor < valorMinimo) || (opcaoCor > VALOR_MAXIMO));
 		return null;
 
 	}
 
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @return Um preço solicitado pelo usuário.
+	 */
 	public static String lePreco(Scanner input) {
 		float preco;
 		String texto;
@@ -146,21 +217,39 @@ public class LeVeiculos {
 		return null;
 	}
 
-	public static String leMotorizacao(Scanner input) {
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param pesquisa - Caso a ação seja de pesquisa retorna verdadeiro, caso seja adicionar retorna falso.
+	 * @return Uma motorização solicitada pelo usuário.
+	 */
+	public static String leMotorizacao(Scanner input, boolean pesquisa) {
 		int opcaoMotorizacao;
 		String texto;
 		String opcoes;
-		texto = "Selecione a motorização do carro: ";
-		opcoes = "1 - 1.0   \t 2 - 1.3 \t 3 - 1.4 \t 4 - 1.5 \t 5 - 1.6 \t 6 - 1.8 \t 7 - 2.0";
+		int valorMinimo;
+		
+		if(pesquisa){
+			opcoes = "0 - Qualquer \t 1 - 1.0   \t 2 - 1.3 \t 3 - 1.4 \t 4 - 1.5 \t 5 - 1.6 \t 6 - 1.8 \t 7 - 2.0";
+			valorMinimo = 0;
+		}
+		else{
+			opcoes = "1 - 1.0   \t 2 - 1.3 \t 3 - 1.4 \t 4 - 1.5 \t 5 - 1.6 \t 6 - 1.8 \t 7 - 2.0";
+			valorMinimo = VALOR_MINIMO;
+		}
+		texto = "Selecione a motorização do carro: ";		
 
 		do {
 			opcaoMotorizacao = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
 
-			if ((opcaoMotorizacao < VALOR_MINIMO) || (opcaoMotorizacao > VALOR_MAXIMO_MOTORIZACAO)) {
+			if ((opcaoMotorizacao < valorMinimo) || (opcaoMotorizacao > VALOR_MAXIMO_MOTORIZACAO)) {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			} else {
 				switch (opcaoMotorizacao) {
+				
+				case 0:
+					return null;
+					
 				case 1:
 					return "1.0";
 
@@ -184,26 +273,45 @@ public class LeVeiculos {
 				}
 			}
 
-		} while ((opcaoMotorizacao < VALOR_MINIMO) || (opcaoMotorizacao > VALOR_MAXIMO_MOTORIZACAO));
+		} while ((opcaoMotorizacao < valorMinimo) || (opcaoMotorizacao > VALOR_MAXIMO_MOTORIZACAO));
 		return null;
 
 	}
 
-	public static String leCambio(Scanner input) {
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param pesquisa - Caso a ação seja de pesquisa retorna verdadeiro, caso seja adicionar retorna falso.
+	 * @return Um cambio solicitado pelo usuário.
+	 */
+	public static String leCambio(Scanner input, boolean pesquisa) {
 		int opcaoCambio;
 		String texto;
 		String opcoes;
+		int valorMinimo;
+		
+		if(pesquisa){
+			opcoes = "0 - Qualquer \t 1 - Manual   \t 2 - Automático \t 3 - Automatizado \t 4 - CVT";
+			valorMinimo = 0;
+		}
+		else{
+			opcoes = "1 - Manual   \t 2 - Automático \t 3 - Automatizado \t 4 - CVT";
+			valorMinimo = VALOR_MINIMO;
+		}
+		
 		texto = "Selecione o tipo de câmbio do carro: ";
-		opcoes = "1 - Manual   \t 2 - Automático \t 3 - Automatizado \t 4 - CVT";
 
 		do {
 			opcaoCambio = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto, opcoes);
 
-			if ((opcaoCambio < VALOR_MINIMO) || (opcaoCambio > VALOR_MAXIMO_CAMBIO)) {
+			if ((opcaoCambio < valorMinimo) || (opcaoCambio > VALOR_MAXIMO_CAMBIO)) {
 				Impressora.imprimeOpcaoInvalida();
 				MetodosAuxiliares.pressionarEnterErro();
 			} else {
 				switch (opcaoCambio) {
+				
+				case 0:
+					return null;
+					
 				case 1:
 					return "Manual";
 
@@ -218,48 +326,86 @@ public class LeVeiculos {
 
 				case 5:
 					return "verde";
-			}
+				}
 			}
 
-		} while ((opcaoCambio < VALOR_MINIMO) || (opcaoCambio > VALOR_MAXIMO_CAMBIO));
+		} while ((opcaoCambio < valorMinimo) || (opcaoCambio > VALOR_MAXIMO_CAMBIO));
 		return null;
 
 	}
 
-	public static String leCilindradas(Scanner input) {
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param pesquisa - Caso a ação seja de pesquisa retorna verdadeiro, caso seja adicionar retorna falso.
+	 * @return Uma cilindrada solicitada pelo usuário.
+	 */
+	public static String leCilindradas(Scanner input, boolean pesquisa) {
 		int opcaoCilindrada;
 		String texto;
-		texto = "Entre com as cilindradas da moto: ";
+		int valorMinimo;
 
+		if(pesquisa){
+			texto = "Entre com as cilindradas da moto ou 0 para qualquer cilindrada: ";
+			valorMinimo = 0;
+		}
+		else{
+			texto = "Entre com as cilindradas da moto: ";
+			valorMinimo = VALOR_MINIMO;
+		}
+		
 		do {
 			opcaoCilindrada = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto);
 
-			if ((opcaoCilindrada < VALOR_MINIMO) || (opcaoCilindrada > VALOR_MAXIMO_CILINDRADAS)) {
+			if ((opcaoCilindrada < valorMinimo) || (opcaoCilindrada > VALOR_MAXIMO_CILINDRADAS)) {
 				System.out.println("Cilindrada inválida.");
 			} else {
+				if(pesquisa && opcaoCilindrada == valorMinimo){
+					return null;
+				}
+				else{
 				return String.valueOf(opcaoCilindrada);
+				}
 			}
 
-		} while ((opcaoCilindrada < VALOR_MINIMO) || (opcaoCilindrada > VALOR_MAXIMO_CILINDRADAS));
+		} while ((opcaoCilindrada < valorMinimo) || (opcaoCilindrada > VALOR_MAXIMO_CILINDRADAS));
 
 		return String.valueOf(opcaoCilindrada);
 	}
 
-	public static String leCapacidadeDoTanque(Scanner input) {
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param pesquisa - Caso a ação seja de pesquisa retorna verdadeiro, caso seja adicionar retorna falso.
+	 * @return Uma Capacidade do Tanque solicitada pelo usuário.
+	 */
+	public static String leCapacidadeDoTanque(Scanner input, boolean pesquisa) {
 		int opcaoCapacidadeDoTanque;
 		String texto;
-		texto = "Entre com a capacidade do tanque em Litros: ";
+		int valorMinimo;
+		
+		if(pesquisa){
+			texto = "Entre com a capacidade do tanque ou 0 para qualquer capacidade do tanque: ";
+			valorMinimo = 0;
+		}
+		else{
+			texto = "Entre com a capacidade do tanque: ";
+			valorMinimo = VALOR_MINIMO;
+		}
 
 		do {
 			opcaoCapacidadeDoTanque = Excecoes.lancaExcecaoOpcoesVeiculo(input, texto);
 
-			if ((opcaoCapacidadeDoTanque < VALOR_MINIMO) || (opcaoCapacidadeDoTanque > VALOR_MAXIMO_CAPACIDADE_DO_TANQUE)) {
+			if ((opcaoCapacidadeDoTanque < valorMinimo) || (opcaoCapacidadeDoTanque > VALOR_MAXIMO_CAPACIDADE_DO_TANQUE)) {
 				System.out.println("Capacidade do tanque acima do limite.");
 			} else {
-				return String.valueOf(opcaoCapacidadeDoTanque);
+				if(pesquisa && opcaoCapacidadeDoTanque == valorMinimo){
+					return null;
+				}
+				else{					
+					return String.valueOf(opcaoCapacidadeDoTanque);
+				}
 			}
 
-		} while ((opcaoCapacidadeDoTanque < VALOR_MINIMO) || (opcaoCapacidadeDoTanque > VALOR_MAXIMO_CAPACIDADE_DO_TANQUE));
+		} while ((opcaoCapacidadeDoTanque < valorMinimo) || (opcaoCapacidadeDoTanque > VALOR_MAXIMO_CAPACIDADE_DO_TANQUE));
 
 		return String.valueOf(opcaoCapacidadeDoTanque);
 	}

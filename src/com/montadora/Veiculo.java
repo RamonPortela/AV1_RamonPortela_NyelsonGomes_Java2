@@ -27,7 +27,7 @@ public class Veiculo {
 		this.especificacaoVeiculo = especificacaoVeiculo;
 	}
 
-	public enum tipoVeiculo {
+	public enum tipoVeiculo { // Define os tipos de veiculos existentes
 		CARRO("Carro", 1), MOTO("Moto", 2);
 
 		private String nome;
@@ -47,7 +47,14 @@ public class Veiculo {
 		}
 	};
 
-	public Especificacao criarVeiculo(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo, ArrayList<String> informacoes) {
+	/**
+	 * @param input - Para não precisar instanciar um novo Scanner
+	 * @param estoqueDeVeiculo - É a lista com os veículos existentes no estoque
+	 * @param informacoes - É a lista com as especificações solicitadas pelo usuário
+	 * @return Uma especificação
+	 * O metodo cria uma especificação com todas as informações passadas pelo usuário, além de checar a existência do mesmo veículo no estoque.
+	 */
+	public Especificacao criarEspecificacao(Scanner input, ArrayList<Veiculo> estoqueDeVeiculo, ArrayList<String> informacoes) {
 		String texto;
 		String opcoes;
 		int tipoDeVeiculo = Integer.parseInt(informacoes.get(0));
@@ -59,7 +66,7 @@ public class Veiculo {
 
 				texto = "Escolha uma montadora: ";
 				opcoes = "1 - GM   \t 2 - VOLKSWAGEN \t 3 - BMW \t 4 - FIAT \t 5 - FORD";
-				switch(LeVeiculos.leMontadora(input, texto, opcoes)){
+				switch(LeVeiculos.leMontadora(input, texto, opcoes, false)){
 					case 1:
 						informacoes.add("GM");
 					break;
@@ -83,7 +90,7 @@ public class Veiculo {
 
 				texto = "Entre com o tipo do veículo: ";
 				opcoes = "1 - Hatch   \t 2 - Sedan \t 3 - Minivan \t 4 - Picape \t 5 - Esportivo";
-				switch(LeVeiculos.leTipo(input, texto, opcoes)){
+				switch(LeVeiculos.leTipo(input, texto, opcoes, false)){
 					case 1:
 						informacoes.add("Hatch");
 					break;
@@ -107,10 +114,10 @@ public class Veiculo {
 
 				input.nextLine();
 
-				informacoes.add(LeVeiculos.leModelo(input));
-				informacoes.add(LeVeiculos.leCor(input));
-				informacoes.add(LeVeiculos.leMotorizacao(input));
-				informacoes.add(LeVeiculos.leCambio(input));
+				informacoes.add(LeVeiculos.leModelo(input, false));
+				informacoes.add(LeVeiculos.leCor(input, false));
+				informacoes.add(LeVeiculos.leMotorizacao(input, false));
+				informacoes.add(LeVeiculos.leCambio(input, false));
 				informacoes.add(LeVeiculos.lePreco(input));
 
 			break;
@@ -120,7 +127,7 @@ public class Veiculo {
 
 				texto = "Escolha uma montadora: ";
 				opcoes = "1 - HARLEY-DAVIDSON   \t 2 - HONDA \t 3 - SUZUKI \t 4 - KAWASAKI \t 5 - SHINERAY";
-				switch(LeVeiculos.leMontadora(input, texto, opcoes)){
+				switch(LeVeiculos.leMontadora(input, texto, opcoes, false)){
 					case 1:
 						informacoes.add("HARLEY-DAVIDSON");
 					break;
@@ -144,7 +151,7 @@ public class Veiculo {
 
 				texto = "Entre com o tipo do veículo: ";
 				opcoes = "1 - Scooter   \t 2 - Custom \t 3 - Roadster \t 4 - Street \t 5 - Esportiva";
-				switch(LeVeiculos.leTipo(input, texto, opcoes)){
+				switch(LeVeiculos.leTipo(input, texto, opcoes, false)){
 					case 1:
 						informacoes.add("Scooter");
 					break;
@@ -168,10 +175,10 @@ public class Veiculo {
 
 				input.nextLine();
 
-				informacoes.add(LeVeiculos.leModelo(input));
-				informacoes.add(LeVeiculos.leCor(input));
-				informacoes.add(LeVeiculos.leCilindradas(input));
-				informacoes.add(LeVeiculos.leCapacidadeDoTanque(input));
+				informacoes.add(LeVeiculos.leModelo(input, false));
+				informacoes.add(LeVeiculos.leCor(input, false));
+				informacoes.add(LeVeiculos.leCilindradas(input, false));
+				informacoes.add(LeVeiculos.leCapacidadeDoTanque(input, false));
 				informacoes.add(LeVeiculos.lePreco(input));
 			break;
 

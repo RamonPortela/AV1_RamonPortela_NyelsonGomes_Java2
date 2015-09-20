@@ -13,13 +13,11 @@ public class MetodosAuxiliares {
 
 	public static void pressionarEnter() {
 		System.out.println("Pressione enter para voltar ao menu.");
-		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		input.nextLine();//só continua pro proximo passo se o usuario apertar a tecla enter
 		limparTela();// chama metodo de limpar tela
 	}
 
-	@SuppressWarnings("resource")
 	public static void pressionarEnterErro() {
 		System.out.println("Pressione enter para continuar.");
 		Scanner input = new Scanner(System.in);
@@ -34,6 +32,11 @@ public class MetodosAuxiliares {
 
 	}
 
+	/**
+	 * @param checaChassi - Recebe um numero de chassi solicitado pelo usuário
+	 * @param comparaVeiculo - Array List com os veículos em estoque.
+	 * @return Verdadeiro caso encontre um chassi de um veículo procurado pelo usuário, e false caso não o encontre.
+	 */
 	public static boolean checarChassi(String checaChassi, ArrayList<Veiculo> comparaVeiculo) {
 
 		for (Veiculo checaVeiculo : comparaVeiculo) {
@@ -63,6 +66,7 @@ public class MetodosAuxiliares {
 		return opcaoMenu;
 	}
 
+	// Checa se o tamanho do chassi ultrapassa os limites
 	public static boolean tamanhoAdequado(String chassi) {
 		if (chassi.length() > TAMANHO_MAXIMO_CHASSI) {
 			return false;

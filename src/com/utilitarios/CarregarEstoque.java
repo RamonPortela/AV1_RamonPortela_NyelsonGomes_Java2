@@ -18,7 +18,12 @@ public class CarregarEstoque {
 
 	private Scanner input;
 
-	public boolean abrirArquivo() {
+	/**
+	 * @return Verdadeiro caso tenha criado ou aberto o arquivo e Falso caso tenha ocorrido uma falha
+	 * @exception Caso ocorra uma falha na abertura do arquivo, uma exceção é lançada
+	 * O metodo é responsável por criar um arquivo.
+	 */
+	public boolean abrirArquivo() { 
 		try {
 			input = new Scanner(new File("Estoque.txt"));
 		} catch (FileNotFoundException falhaAbertura) {
@@ -28,6 +33,11 @@ public class CarregarEstoque {
 		return true;
 	}
 
+	/**
+	 * @param estoqueDeVeiculos - Recebe um estoque de veiculos
+	 * @return Verdadeiro caso tenha o arquivo seja aberto com sucesso, e Falso caso não seja aberto.
+	 * O metodo é responsável por ler o estoque de veículos salvos em um arquivo.
+	 */
 	public boolean lerEstoqueSalvo(ArrayList<Veiculo> estoqueDeVeiculos) {
 		int contadorDeLinhas;
 		boolean temExcecao;
@@ -134,6 +144,12 @@ public class CarregarEstoque {
 		return true;
 	}
 
+	/**
+	 * @param veiculo - Recebe um veículo criado, para guardar os dados do arquivo.
+	 * @param contadorDeLinhas - Linha atual que está no arquivo.
+	 * @param informacoes - Recebe as informações do veículo criado.
+	 * @return Quando o arquivo for lido em outra função, ele não começar a ser lido do início.
+	 */
 	private int leDadosVeiculoInicio(Veiculo veiculo, int contadorDeLinhas, ArrayList<String> informacoes) {
 		String[] primeiraLinha = input.nextLine().split(":");
 		String[] chassi = primeiraLinha[1].split(" ");
@@ -169,6 +185,12 @@ public class CarregarEstoque {
 		return contadorDeLinhas;
 	}
 
+	/**
+	 * @param veiculo - Recebe um veículo criado, para guardar os dados do arquivo.
+	 * @param contadorDeLinhas - Linha atual que está no arquivo.
+	 * @param informacoes - Recebe as informações do veículo criado.
+	 * @return Quando o arquivo for lido em outra função, ele não começar a ser lido do fim.
+	 */
 	private int leDadosVeiculoFim(Veiculo veiculo, int contadorDeLinhas, ArrayList<String> informacoes) {
 		boolean temExcecao;
 
@@ -193,7 +215,11 @@ public class CarregarEstoque {
 
 		return contadorDeLinhas;
 	}
-
+	
+	/**
+	 * @param contadorDeLinhas - Recebe a linha atual.
+	 * @return Retorna a linha no início do próximo registro.
+	 */
 	private int pulaLinhasParaProximoRegistro(int contadorDeLinhas) {
 		for (int contador = ++contadorDeLinhas; contador < QUANTIDADE_DE_LINHAS_REGISTRO; contador++) {
 			input.nextLine();

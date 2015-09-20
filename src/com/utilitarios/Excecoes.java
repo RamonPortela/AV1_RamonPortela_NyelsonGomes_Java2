@@ -4,6 +4,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Excecoes {
+	
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param texto - O texto passado para ser impresso no console
+	 * @param opcoes - Opções passadas para serem impressas no console
+	 * @return Retorna a opção do veículo, caso ela seja válida.
+	 */
 	public static int lancaExcecaoOpcoesVeiculo(Scanner input, String texto, String opcoes) {
 		int opcaoVeiculo = 0;
 		boolean temExcecao = false;
@@ -34,6 +41,11 @@ public class Excecoes {
 		return opcaoVeiculo;
 	}
 
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param texto - O texto passado para ser impresso no console
+	 * @return Retorna a opção do veículo, caso ela seja válida.
+	 */
 	public static int lancaExcecaoOpcoesVeiculo(Scanner input, String texto) {
 		int opcaoVeiculo = 0;
 		boolean temExcecao = false;
@@ -63,6 +75,13 @@ public class Excecoes {
 		return opcaoVeiculo;
 	}
 
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param texto1 - O texto passado para ser impresso no console
+	 * @param texto2 - O texto passado para ser impresso no console
+	 * @param texto3 - O texto passado para ser impresso no console
+	 * @return Retorna a opção do veículo, caso ela seja válida.
+	 */
 	public static int lancaExcecaoOpcoesVeiculo(Scanner input, String texto1, String texto2, String texto3) {
 		int opcaoVeiculo = 0;
 		boolean temExcecao = false;
@@ -92,6 +111,11 @@ public class Excecoes {
 		return opcaoVeiculo;
 	}
 
+	/**
+	 * @param input - Para evitar instanciar um novo Scanner
+	 * @param texto - O texto passado para ser impresso no console
+	 * @return Retorna o preço, caso esteja com o formato correto
+	 */
 	public static float lancaExcecaoPreco(Scanner input, String texto) {
 		float preco = 0;
 		boolean temExcecao = false;
@@ -121,6 +145,11 @@ public class Excecoes {
 		return preco;
 	}
 
+	/**
+	 * @param dadoDoVeiculo - Recebe uma especificação do veículo
+	 * @param chassi - Recebe um numero de chassi
+	 * @return Verdadeiro caso haja alguma exceção, e falso caso esteja correto.
+	 */
 	public static boolean lancaExcecaoLeituraVeiculo(String dadoDoVeiculo, String chassi) {
 		String eFloat = ".";
 

@@ -5,12 +5,16 @@ import java.util.HashMap;
 
 public class Especificacao {
 
-	HashMap<String, String> especificacaoVeiculo;
+	HashMap<String, String> especificacaoVeiculo; // Mapa para adicionar as especificacoes dos veiculos
 
 	public Especificacao(HashMap<String, String> veiculo) {
 		especificacaoVeiculo = veiculo;
 	}
 
+	/**
+	 * @param informacoes - Array List com as especificações passadas pelo usuário
+	 * O construtor pede todas as especificações do veículo 
+	 */
 	public Especificacao(ArrayList<String> informacoes) {
 		int posicaoArray = 0;
 		int tipoDeVeiculo = Integer.parseInt(informacoes.get(posicaoArray));
@@ -105,7 +109,7 @@ public class Especificacao {
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode() { 
 		final int prime = 31;
 		int result = 1;
 		result = prime
@@ -132,6 +136,11 @@ public class Especificacao {
 		return true;
 	}
 
+	/**
+	 * @param obj - Contém um objeto do tipo Veículo
+	 * @return Caso a comparação da especificação do veículo seja a mesma que o usuário solicitou é retornado verdadeiro, caso não, falso.
+	 * O método é responsável por retornar a comparação de uma especificação
+	 */
 	public boolean comparaVeiculo(Object obj) {
 		if (this == obj)
 			return true;

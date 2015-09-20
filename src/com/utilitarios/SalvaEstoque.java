@@ -22,6 +22,7 @@ public class SalvaEstoque {
 		return true;
 	}
 
+	// Grava Estoque no arquivo
 	public void gravarEstoque(Loja loja) {
 		ArrayList<Veiculo> estoqueDeVeiculos = loja.getEstoqueDeVeiculos();
 
@@ -63,6 +64,7 @@ public class SalvaEstoque {
 
 	}
 
+	// Fecha Arquivo
 	public void fecharArquivo() {
 		if (output != null) {
 			output.close();
