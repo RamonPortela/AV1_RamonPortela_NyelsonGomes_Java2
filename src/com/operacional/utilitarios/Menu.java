@@ -3,9 +3,9 @@ package com.operacional.utilitarios;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.auxiliar.MetodosAuxiliares;
 import com.operacional.loja.Loja;
 import com.operacional.montadora.Veiculo;
-import com.operacional.utilitarios.SalvaEstoque;
 
 public class Menu {
 
@@ -52,7 +52,7 @@ public class Menu {
 				loja.buscarVeiculo(input);
 				MetodosAuxiliares.pressionarEnter();
 				break;
-				
+
 			case QUINTA_OPCAO:
 				loja.buscarEspecificacao(input);
 				MetodosAuxiliares.pressionarEnter();

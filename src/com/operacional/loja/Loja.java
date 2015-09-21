@@ -3,12 +3,12 @@ package com.operacional.loja;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.auxiliar.MetodosAuxiliares;
 import com.operacional.montadora.Especificacao;
 import com.operacional.montadora.Veiculo;
 import com.operacional.utilitarios.Excecoes;
 import com.operacional.utilitarios.Impressora;
 import com.operacional.utilitarios.LeVeiculos;
-import com.operacional.utilitarios.MetodosAuxiliares;
 
 public class Loja {
 
@@ -44,7 +44,7 @@ public class Loja {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	/**
 	 * @param input - Para evitar instanciar um novo Scanner
 	 * O metodo é responsavel por adicionar um veículo no estoque
@@ -105,7 +105,7 @@ public class Loja {
 		}
 	}
 
-	
+
 	public void listarVeiculos() { // Lista todos os veiculos encontrados no estoque
 		if (this.estoqueDeVeiculos.isEmpty()) { // Verifica se o estoque está vazio
 			System.out.println("Estoque está vazio.");
@@ -134,14 +134,14 @@ public class Loja {
 			}
 		}
 	}
-	
+
 	/**
 	 * @param input  - Para evitar instanciar um novo Scanner
 	 * O metodo faz uma busca por uma especificação passado pelo usuário
 	 */
 	public void buscarEspecificacao(Scanner input){
-		
-		ArrayList<String> informacoes = new ArrayList<String>();		
+
+		ArrayList<String> informacoes = new ArrayList<String>();
 		int opcaoDeVeiculo;
 		String texto1 = "Digite 1 para pesquisar um carro.";
 		String texto2 = "Digite 2 para pesquisar uma motocicleta.";
@@ -158,9 +158,9 @@ public class Loja {
 			}
 
 		} while ((opcaoDeVeiculo < OPCAO_MINIMA) || (opcaoDeVeiculo > OPCAO_MAXIMA));
-		
+
 		informacoes.add(String.valueOf(opcaoDeVeiculo));
-		
+
 		String texto;
 		String opcoes;
 		switch(opcaoDeVeiculo){
@@ -171,11 +171,11 @@ public class Loja {
 			texto = "Escolha uma montadora: ";
 			opcoes = "0 - Qualquer \t 1 - GM   \t 2 - VOLKSWAGEN \t 3 - BMW \t 4 - FIAT \t 5 - FORD";
 			switch(LeVeiculos.leMontadora(input, texto, opcoes, true)){
-			
+
 				case 0:
 				informacoes.add(null);
 				break;
-				
+
 				case 1:
 					informacoes.add("GM");
 				break;
@@ -200,11 +200,11 @@ public class Loja {
 			texto = "Entre com o tipo do veículo: ";
 			opcoes = "0 - Qualquer \t 1 - Hatch   \t 2 - Sedan \t 3 - Minivan \t 4 - Picape \t 5 - Esportivo";
 			switch(LeVeiculos.leTipo(input, texto, opcoes, true)){
-			
+
 				case 0:
 				informacoes.add(null);
 				break;
-				
+
 				case 1:
 					informacoes.add("Hatch");
 				break;
@@ -242,11 +242,11 @@ public class Loja {
 			texto = "Escolha uma montadora: ";
 			opcoes = "0 - Qualquer \t 1 - HARLEY-DAVIDSON   \t 2 - HONDA \t 3 - SUZUKI \t 4 - KAWASAKI \t 5 - SHINERAY";
 			switch(LeVeiculos.leMontadora(input, texto, opcoes, true)){
-			
+
 				case 0:
 				informacoes.add(null);
 				break;
-				
+
 				case 1:
 					informacoes.add("HARLEY-DAVIDSON");
 				break;
@@ -271,11 +271,11 @@ public class Loja {
 			texto = "Entre com o tipo do veículo: ";
 			opcoes = "0 - Qualquer \t 1 - Scooter   \t 2 - Custom \t 3 - Roadster \t 4 - Street \t 5 - Esportiva";
 			switch(LeVeiculos.leTipo(input, texto, opcoes, true)){
-				
+
 				case 0:
 				informacoes.add(null);
 				break;
-				
+
 				case 1:
 					informacoes.add("Scooter");
 				break;
@@ -307,9 +307,9 @@ public class Loja {
 		break;
 
 		}
-		ArrayList<Veiculo> veiculosEncontrados = new ArrayList<Veiculo>(); 
+		ArrayList<Veiculo> veiculosEncontrados = new ArrayList<Veiculo>();
 		Especificacao especificacaoVeiculo = new Especificacao(informacoes);
-		
+
 		for(Veiculo veiculo : this.estoqueDeVeiculos){
 			if(veiculo.getEspecificacaoVeiculo().comparaVeiculo(especificacaoVeiculo)){
 				if(opcaoDeVeiculo == veiculo.getTipoVeiculo()){
@@ -317,13 +317,13 @@ public class Loja {
 				}
 			}
 		}
-		
+
 		if(veiculosEncontrados.isEmpty()){
 			System.out.println("\nNão foram encontrados veiculos com especificações solicitadas.\n");
 		}
 		else{
 			for(Veiculo veiculo : veiculosEncontrados){
-				
+
 				switch(veiculo.getTipoVeiculo()){
 				case 1:
 					Impressora.imprimeCarro(veiculo);
@@ -333,8 +333,8 @@ public class Loja {
 					break;
 				}
 			}
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -375,7 +375,7 @@ public class Loja {
 
 	/**
 	 * @param input - Para evitar instanciar um novo Scanner
-	 * @return retorna um numero positivo quando um veículo é encontrado e um numero negativo quando não é encontrado no estoque 
+	 * @return retorna um numero positivo quando um veículo é encontrado e um numero negativo quando não é encontrado no estoque
 	 * O metodo faz uma busca no estoque pelo chassi e retorna todos os veiculos encontrados
 	 */
 	private int procurarVeiculo(Scanner input) {

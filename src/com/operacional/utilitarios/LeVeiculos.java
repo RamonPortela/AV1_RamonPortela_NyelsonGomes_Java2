@@ -3,6 +3,7 @@ package com.operacional.utilitarios;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.auxiliar.MetodosAuxiliares;
 import com.operacional.montadora.Veiculo;
 
 public class LeVeiculos {

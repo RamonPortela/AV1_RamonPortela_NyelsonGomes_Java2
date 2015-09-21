@@ -1,10 +1,11 @@
-package com.operacional.utilitarios;
+package com.auxiliar;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.operacional.montadora.Veiculo;
+import com.operacional.utilitarios.Impressora;
 
 public class MetodosAuxiliares {
 

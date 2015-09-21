@@ -3,6 +3,8 @@ package com.operacional.utilitarios;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import com.auxiliar.MetodosAuxiliares;
+
 public class Excecoes {
 	
 	/**

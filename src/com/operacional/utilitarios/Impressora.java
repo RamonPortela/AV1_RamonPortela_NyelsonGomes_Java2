@@ -2,6 +2,7 @@ package com.operacional.utilitarios;
 
 import java.util.Scanner;
 
+import com.auxiliar.MetodosAuxiliares;
 import com.operacional.montadora.Veiculo;
 
 public class Impressora {
