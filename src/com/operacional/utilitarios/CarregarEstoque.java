@@ -1,12 +1,12 @@
-package com.utilitarios;
+package com.operacional.utilitarios;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.montadora.Especificacao;
-import com.montadora.Veiculo;
+import com.operacional.montadora.Especificacao;
+import com.operacional.montadora.Veiculo;
 
 public class CarregarEstoque {
 

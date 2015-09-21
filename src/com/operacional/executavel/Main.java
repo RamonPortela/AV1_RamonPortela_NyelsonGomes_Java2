@@ -1,6 +1,6 @@
-package com.operacional;
+package com.operacional.executavel;
 
-import com.utilitarios.Menu;
+import com.operacional.utilitarios.Menu;
 
 public class Main {
 

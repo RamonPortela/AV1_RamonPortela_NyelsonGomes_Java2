@@ -1,6 +1,6 @@
 package com.utilitarios.teste;
 
-import com.utilitarios.Menu;
+import com.operacional.utilitarios.Menu;
 
 public class AmbienteTeste {
 

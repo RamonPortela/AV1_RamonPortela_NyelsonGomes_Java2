@@ -1,14 +1,14 @@
-package com.loja;
+package com.operacional.loja;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.montadora.Especificacao;
-import com.montadora.Veiculo;
-import com.utilitarios.Excecoes;
-import com.utilitarios.Impressora;
-import com.utilitarios.LeVeiculos;
-import com.utilitarios.MetodosAuxiliares;
+import com.operacional.montadora.Especificacao;
+import com.operacional.montadora.Veiculo;
+import com.operacional.utilitarios.Excecoes;
+import com.operacional.utilitarios.Impressora;
+import com.operacional.utilitarios.LeVeiculos;
+import com.operacional.utilitarios.MetodosAuxiliares;
 
 public class Loja {
 
@@ -306,7 +306,7 @@ public class Loja {
 			informacoes.add(null);
 		break;
 
-}
+		}
 		ArrayList<Veiculo> veiculosEncontrados = new ArrayList<Veiculo>(); 
 		Especificacao especificacaoVeiculo = new Especificacao(informacoes);
 		
@@ -333,9 +333,7 @@ public class Loja {
 					break;
 				}
 			}
-		}
-		
-		
+		}	
 		
 	}
 

@@ -1,9 +1,9 @@
-package com.montadora;
+package com.operacional.montadora;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.utilitarios.LeVeiculos;
+import com.operacional.utilitarios.LeVeiculos;
 
 public class Veiculo {
 

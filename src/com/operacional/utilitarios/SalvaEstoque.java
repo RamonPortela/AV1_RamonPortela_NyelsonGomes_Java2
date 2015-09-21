@@ -1,11 +1,11 @@
-package com.utilitarios;
+package com.operacional.utilitarios;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Formatter;
 
-import com.loja.Loja;
-import com.montadora.Veiculo;
+import com.operacional.loja.Loja;
+import com.operacional.montadora.Veiculo;
 
 public class SalvaEstoque {
 

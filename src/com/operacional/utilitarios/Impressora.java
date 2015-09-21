@@ -1,8 +1,8 @@
-package com.utilitarios;
+package com.operacional.utilitarios;
 
 import java.util.Scanner;
 
-import com.montadora.Veiculo;
+import com.operacional.montadora.Veiculo;
 
 public class Impressora {
 

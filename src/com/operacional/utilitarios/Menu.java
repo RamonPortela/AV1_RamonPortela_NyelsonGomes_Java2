@@ -1,10 +1,11 @@
-package com.utilitarios;
+package com.operacional.utilitarios;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.loja.Loja;
-import com.montadora.Veiculo;
+import com.operacional.loja.Loja;
+import com.operacional.montadora.Veiculo;
+import com.operacional.utilitarios.SalvaEstoque;
 
 public class Menu {
 
